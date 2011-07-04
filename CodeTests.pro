@@ -11,7 +11,7 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp Dots2.xpm
+        mainwindow.cpp Dots2.xbm
 
 HEADERS  += mainwindow.h
 
