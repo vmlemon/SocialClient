@@ -13,11 +13,15 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
-    QGraphicsScene qgs = new QGraphicsScene();
-    qgs.addPixmap(QPixmap(Dots2_xpm));
+    QGraphicsScene *qgs = new QGraphicsScene();
+    QPixmap art(Dots2_xpm);
+
+    //art.loadFromData(Dots2_xpm);
+
+    qgs->addPixmap(art);
 
 
-    ui->graphicsView->setScene(&qgs);
+    ui->graphicsView->setScene(qgs);
     ui->graphicsView->setShown(true);
     ui->graphicsView->show();
     delete ui;
