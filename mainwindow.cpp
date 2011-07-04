@@ -1,8 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Dots2.xpm"
+#include "Dots2.xbm"
 #include <QGraphicsScene>
 #include <QPixmap>
+#include <QBitmap>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,9 +15,7 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     QGraphicsScene *qgs = new QGraphicsScene();
-    QPixmap art(Dots2_xpm);
-
-    //art.loadFromData(Dots2_xpm);
+    QPixmap art = QBitmap::fromData(QSize(Dots2_width, Dots2_height), Dots2_bits,QImage::Format_Mono);
 
     qgs->addPixmap(art);
 
