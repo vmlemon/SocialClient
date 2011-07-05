@@ -3,7 +3,7 @@
 
 #include <QWebView>
 #include <QWebFrame>
-#include <json.h>
+#include <QtJSON/json.h>
 #include <QVariantMap>
 
 MainWindow::MainWindow(QWidget *parent) :
