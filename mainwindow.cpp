@@ -56,6 +56,6 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
-    ui->webView->setUrl(QUrl(iContentType + iStartRender + arg1 + iEndRender));
+    ui->webView->setUrl(QUrl(iContentType + iStartRender + BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg", "E9F09C") + iEndRender));
     ui->webView->show();
 }
