@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 QString iContentType = "data:text/html,";
-QString iToRender = "<body bgcolor=\"black\" text=\"white\"><b>Bello!</b> &nbsp; ";
+QString iToRender = "<body bgcolor=\"black\" text=\"white\"><marquee>Bello!</marquee> &nbsp; ";
 
 MainWindow::~MainWindow()
 {
