@@ -49,7 +49,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(arg1, GetTwitterAvatarUri(QString(iTwitterFeed.readAll())), "E9F09C") +
+                             //BuildStatusItem(arg1, GetTwitterAvatarUri(QString(iTwitterFeed.readAll())), "E9F09C") +
                              BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
@@ -64,8 +64,6 @@ QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
     qDebug() << "Avatar URI: " << dataMap["profile_background_image_url"].toString();
-
-    qDebug() << QString(iTwitterFeed.readAll());
     return dataMap["profile_background_image_url"].toString();
 }
 
@@ -76,5 +74,18 @@ void MainWindow::resizeEvent(QResizeEvent *aEvent) {
 QString MainWindow::LoadDiskFeed(QString aFilePath) {
 
     QFile feedFile("./users.json");
+
+    if (!feedFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        return;
+    }
+
     QTextStream feedStream(&feedFile);
+
+    while (!in.atEnd()) {
+             QString feedLine = feedStream.readLine();
+             process_line(feedLine);
+    }
+
+
+    //qDebug() << QString(iTwitterFeed.readAll());
 }
