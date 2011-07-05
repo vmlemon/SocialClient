@@ -11,7 +11,10 @@ TEMPLATE = app
 
 
 SOURCES += main.cpp\
-        mainwindow.cpp
-HEADERS  += mainwindow.h
+        mainwindow.cpp \
+        ereilin-qt-json-1a3db8e/json.cpp
+
+HEADERS  += mainwindow.h \
+            ereilin-qt-json-1a3db8e\json.h
 
 FORMS    += mainwindow.ui
