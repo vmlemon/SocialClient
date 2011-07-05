@@ -26,7 +26,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString iconUri = aIconUri;
     QString statusColour = aStatusColour;
 
-    QString icon = "<img src=\"" + iconUri + "\" height=\"20\"/>";
+    QString icon = "<img src=\"" + iconUri + "\" height=\"24\" width=\"24\"/>";
     QString statusStart = QString().append("<span style=\"")
                                    .append("background-color:")
                                    .append(statusColour)
@@ -45,7 +45,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg", "E9F09C") +
+                             BuildStatusItem(arg1, "http://a2.twimg.com/profile_images/126686059/mugshot_normal.jpg", "E9F09C") +
                              BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
