@@ -72,7 +72,7 @@ QString MainWindow::GetTwitterLatestTweet(QString aJsonData) {
     bool status;
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-    qDebug() << "Avatar URI: " << dataMap["text"].toString();
+    qDebug() << "Latest Tweet: " << dataMap["text"].toString();
     return dataMap["text"].toString();
 }
 
@@ -93,7 +93,7 @@ QString MainWindow::LoadDiskFeed(QString aFilePath) {
 
     while (!feedStream.atEnd()) {
              feedLine = feedStream.readLine();
-             qDebug() << QString(feedLine);
+             //qDebug() << QString(feedLine);
     }
     return feedLine;
 }
