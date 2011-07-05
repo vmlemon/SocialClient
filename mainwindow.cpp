@@ -42,7 +42,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString result;
 
 
-    result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd);
+    result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd).append("&nbsp;");
     qDebug() << result;
     return result;
 }
@@ -50,7 +50,11 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
-    ui->webView->setUrl(QUrl(iContentType + iStartRender + BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg", "E9F09C") + iEndRender));
+    ui->webView->setUrl(QUrl(iContentType +
+                             iStartRender +
+                             BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg", "E9F09C") +
+                             BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
+                             iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
