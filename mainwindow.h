@@ -19,7 +19,6 @@ public:
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
 
 private slots:
-    void on_pushButton_clicked();
 
     void on_lineEdit_textChanged(const QString &arg1);
 
