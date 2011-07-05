@@ -3,6 +3,8 @@
 
 #include <QWebView>
 #include <QWebFrame>
+#include "json.h"
+#include <QVariantMap>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -52,6 +54,15 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
+}
+
+QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
+    bool status;
+
+    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
+    qDebug() << "Avatar URI: " << dataMap["profile_background_image_url"].toString();
+
+    return dataMap["profile_background_image_url"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {

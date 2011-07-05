@@ -18,6 +18,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
+    QString GetTwitterAvatarUri(QString aJsonData);
 
 private slots:
 
