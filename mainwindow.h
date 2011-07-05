@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QString>
+#include <QResizeEvent>
 #include <QDebug>
 
 namespace Ui {
@@ -24,6 +25,8 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+protected:
+    void resizeEvent(QResizeEvent *aEvent);
 };
 
 #endif // MAINWINDOW_H

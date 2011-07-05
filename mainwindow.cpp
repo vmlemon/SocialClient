@@ -52,3 +52,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
 }
+
+void MainWindow::resizeEvent(QResizeEvent *aEvent) {
+    ui->webView->resize(aEvent->size().width(), ui->webView->height());
+}
