@@ -6,4 +6,4 @@
 
 
 
-<img src="C:\Users\Tyson Key\Documents\Pidgin Data\icons\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg" height="20"\> <span style="background-color:E9F09C; color:6E5E5E;font-family:"Times New Roman"">Example User has gone offline</span>
+<img src="C:\Users\Tyson Key\Documents\Pidgin Data\icons\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg" height="20"\> <span style="background-color:E9F09C; color:6E5E5E;"><font face="Comic Sans MS">Example User has gone offline</font></span>
