@@ -7,18 +7,23 @@
 #include <QVariantMap>
 #include <QFile>
 
+QFile iTwitterFeed("users.json");
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    iTwitterFeed.open(QFile::ReadOnly);
 }
 
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
 
-QFile iTwitterFeed("users.json");
+
+
 
 MainWindow::~MainWindow()
 {
@@ -48,6 +53,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
+
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
                              BuildStatusItem(arg1, GetTwitterAvatarUri(QString(iTwitterFeed.readAll())), "E9F09C") +
@@ -60,6 +66,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 }
 
 QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
+
     bool status;
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
