@@ -37,7 +37,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString result;
 
     result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd).append("&nbsp;");
-    qDebug() << result;
+    //qDebug() << result;
     return result;
 }
 
@@ -51,6 +51,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
+    qDebug() << ui->webView->url().toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
