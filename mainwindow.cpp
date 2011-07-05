@@ -34,7 +34,7 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     //ui->webView->setContent(iToRender.toAscii().data());
-    ui->webView->setUrl(QUrl(iContentType + iStartRender + "Enter content to begin..." + iEndRender));
+    ui->webView->setUrl(QUrl(iContentType + iStartRender + iMultiPersonDemo + iEndRender));
     ui->webView->show();
 }
 
