@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+QString iContentType = "data:text/html,";
 QString iToRender = "<b>Bello!</b>";
 
 MainWindow::~MainWindow()
@@ -20,10 +21,16 @@ MainWindow::~MainWindow()
     QPixmap art = QBitmap::QPixmap(Dots2_xpm);
     qgs->addPixmap(art);
 
-    ui->webView->setContent(iToRender.toAscii().data());
-    ui->webView->show();
+
     ui->graphicsView->setScene(qgs);
     ui->graphicsView->setShown(true);
     ui->graphicsView->show();
     delete ui;
+}
+
+void MainWindow::on_pushButton_clicked()
+{
+    //ui->webView->setContent(iToRender.toAscii().data());
+    ui->webView->setUrl(QUrl(iContentType + iToRender));
+    ui->webView->show();
 }
