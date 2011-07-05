@@ -8,19 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-
     ui->setupUi(this);
-
 }
 
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
 
-
 MainWindow::~MainWindow()
 {
-
     delete ui;
 }
 
@@ -38,9 +34,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString statusFont("<font face=\"S60 Sans\">");
     QString statusEnd("</font></span>");
 
-
     QString result;
-
 
     result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd).append("&nbsp;");
     qDebug() << result;
