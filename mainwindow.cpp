@@ -7,7 +7,7 @@
 #include <QVariantMap>
 #include <QFile>
 
-QFile iTwitterFeed("users.json");
+QFile iTwitterFeed("./users.json");
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -72,6 +72,7 @@ QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
     qDebug() << "Avatar URI: " << dataMap["profile_background_image_url"].toString();
 
+    qDebug() << iTwitterFeed.readAll().data();
     return dataMap["profile_background_image_url"].toString();
 }
 
