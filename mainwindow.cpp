@@ -7,16 +7,18 @@
 #include <QVariantMap>
 #include <QFile>
 
-QFile iTwitterFeed("./users.json");
+QFile iTwitterFile("./users.json");
+QTextStream iTwitterFeed(&iTwitterFile);
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    iTwitterFeed.open(QFile::ReadOnly);
 }
+
+//iTwitterFeed.open(QFile::ReadOnly);
 
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
