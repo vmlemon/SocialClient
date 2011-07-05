@@ -41,7 +41,6 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     return result;
 }
 
-
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     ui->webView->setUrl(QUrl(iContentType +
