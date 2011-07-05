@@ -38,6 +38,8 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString statusFont("<font face=\"S60 Sans\">");
     QString statusEnd("</font></span>");
 
+    qDebug() << result;
+
     QString result;
 
     result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd);
