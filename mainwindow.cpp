@@ -13,7 +13,8 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 QString iContentType = "data:text/html,";
-QString iToRender = "<body bgcolor=\"black\" text=\"white\"><marquee>Bello!</marquee> &nbsp; ";
+QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
+QString iEndRender = "</marquee> &nbsp; ";
 
 MainWindow::~MainWindow()
 {
@@ -31,6 +32,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     //ui->webView->setContent(iToRender.toAscii().data());
-    ui->webView->setUrl(QUrl(iContentType + iToRender + QMainWindow::windowTitle()));
+    ui->webView->setUrl(QUrl(iContentType + iStartRender + "Enter content to begin..." + iEndRender));
     ui->webView->show();
 }
