@@ -19,6 +19,7 @@ public:
     ~MainWindow();
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
     QString GetTwitterAvatarUri(QString aJsonData);
+    QString LoadDiskFeed(QString aFilePath);
 
 private slots:
 
