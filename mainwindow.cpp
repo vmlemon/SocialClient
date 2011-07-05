@@ -12,13 +12,16 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
+QString iToRender = "<b>Bello!</b>";
+
 MainWindow::~MainWindow()
 {
     QGraphicsScene *qgs = new QGraphicsScene();
     QPixmap art = QBitmap::QPixmap(Dots2_xpm);
     qgs->addPixmap(art);
 
-
+    ui->webView->setContent(iToRender.toAscii().data());
+    ui->webView->show();
     ui->graphicsView->setScene(qgs);
     ui->graphicsView->setShown(true);
     ui->graphicsView->show();

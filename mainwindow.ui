@@ -19,9 +19,26 @@
      <rect>
       <x>10</x>
       <y>10</y>
-      <width>401</width>
-      <height>311</height>
+      <width>161</width>
+      <height>91</height>
      </rect>
+    </property>
+   </widget>
+   <widget class="QWebView" name="webView">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>120</y>
+      <width>371</width>
+      <height>261</height>
+     </rect>
+    </property>
+    <property name="url">
+     <url>
+      <string>data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO
+9TXL0Y4OHwAAAABJRU5ErkJggg==</string>
+     </url>
     </property>
    </widget>
   </widget>
@@ -46,6 +63,13 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKit/QWebView</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
