@@ -50,7 +50,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/users.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
-                             BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
