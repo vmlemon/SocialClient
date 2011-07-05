@@ -64,7 +64,7 @@ QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
     qDebug() << "Avatar URI: " << dataMap["profile_image_url"].toString();
-    return dataMap["profile_background_image_url"].toString();
+    return dataMap["profile_image_url"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
