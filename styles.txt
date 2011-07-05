@@ -14,4 +14,3 @@
 
 QString iMultiPersonDemo = "<img src=\"C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg\" height=\"20\"\\> <span style=\"background-color:E9F09C; color:6E5E5E;\"><font face=\"S60 Sans\">Example User has gone offline</font></span> <img src=\"C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg\" height=\"20\"\\> <span style=\"background-color:EDCACA; color:6E5E5E;\"><font face=\"S60 Sans\">Another one bites the dust...</font></span>";
 
-CAD2ED
