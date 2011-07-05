@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QString>
 
 namespace Ui {
     class MainWindow;
@@ -14,6 +15,7 @@ class MainWindow : public QMainWindow
 public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
+    QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
 
 private slots:
     void on_pushButton_clicked();
