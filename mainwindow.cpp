@@ -29,6 +29,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //ui->webView->setContent(iToRender.toAscii().data());
     ui->webView->setUrl(QUrl(iContentType + iStartRender + iMultiPersonDemo + iEndRender));
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
 }
