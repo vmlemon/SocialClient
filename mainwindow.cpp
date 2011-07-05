@@ -5,6 +5,7 @@
 #include <QWebFrame>
 #include <QtJSON/json.h>
 #include <QVariantMap>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -16,6 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
+
+QFile iTwitterFeed("users.json");
 
 MainWindow::~MainWindow()
 {
@@ -47,7 +50,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(arg1, "http://a2.twimg.com/profile_images/126686059/mugshot_normal.jpg", "E9F09C") +
+                             BuildStatusItem(arg1, GetTwitterAvatarUri(QString(iTwitterFeed.readAll())), "E9F09C") +
                              BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
