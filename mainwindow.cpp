@@ -47,17 +47,11 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     return result;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-    //ui->webView->setContent(iToRender.toAscii().data());
-    ui->webView->setUrl(QUrl(iContentType + iStartRender + "test" + iEndRender));
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
-    ui->webView->show();
-}
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     ui->webView->setUrl(QUrl(iContentType + iStartRender + BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2dbf45924bc85a5c16228ee3eec0eb4d7083ad61.jpg", "E9F09C") + iEndRender));
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
 }
