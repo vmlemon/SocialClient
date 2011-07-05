@@ -72,8 +72,11 @@ QString MainWindow::GetTwitterLatestTweet(QString aJsonData) {
     bool status;
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-    qDebug() << "Latest Tweet: " << dataMap["text"].toString();
-    return dataMap["text"].toString();
+
+    QVariantMap statusMap = dataMap["status"].toMap();
+
+    qDebug() << "Latest Tweet: " << statusMap["text"].toString();
+    return statusMap["text"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
