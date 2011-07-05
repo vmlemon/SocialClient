@@ -49,7 +49,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(arg1, GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/users.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
                              BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
@@ -65,6 +65,15 @@ QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
     qDebug() << "Avatar URI: " << dataMap["profile_image_url"].toString();
     return dataMap["profile_image_url"].toString();
+}
+
+QString MainWindow::GetTwitterLatestTweet(QString aJsonData) {
+
+    bool status;
+
+    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
+    qDebug() << "Avatar URI: " << dataMap["text"].toString();
+    return dataMap["text"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
