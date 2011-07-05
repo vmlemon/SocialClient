@@ -49,7 +49,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(arg1, GetTwitterAvatarUri(LoadDiskFeed("users.json")), "E9F09C") +
+                             BuildStatusItem(arg1, GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
                              BuildStatusItem(arg1, "C:\\Users\\Tyson Key\\Documents\\Pidgin Data\\icons\\2c884de1f6ad2379fc2b16eeab73a0b59623b6d5.png", "EDCACA") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
@@ -73,12 +73,14 @@ void MainWindow::resizeEvent(QResizeEvent *aEvent) {
 
 QString MainWindow::LoadDiskFeed(QString aFilePath) {
 
-    QFile feedFile("./users.json");
+    QFile feedFile(aFilePath);
     QString feedLine;
 
     if (!feedFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        return false;
+        qDebug() << "Could not read from " << aFilePath;
     }
+
+
 
     QTextStream feedStream(&feedFile);
 
