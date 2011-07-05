@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 QString iContentType = "data:text/html,";
-QString iToRender = "<b>Bello!</b>";
+QString iToRender = "<b>Bello!</b> &nbsp; ";
 
 MainWindow::~MainWindow()
 {
@@ -31,6 +31,6 @@ MainWindow::~MainWindow()
 void MainWindow::on_pushButton_clicked()
 {
     //ui->webView->setContent(iToRender.toAscii().data());
-    ui->webView->setUrl(QUrl(iContentType + iToRender));
+    ui->webView->setUrl(QUrl(iContentType + iToRender + QMainWindow::windowTitle()));
     ui->webView->show();
 }
