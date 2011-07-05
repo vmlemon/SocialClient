@@ -32,18 +32,18 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 
     QString icon = "<img src=\"" + iconUri + "\" height=\"20\"/>";
     QString statusStart = QString().append("<span style=\"")
-                                   .append("background-color:\"")
+                                   .append("background-color:")
                                    .append(statusColour)
-                                   .append("color:6E5E5E;\">");
+                                   .append("; color:6E5E5E;\">");
     QString statusFont("<font face=\"S60 Sans\">");
     QString statusEnd("</font></span>");
 
 
     QString result;
 
-    qDebug() << result;
-    result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd);
 
+    result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd);
+    qDebug() << result;
     return result;
 }
 
