@@ -8,8 +8,9 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
+
     ui->setupUi(this);
+
 }
 
 QString iContentType = "data:text/html,";
@@ -28,6 +29,7 @@ void MainWindow::on_pushButton_clicked()
 {
     //ui->webView->setContent(iToRender.toAscii().data());
     ui->webView->setUrl(QUrl(iContentType + iStartRender + iMultiPersonDemo + iEndRender));
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
 }
 
