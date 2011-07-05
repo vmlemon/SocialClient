@@ -20,14 +20,7 @@ QString iMultiPersonDemo = "<img src=\"C:\\Users\\Tyson Key\\Documents\\Pidgin D
 
 MainWindow::~MainWindow()
 {
-    QGraphicsScene *qgs = new QGraphicsScene();
-    QPixmap art = QBitmap::QPixmap(Dots2_xpm);
-    qgs->addPixmap(art);
 
-
-    ui->graphicsView->setScene(qgs);
-    ui->graphicsView->setShown(true);
-    ui->graphicsView->show();
     delete ui;
 }
 
