@@ -80,8 +80,6 @@ QString MainWindow::LoadDiskFeed(QString aFilePath) {
         qDebug() << "Could not read from " << aFilePath;
     }
 
-
-
     QTextStream feedStream(&feedFile);
 
     while (!feedStream.atEnd()) {
