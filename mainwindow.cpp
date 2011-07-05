@@ -7,10 +7,6 @@
 #include <QVariantMap>
 #include <QFile>
 
-QFile iTwitterFile("./users.json");
-QTextStream iTwitterFeed(&iTwitterFile);
-
-
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
@@ -18,14 +14,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 }
 
-//iTwitterFeed.open(QFile::ReadOnly);
-
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
-
-
-
 
 MainWindow::~MainWindow()
 {
@@ -74,10 +65,16 @@ QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
     qDebug() << "Avatar URI: " << dataMap["profile_background_image_url"].toString();
 
-    qDebug() << iTwitterFeed.readAll().data();
+    qDebug() << QString(iTwitterFeed.readAll());
     return dataMap["profile_background_image_url"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
     ui->webView->resize(aEvent->size().width(), ui->webView->height());
+}
+
+QString MainWindow::LoadDiskFeed(QString aFilePath) {
+
+    QFile feedFile("./users.json");
+    QTextStream feedStream(&feedFile);
 }
