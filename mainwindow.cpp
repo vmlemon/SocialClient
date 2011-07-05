@@ -35,3 +35,9 @@ void MainWindow::on_pushButton_clicked()
     ui->webView->setUrl(QUrl(iContentType + iStartRender + "Enter content to begin..." + iEndRender));
     ui->webView->show();
 }
+
+void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+{
+    ui->webView->setUrl(QUrl(iContentType + iStartRender + arg1 + iEndRender));
+    ui->webView->show();
+}
