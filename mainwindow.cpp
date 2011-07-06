@@ -8,7 +8,6 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
-#include <QStringList>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -26,7 +25,6 @@ QMap<QString, QString> iSkypeCache;
 QMap<QString, QString> iTwitterCache;
 
 QString iNetworkData;
-QStringList iListLabels;
 
 MainWindow::~MainWindow()
 {
@@ -217,13 +215,3 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     qDebug() << ui->webView->url().toString();
 }
 
-void MainWindow::on_actionUpdate_List_triggered()
-{
-    iListLabels << ui->SkypeStatus->text() << GetTwitterLatestTweet(iTwitterCache.value("vmlemon"))
-                << GetTwitterLatestTweet(iTwitterCache.value("wtroberts"))
-                << GetTwitterLatestTweet(iTwitterCache.value("hideout"))
-                << GetTwitterLatestTweet(iTwitterCache.value("__MarkW__"))
-                << GetTwitterLatestTweet(iTwitterCache.value("pjwaffle"));
-
-    ui->listWidget->addItems(iListLabels);
-}
