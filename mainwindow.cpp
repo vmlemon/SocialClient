@@ -52,6 +52,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/users.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/hideout.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/hideout.json")), "CAD2ED") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
