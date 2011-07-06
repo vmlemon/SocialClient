@@ -50,21 +50,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
-
-    ui->webView->setUrl(QUrl(iContentType +
-                             iStartRender +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), "E9F09C") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), "CAD2ED") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/pjwaffle.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/pjwaffle.json")), "FFC6A1") +
-                             iEndRender));
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
-    ui->webView->show();
-    qDebug() << ui->webView->url().toString();
-
-   // qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
+    qDebug() << arg1;
 }
 
 QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
@@ -169,4 +155,23 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
     aReply->close();
+}
+
+void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
+{
+
+    ui->webView->setUrl(QUrl(iContentType +
+                             iStartRender +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), "E9F09C") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), "CAD2ED") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/pjwaffle.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/pjwaffle.json")), "FFC6A1") +
+                             iEndRender));
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
+    ui->webView->show();
+    qDebug() << ui->webView->url().toString();
+
+   // qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
 }

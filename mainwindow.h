@@ -45,6 +45,8 @@ private slots:
     void on_lineEdit_textChanged(const QString &arg1);
     void finishedSlot(QNetworkReply* aReply);
 
+    void on_actionUpdate_Twitter_Feeds_triggered();
+
 private:
     Ui::MainWindow *ui;
 
