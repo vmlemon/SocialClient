@@ -52,6 +52,7 @@ private slots:
 
     void on_actionUpdate_Ticker_triggered();
 
+
 private:
     Ui::MainWindow *ui;
 

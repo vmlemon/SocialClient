@@ -8,6 +8,7 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
+#include <QLabel>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -15,6 +16,10 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    QStringList labels("Username", "Latest Tweet", "Skype Status");
+
+    ui->tableWidget->setHorizontalHeaderLabels(labels);
 }
 
 QString iContentType = "data:text/html,";
@@ -198,9 +203,12 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
+    qDebug() << iTwitterCache.keys();
+    qDebug() << iTwitterCache.values();
+
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -209,9 +217,9 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             //BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
                              //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                              //               BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
                              //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json"), "D3F5D5") +
                             // BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
                              iEndRender));
