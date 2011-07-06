@@ -14,7 +14,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    qDebug() <<ParseSkypeStatus(LoadHttpFeed("mystatus.skype.com/vmlemon.num"));
 }
 
 QString iContentType = "data:text/html,";
@@ -54,7 +53,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/users.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/users.json")), "E9F09C") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/hideout.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/hideout.json")), "CAD2ED") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
@@ -64,6 +63,8 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
+
+   // qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
 }
 
 QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
