@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>454</width>
-    <height>292</height>
+    <height>142</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -50,16 +50,6 @@
     </property>
     <property name="text">
      <string>*SkypeStatus*</string>
-    </property>
-   </widget>
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>421</width>
-      <height>121</height>
-     </rect>
     </property>
    </widget>
   </widget>
