@@ -32,6 +32,7 @@ public:
     QString GetTwitterAvatarUri(QString aJsonData);
     QString GetTwitterLatestTweet(QString aJsonData);
     QString LoadDiskFeed(QString aFilePath);
+    QString ParseSkypeStatus(QString aStatusData);
 
 private slots:
 
