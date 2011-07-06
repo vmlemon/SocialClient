@@ -69,7 +69,6 @@
     <addaction name="actionUpdate_Twitter_Feeds"/>
     <addaction name="separator"/>
     <addaction name="actionUpdate_Ticker"/>
-    <addaction name="actionUpdate_List"/>
     <addaction name="separator"/>
     <addaction name="actionGet_Skype_Status"/>
    </widget>
