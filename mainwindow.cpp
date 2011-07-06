@@ -161,6 +161,15 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
         return iSkypeCache.value(processedUri);
     }
 
+    if (aHttpUri.startsWith("http://api.twitter.com/1/users/show.json?id=")) {
+        QString processedUri(aHttpUri.remove("http://api.twitter.com/1/users/show.json?id="));
+        qDebug() << "Got a Twitter user URL" << processedUri;
+        iTwitterCache.insert(processedUri, iNetworkData);
+
+        return iTwitterCache.value(processedUri);
+    }
+
+
     else {
         return iNetworkData;
     }
