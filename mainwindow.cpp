@@ -50,7 +50,6 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString result;
 
     result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd).append("&nbsp;");
-    //qDebug() << result;
     return result;
 }
 
@@ -97,7 +96,6 @@ QString MainWindow::LoadDiskFeed(QString aFilePath) {
 
     while (!feedStream.atEnd()) {
              feedLine = feedStream.readLine();
-             //qDebug() << QString(feedLine);
     }
     return feedLine;
 }
@@ -151,23 +149,8 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
     QUrl url(aHttpUri);
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
 
-
-   // qDebug() << "Data from Network: " << QString(iNetworkData);
-
-    if (aHttpUri.startsWith("http://mystatus.skype.com")) {
-        QString processedUri(aHttpUri.remove("http://mystatus.skype.com/").remove(".num"));
-        qDebug() << "Got a Skype status URL" << (processedUri);
-        iSkypeCache.insert(processedUri, iNetworkData);
-
-        return iSkypeCache.value(processedUri);
+     return iNetworkData;
     }
-
-    else {
-        return iNetworkData;
-    }
-
-    //reply->close();
-}
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
@@ -183,6 +166,12 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
         iTwitterCache.insert(processedUri, iNetworkData);
 
+    }
+
+    if (aReply->url().toString().startsWith("http://mystatus.skype.com")) {
+        QString processedUri(aReply->url().toString().remove("http://mystatus.skype.com/").remove(".num"));
+        qDebug() << "Got a Skype status URL" << (processedUri);
+        iSkypeCache.insert(processedUri, iNetworkData);
     }
 
     aReply->close();
