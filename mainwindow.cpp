@@ -186,22 +186,34 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
+    BuildTwitterCache();
 
-    ui->webView->setUrl(QUrl(iContentType +
-                             iStartRender +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), "E9F09C") +
-                             //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), "CAD2ED") +
-                             //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle")), "FFC6A1") +
-                             iEndRender));
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
-    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
-    ui->webView->show();
-    qDebug() << ui->webView->url().toString();
 }
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
 {
    ui->SkypeStatus->setText(ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
+}
+
+void MainWindow::BuildTwitterCache() {
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+}
+
+void MainWindow::on_actionUpdate_Ticker_triggered()
+{
+
+    ui->webView->setUrl(QUrl(iContentType +
+                             iStartRender +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+                             //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
+                                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
+                             //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json"), "D3F5D5") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
+                             iEndRender));
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
+    ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
+    ui->webView->show();
+    qDebug() << ui->webView->url().toString();
 }
