@@ -55,7 +55,7 @@ void MainWindow::on_lineEdit_textChanged(const QString &arg1)
                              iStartRender +
                              BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon")), "E9F09C") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/hideout.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/hideout.json")), "CAD2ED") +
+                             BuildStatusItem(GetTwitterLatestTweet(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), GetTwitterAvatarUri(LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout")), "CAD2ED") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/pjwaffle.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/pjwaffle.json")), "FFC6A1") +
                              iEndRender));
@@ -164,6 +164,5 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 }
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
-    //qDebug() <<  QString::fromUtf8(aReply->readAll().data());
     iNetworkData = QString(aReply->readAll().data());
 }
