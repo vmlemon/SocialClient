@@ -165,8 +165,6 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
         QString processedUri(aHttpUri.remove("http://api.twitter.com/1/users/show.json?id="));
         qDebug() << "Got a Twitter user URL" << processedUri;
 
-        if (!iTwitterCache.value(processedUri).contains(iNetworkData)) {
-
         iTwitterCache.insert(processedUri, iNetworkData);
 
         qDebug() << "This user's cached feed data: " << iTwitterCache.value(processedUri);
@@ -178,9 +176,6 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
         return iTwitterCache.value(processedUri);
 
         }
-
-    }
-
 
     else {
         return iNetworkData;
