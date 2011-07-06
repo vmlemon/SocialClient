@@ -47,6 +47,8 @@ private slots:
 
     void on_actionUpdate_Twitter_Feeds_triggered();
 
+    void on_actionGet_Skype_Status_triggered();
+
 private:
     Ui::MainWindow *ui;
 
