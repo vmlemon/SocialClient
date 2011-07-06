@@ -229,7 +229,8 @@ void MainWindow::on_actionUpdate_List_triggered()
 {
 
 
-    iListLabels << ui->SkypeStatus->text() << GetTwitterLatestTweet(iTwitterCache.value("vmlemon"));
+    iListLabels << ui->SkypeStatus->text() << GetTwitterLatestTweet(iTwitterCache.value("vmlemon"))
+                << GetTwitterLatestTweet(iTwitterCache.value("hideout"))    ;
 
     ui->listWidget->addItems(iListLabels);
 }
