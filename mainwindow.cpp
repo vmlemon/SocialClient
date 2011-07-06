@@ -156,8 +156,10 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     qDebug() << "Inside finishedSlot()" /* iNetworkData */;
 
 
-    if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=")) {
-        QString processedUri(aReply->url().toString().remove("http://api.twitter.com/1/users/show.json?id="));
+    if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=") ||
+        aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=")) {
+        QString processedUri(aReply->url().toString().remove("http://api.twitter.com/1/users/show.json?id=")
+                             .remove("http://api.twitter.com/1/users/show.json?screen_name="));
         qDebug() << "Got a Twitter user URL" << processedUri;
 
         qDebug() << aReply->url().toString();
