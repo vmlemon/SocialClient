@@ -190,6 +190,7 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=9600");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
@@ -208,6 +209,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("9600")), GetTwitterAvatarUri(iTwitterCache.value("9600")), "FFC6A1") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
