@@ -5,8 +5,9 @@
 #include <QWebFrame>
 #include <QtJSON/json.h>
 #include <QVariantMap>
+#include <QBuffer>
 #include <QFile>
-#include <QHttp>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -14,12 +15,18 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    iNetArbitrator = new QNetworkAccessManager(this);
+    QObject::connect(iNetArbitrator, SIGNAL(finished(QNetworkReply*)),
+             this, SLOT(finishedSlot(QNetworkReply*)));
+
     qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
 }
 
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
+
+QString iNetworkData = "";
 
 MainWindow::~MainWindow()
 {
@@ -148,13 +155,20 @@ QString MainWindow::ParseSkypeStatus(QString aStatusData) {
 
 QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
+    QNetworkReply* reply = iNetArbitrator->get(QNetworkRequest(QUrl(aHttpUri)));
+
     QHttp *feedSource = new QHttp(this);
     QString feedLine;
-    QTextStream feedStream;
+    QBuffer feedBuffer;
 
-    feedSource->get(aHttpUri);
-    feedLine = feedSource->readAll();
+    feedSource->get(aHttpUri, feedBuffer);
+    feedLine = feedBuffer.readAll();
     qDebug() << QString(feedLine);
 
     return feedLine;
+}
+
+void MainWindow::finishedSlot(QNetworkReply* aReply) {
+    QByteArray dataArray = aReply->readAll();
+    iNetworkData = dataArray;
 }

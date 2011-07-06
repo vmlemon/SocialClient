@@ -6,6 +6,8 @@
 #include <QResizeEvent>
 #include <QTextStream>
 #include <QDebug>
+#include <QByteArray>
+#include <QNetworkAccessManager>
 
 enum TSkypeStatus {
     EUnknown = 0,
@@ -39,9 +41,12 @@ public:
 private slots:
 
     void on_lineEdit_textChanged(const QString &arg1);
+    void finishedSlot(QNetworkReply* aReply);
 
 private:
     Ui::MainWindow *ui;
+    QNetworkAccessManager *iNetArbitrator;
+
 protected:
     void resizeEvent(QResizeEvent *aEvent);
 };
