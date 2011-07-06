@@ -206,11 +206,12 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+
+                             //BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
                              //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
+                              //               BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
                              //BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json"), "D3F5D5") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
+                            // BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
