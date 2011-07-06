@@ -6,6 +6,7 @@
 #include <QtJSON/json.h>
 #include <QVariantMap>
 #include <QFile>
+#include <QHttp>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -13,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    qDebug() <<ParseSkypeStatus(LoadDiskFeed("../CodeTests/vmlemon.num"));
+    qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
 }
 
 QString iContentType = "data:text/html,";
@@ -143,4 +144,17 @@ QString MainWindow::ParseSkypeStatus(QString aStatusData) {
             return "Unknown";
             break;
     }
+}
+
+QString MainWindow::LoadHttpFeed(QString aHttpUri) {
+
+    QHttp *feedSource = new QHttp(this);
+    QString feedLine;
+    QTextStream feedStream;
+
+    feedSource->get(aHttpUri);
+    feedLine = feedSource->readAll();
+    qDebug() << QString(feedLine);
+
+    return feedLine;
 }
