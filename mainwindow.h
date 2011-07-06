@@ -7,7 +7,9 @@
 #include <QTextStream>
 #include <QDebug>
 #include <QByteArray>
+#include <QUrl>
 #include <QNetworkAccessManager>
+#include <QNetworkReply>
 
 enum TSkypeStatus {
     EUnknown = 0,
@@ -45,7 +47,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    QNetworkAccessManager *iNetArbitrator;
 
 protected:
     void resizeEvent(QResizeEvent *aEvent);
