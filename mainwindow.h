@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QString>
 #include <QResizeEvent>
+#include <QTextStream>
 #include <QDebug>
 
 enum TSkypeStatus {
@@ -33,6 +34,7 @@ public:
     QString GetTwitterLatestTweet(QString aJsonData);
     QString LoadDiskFeed(QString aFilePath);
     QString ParseSkypeStatus(QString aStatusData);
+    QString LoadHttpFeed(QString aHttpUri);
 
 private slots:
 
