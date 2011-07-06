@@ -162,26 +162,29 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
         return iSkypeCache.value(processedUri);
     }
 
-    if (aHttpUri.startsWith("http://api.twitter.com/1/users/show.json?id=")) {
-        QString processedUri(aHttpUri.remove("http://api.twitter.com/1/users/show.json?id="));
-        qDebug() << "Got a Twitter user URL" << processedUri;
-        iTwitterCache.insert(processedUri, iNetworkData);
-
-        //qDebug() << "This user's cached feed data: " << iTwitterCache.value(processedUri);
-        return iTwitterCache.value(processedUri);
-    }
-
-
     else {
         return iNetworkData;
     }
 
-    reply->close();
+    //reply->close();
 }
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
+
     qDebug() << "Inside finishedSlot()" /* iNetworkData */;
+
+
+    if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=")) {
+        QString processedUri(aReply->url().toString().remove("http://api.twitter.com/1/users/show.json?id="));
+        qDebug() << "Got a Twitter user URL" << processedUri;
+
+        qDebug() << aReply->url().toString();
+
+        iTwitterCache.insert(processedUri, iNetworkData);
+
+    }
+
     aReply->close();
 }
 
