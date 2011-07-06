@@ -9,18 +9,12 @@
 #include <QFile>
 #include <QMap>
 #include <QStringList>
-#include <QTableWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
-    QStringList labels;
-    labels <<("Username") << ("Latest Tweet") << ("Skype Status");
-
-    ui->tableWidget->setHorizontalHeaderLabels(labels);
 }
 
 QString iContentType = "data:text/html,";
@@ -32,6 +26,7 @@ QMap<QString, QString> iSkypeCache;
 QMap<QString, QString> iTwitterCache;
 
 QString iNetworkData;
+QStringList iListLabels;
 
 MainWindow::~MainWindow()
 {
@@ -228,4 +223,13 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
+}
+
+void MainWindow::on_actionUpdate_List_triggered()
+{
+
+
+    labels << ui->SkypeStatus->text();
+
+    ui->listWidget->addItems(iListLabels);
 }
