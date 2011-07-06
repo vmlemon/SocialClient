@@ -8,8 +8,8 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
-#include <QLabel>
-
+#include <QStringList>
+#include <QTableWidget>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -17,7 +17,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    QStringList labels("Username", "Latest Tweet", "Skype Status");
+    QStringList labels;
+    labels <<("Username") << ("Latest Tweet") << ("Skype Status");
 
     ui->tableWidget->setHorizontalHeaderLabels(labels);
 }
