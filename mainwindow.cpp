@@ -7,6 +7,7 @@
 #include <QVariantMap>
 #include <QBuffer>
 #include <QFile>
+#include <QMap>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -19,6 +20,10 @@ MainWindow::MainWindow(QWidget *parent) :
 QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
+
+/* Username, Data */
+QMap<QString, QString> iSkypeCache;
+QMap<QString, QString> iTwitterCache;
 
 QString iNetworkData;
 
@@ -97,6 +102,7 @@ QString MainWindow::LoadDiskFeed(QString aFilePath) {
 }
 
 QString MainWindow::ParseSkypeStatus(QString aStatusData) {
+    qDebug() << "aStatusData contains: " << aStatusData;
     int state = aStatusData.toInt();
 
     switch (state) {
@@ -145,15 +151,26 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
 
 
-    qDebug() << QString(iNetworkData);
+    qDebug() << "Data from Network: " << QString(iNetworkData);
 
-    return iNetworkData;
+    if (aHttpUri.startsWith("http://mystatus.skype.com")) {
+        QString processedUri(aHttpUri.remove("http://mystatus.skype.com/").remove(".num"));
+        qDebug() << "Got a Skype status URL" << (processedUri);
+        iSkypeCache.insert(processedUri, iNetworkData);
+
+        return iSkypeCache.value(processedUri);
+    }
+
+    else {
+        return iNetworkData;
+    }
 
     reply->close();
 }
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
+    qDebug() << iNetworkData;
     aReply->close();
 }
 
@@ -172,6 +189,9 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
+}
 
-   // qDebug() <<ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/vmlemon.num"));
+void MainWindow::on_actionGet_Skype_Status_triggered()
+{
+   ui->SkypeStatus->setText(ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
