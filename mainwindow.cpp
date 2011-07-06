@@ -165,5 +165,5 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     qDebug() <<  QString::fromUtf8(aReply->readAll().data());
-    iNetworkData = QString::fromUtf8(aReply->readAll().data());
+    iNetworkData = QString(aReply->readAll().data());
 }
