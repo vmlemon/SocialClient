@@ -179,9 +179,6 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
         }
 
-        else {
-            return iNetworkData;
-        }
     }
 
 
