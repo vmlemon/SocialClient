@@ -229,7 +229,7 @@ void MainWindow::on_actionUpdate_List_triggered()
 {
 
 
-    labels << ui->SkypeStatus->text();
+    iListLabels << ui->SkypeStatus->text() << GetTwitterLatestTweet(iTwitterCache.value("vmlemon"));
 
     ui->listWidget->addItems(iListLabels);
 }
