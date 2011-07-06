@@ -151,7 +151,7 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
 
 
-    qDebug() << "Data from Network: " << QString(iNetworkData);
+   // qDebug() << "Data from Network: " << QString(iNetworkData);
 
     if (aHttpUri.startsWith("http://mystatus.skype.com")) {
         QString processedUri(aHttpUri.remove("http://mystatus.skype.com/").remove(".num"));
@@ -166,7 +166,7 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
         qDebug() << "Got a Twitter user URL" << processedUri;
         iTwitterCache.insert(processedUri, iNetworkData);
 
-        qDebug() << "This user's cached feed data: " << iTwitterCache.value(processedUri);
+        //qDebug() << "This user's cached feed data: " << iTwitterCache.value(processedUri);
         return iTwitterCache.value(processedUri);
     }
 
@@ -180,7 +180,7 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
-    qDebug() << iNetworkData;
+    qDebug() << "Inside finishedSlot()" /* iNetworkData */;
     aReply->close();
 }
 
@@ -199,6 +199,8 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+
+    qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
