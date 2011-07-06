@@ -158,9 +158,12 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
     QUrl url(aHttpUri);
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
 
+
     qDebug() << QString(iNetworkData);
 
     return iNetworkData;
+
+    netArbitrator->disconnect(this);
 }
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
