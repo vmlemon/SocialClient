@@ -12,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    qDebug() <<ParseSkypeStatus(LoadDiskFeed("../CodeTests/vmlemon.num"));
 }
 
 QString iContentType = "data:text/html,";
