@@ -53,6 +53,8 @@ private slots:
     void on_actionUpdate_Ticker_triggered();
 
 
+    void on_actionUpdate_List_triggered();
+
 private:
     Ui::MainWindow *ui;
 

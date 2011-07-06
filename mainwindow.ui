@@ -52,12 +52,12 @@
      <string>*SkypeStatus*</string>
     </property>
    </widget>
-   <widget class="QTableWidget" name="tableWidget">
+   <widget class="QListWidget" name="listWidget">
     <property name="geometry">
      <rect>
-      <x>20</x>
+      <x>10</x>
       <y>90</y>
-      <width>411</width>
+      <width>421</width>
       <height>121</height>
      </rect>
     </property>
