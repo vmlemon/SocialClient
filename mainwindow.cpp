@@ -190,7 +190,7 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=9600");
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
