@@ -39,16 +39,6 @@
      </rect>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>90</y>
-      <width>421</width>
-      <height>131</height>
-     </rect>
-    </property>
-   </widget>
    <widget class="QLabel" name="SkypeStatus">
     <property name="geometry">
      <rect>
@@ -60,6 +50,16 @@
     </property>
     <property name="text">
      <string>*SkypeStatus*</string>
+    </property>
+   </widget>
+   <widget class="QTableWidget" name="tableWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>90</y>
+      <width>411</width>
+      <height>121</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -77,7 +77,10 @@
      <string>File</string>
     </property>
     <addaction name="actionUpdate_Twitter_Feeds"/>
+    <addaction name="separator"/>
     <addaction name="actionUpdate_Ticker"/>
+    <addaction name="actionUpdate_List"/>
+    <addaction name="separator"/>
     <addaction name="actionGet_Skype_Status"/>
    </widget>
    <addaction name="menuFile"/>
@@ -104,6 +107,11 @@
   <action name="actionUpdate_Ticker">
    <property name="text">
     <string>Update Ticker</string>
+   </property>
+  </action>
+  <action name="actionUpdate_List">
+   <property name="text">
+    <string>Update List</string>
    </property>
   </action>
  </widget>
