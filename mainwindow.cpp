@@ -202,7 +202,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
-    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
