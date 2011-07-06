@@ -77,6 +77,7 @@
      <string>File</string>
     </property>
     <addaction name="actionUpdate_Twitter_Feeds"/>
+    <addaction name="actionUpdate_Ticker"/>
     <addaction name="actionGet_Skype_Status"/>
    </widget>
    <addaction name="menuFile"/>
@@ -92,12 +93,17 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionUpdate_Twitter_Feeds">
    <property name="text">
-    <string>Update Twitter Feeds</string>
+    <string>Build Twitter Cache</string>
    </property>
   </action>
   <action name="actionGet_Skype_Status">
    <property name="text">
     <string>Get Skype Status</string>
+   </property>
+  </action>
+  <action name="actionUpdate_Ticker">
+   <property name="text">
+    <string>Update Ticker</string>
    </property>
   </action>
  </widget>

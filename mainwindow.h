@@ -39,6 +39,7 @@ public:
     QString LoadDiskFeed(QString aFilePath);
     QString ParseSkypeStatus(QString aStatusData);
     QString LoadHttpFeed(QString aHttpUri);
+    void BuildTwitterCache();
 
 private slots:
 
@@ -48,6 +49,8 @@ private slots:
     void on_actionUpdate_Twitter_Feeds_triggered();
 
     void on_actionGet_Skype_Status_triggered();
+
+    void on_actionUpdate_Ticker_triggered();
 
 private:
     Ui::MainWindow *ui;
