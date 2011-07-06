@@ -20,7 +20,7 @@ QString iContentType = "data:text/html,";
 QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
 
-QString iNetworkData = "";
+QString iNetworkData;
 
 MainWindow::~MainWindow()
 {
@@ -163,9 +163,10 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
     return iNetworkData;
 
-    netArbitrator->disconnect(this);
+    reply->close();
 }
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
+    aReply->close();
 }
