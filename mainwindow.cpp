@@ -8,7 +8,6 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
-#include <QtXml>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -207,9 +206,6 @@ void MainWindow::BuildTwitterCache() {
     /* Not a Twitter feed, but here for testing */
    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
 
-
-    //qDebug() << GetLastFmLatestTrack(LoadDiskFeed("../CodeTests/LFMTest.xml"));
-
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
     qDebug() << iTwitterCache.values();
@@ -245,6 +241,8 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
     QString artistElement;
     QString nameElement;
 
+    QString artistHyphenTitle;
+
     int artistOffset = aXmlData.indexOf("<artist");
     int nameOffset = workingPayload.indexOf("<name>");
 
@@ -266,7 +264,13 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         nameElement.remove(0, artistOffset + artistElement.size() + 1);
         nameElement.remove("</artist> <name>");
         nameElement.truncate(nameElement.indexOf("</name>"));
+
+        artistHyphenTitle.append(artistElement).append(" - ").append(nameElement);
+
+        return artistHyphenTitle;
     }
 
-return "nothing to see";
+    else {
+        return "No data";
+    }
 }
