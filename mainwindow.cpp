@@ -205,10 +205,10 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     /* Not a Twitter feed, but here for testing */
-   // LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
+   LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
 
 
-    qDebug() << GetLastFmLatestTrack(LoadDiskFeed("../CodeTests/__MarkW__.json"));
+    //qDebug() << GetLastFmLatestTrack(LoadDiskFeed("../CodeTests/LFMTest.xml"));
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
@@ -248,9 +248,6 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
     int artistOffset = aXmlData.indexOf("<artist");
     int nameOffset = workingPayload.indexOf("<name>");
 
-    /* Strip out MusicBrainz metadata */
-    workingPayload.remove(QRegExp("<mbid>*</mbid>", Qt::CaseInsensitive, QRegExp::Wildcard));
-
     if (aXmlData.length() !=0) {
 
         /* Strip away everything before <artist> */
@@ -261,6 +258,10 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         qDebug() << workingPayload;
         artistOffset = workingPayload.indexOf("<artist");
         qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
+
+        /* Strip out MusicBrainz metadata */
+        workingPayload.remove(QRegExp("^\\<mbid\\>.*\\<\\/mbid\\>$"));
+        qDebug() << workingPayload;
 
         /* Quick-and-dirty name fetching */
         nameOffset = workingPayload.indexOf("<name>");
