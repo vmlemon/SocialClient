@@ -213,7 +213,8 @@ void MainWindow::BuildTwitterCache() {
 
     qDebug() << iLastFmCache.values();
 
-   // qDebug() << iLastFmCache.value("vmlemon").at(iLastFmCache.value("vmlemon").indexOf("<artist"));
+    qDebug() << GetLastFmLatestTrack(iLastFmCache.value("vmlemon"));
+
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -237,5 +238,22 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
 QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
 
-    return "";
+    QString workingPayload;
+    QString artistElement;
+    QString nameElement;
+
+    int artistOffset = aXmlData.indexOf("<artist");
+    int nameOffset = workingPayload.indexOf("<name>");
+
+    if (aXmlData.length() !=0) {
+        qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
+        qDebug() << "Stripping lines prior to <artist>";
+        workingPayload = aXmlData.remove(0, artistOffset);
+        qDebug() << workingPayload;
+        artistOffset = workingPayload.indexOf("<artist");
+        qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
+    }
+
+qDebug() << aXmlData;
+return "nothing to see";
 }
