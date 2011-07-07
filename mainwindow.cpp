@@ -254,7 +254,7 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
 
         qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
         qDebug() << "Stripping lines prior to <artist>";
-        workingPayload = workingPayload.remove(0, artistOffset);
+        workingPayload = workingPayload.remove(0, artistOffset + 40);
         qDebug() << workingPayload;
         artistOffset = workingPayload.indexOf("<artist");
         qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
