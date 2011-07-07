@@ -249,12 +249,20 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
     workingPayload.remove(QRegExp("<mbid>*</mbid>", Qt::CaseInsensitive, QRegExp::Wildcard));
 
     if (aXmlData.length() !=0) {
+
+        /* Strip away everything before <artist> */
+
         qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
         qDebug() << "Stripping lines prior to <artist>";
         workingPayload = aXmlData.remove(0, artistOffset);
         qDebug() << workingPayload;
         artistOffset = workingPayload.indexOf("<artist");
         qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
+
+        /* Quick-and-dirty name fetching */
+        nameOffset = workingPayload.indexOf("<name>");
+
+        qDebug() << "<name> is at" << QString::number(nameOffset);
     }
 
 qDebug() << aXmlData;
