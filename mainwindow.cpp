@@ -238,7 +238,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
 QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
 
-    QString workingPayload;
+    QString workingPayload = aXmlData.remove("</track>").remove("</recenttracks>");
     QString artistElement;
     QString nameElement;
 
