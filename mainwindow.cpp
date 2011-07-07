@@ -262,8 +262,9 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         /* Toss artistElement's content back upstream... */
         workingPayload = artistElement;
 
-        //artistElement = artistElement.remove(artistElement.indexOf("</artist>", 9));
-        qDebug() << "</artist is at " << QString::number(artistElement.indexOf("</artist>"));
+        qDebug() << "</artist> is at " << QString::number(artistElement.indexOf("</artist>"));
+        artistElement.truncate(artistElement.indexOf("</artist>"));
+        qDebug() << artistElement;
 
         /* Strip out MusicBrainz metadata */
         workingPayload = workingPayload.remove("</mbid>");
