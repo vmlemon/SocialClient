@@ -23,6 +23,7 @@ QString iEndRender = "</marquee> &nbsp; ";
 /* Username, Data */
 QMap<QString, QString> iSkypeCache;
 QMap<QString, QString> iTwitterCache;
+QMap<QString, QString> iLastFmCache;
 
 QString iNetworkData;
 
@@ -174,6 +175,14 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
         iSkypeCache.insert(processedUri, iNetworkData);
     }
 
+    if (aReply->url().toString().startsWith("http://ws.audioscrobbler.com/1.0/user/") &&
+            aReply->url().toString().contains("recenttracks.xml")) {
+        QString processedUri(aReply->url().toString().remove("http://ws.audioscrobbler.com/1.0/user/")
+                             .remove("/recenttracks.xml").remove("?limit=1"));
+        qDebug() << "Got a Last.FM Recent Tracks (API v1.0) URL" << (processedUri);
+        iLastFmCache.insert(processedUri, iNetworkData);
+    }
+
     aReply->close();
 }
 
@@ -194,10 +203,14 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
+    /* Not a Twitter feed, but here for testing */
+    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
+
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
     qDebug() << iTwitterCache.values();
 
+    qDebug() << iLastFmCache.values();
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -219,3 +232,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     qDebug() << ui->webView->url().toString();
 }
 
+MainWindow::GetLastFmLatestTrack(QString aXmlData) {
+
+}

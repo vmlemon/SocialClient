@@ -40,6 +40,7 @@ public:
     QString ParseSkypeStatus(QString aStatusData);
     QString LoadHttpFeed(QString aHttpUri);
     void BuildTwitterCache();
+    QString GetLastFmLatestTrack(QString aXmlData);
 
 private slots:
 
