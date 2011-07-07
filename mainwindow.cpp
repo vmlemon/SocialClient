@@ -232,6 +232,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     qDebug() << ui->webView->url().toString();
 }
 
-MainWindow::GetLastFmLatestTrack(QString aXmlData) {
-
+QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
+    return "";
 }
