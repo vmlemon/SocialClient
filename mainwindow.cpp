@@ -246,7 +246,7 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
     int nameOffset = workingPayload.indexOf("<name>");
 
     /* Strip out MusicBrainz metadata */
-    workingPayload.remove().remove("</mbid>");
+    workingPayload.remove(QRegExp("<mbid>*</mbid>", Qt::CaseInsensitive, QRegExp::Wildcard));
 
     if (aXmlData.length() !=0) {
         qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
