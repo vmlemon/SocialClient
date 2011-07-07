@@ -238,12 +238,15 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
 QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
 
-    QString workingPayload = aXmlData.remove("</track>").remove("</recenttracks>");
+    QString workingPayload = aXmlData.remove("</track>").remove("</recenttracks>").simplified();
     QString artistElement;
     QString nameElement;
 
     int artistOffset = aXmlData.indexOf("<artist");
     int nameOffset = workingPayload.indexOf("<name>");
+
+    /* Strip out MusicBrainz metadata */
+    workingPayload.remove().remove("</mbid>");
 
     if (aXmlData.length() !=0) {
         qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
