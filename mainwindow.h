@@ -39,7 +39,7 @@ public:
     QString LoadDiskFeed(QString aFilePath);
     QString ParseSkypeStatus(QString aStatusData);
     QString LoadHttpFeed(QString aHttpUri);
-    void BuildTwitterCache();
+    void BuildFeedCache();
     QString GetLastFmLatestTrack(QString aXmlData);
 
 private slots:

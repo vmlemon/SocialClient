@@ -188,7 +188,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
-    BuildTwitterCache();
+    BuildFeedCache();
 
 }
 
@@ -197,7 +197,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
    ui->SkypeStatus->setText(ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
-void MainWindow::BuildTwitterCache() {
+void MainWindow::BuildFeedCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
