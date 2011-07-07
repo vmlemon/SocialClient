@@ -267,8 +267,8 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         nameOffset = workingPayload.indexOf("<name>");
 
         qDebug() << "<name> is at" << QString::number(nameOffset);
-
-        nameElement = workingPayload.right(nameOffset);
+        qDebug() << workingPayload.section((QRegExp("<name>*</name>", Qt::CaseInsensitive,QRegExp::Wildcard));
+       // nameElement = ;
     }
 
 return "nothing to see";
