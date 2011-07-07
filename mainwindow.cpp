@@ -251,21 +251,14 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
     if (aXmlData.length() !=0) {
 
         /* Strip away everything before <artist> */
-
-        qDebug() << "Found the <artist> element at" << QString::number(artistOffset);
-        qDebug() << "Stripping lines prior to <artist>";
         artistElement = workingPayload.remove(0, artistOffset + 40);
-        qDebug() << artistElement;
         artistOffset = workingPayload.indexOf("<artist");
-        qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
 
         /* Toss artistElement's content back upstream... */
         workingPayload = artistElement;
 
         /* Extract the artist metadata */
-        qDebug() << "</artist> is at " << QString::number(artistElement.indexOf("</artist>"));
         artistElement.truncate(artistElement.indexOf("</artist>"));
-        qDebug() << artistElement;
 
         /* Quick-and-dirty name fetching */
         nameOffset = workingPayload.indexOf("<name>");
@@ -273,8 +266,6 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         nameElement.remove(0, artistOffset + artistElement.size() + 1);
         nameElement.remove("</artist> <name>");
         nameElement.truncate(nameElement.indexOf("</name>"));
-
-        qDebug() << "<name> is at" << QString::number(nameOffset) << nameElement;
     }
 
 return "nothing to see";
