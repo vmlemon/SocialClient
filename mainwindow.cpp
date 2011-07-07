@@ -258,6 +258,7 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         qDebug() << workingPayload;
         artistOffset = workingPayload.indexOf("<artist");
         qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
+        workingPayload = workingPayload.remove("</artist>");
 
         /* Strip out MusicBrainz metadata */
         workingPayload = workingPayload.remove("</mbid>");
