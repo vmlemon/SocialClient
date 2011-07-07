@@ -8,6 +8,7 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
+#include <QtXml>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -211,6 +212,8 @@ void MainWindow::BuildTwitterCache() {
     qDebug() << iTwitterCache.values();
 
     qDebug() << iLastFmCache.values();
+
+   // qDebug() << iLastFmCache.value("vmlemon").at(iLastFmCache.value("vmlemon").indexOf("<artist"));
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -233,5 +236,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 }
 
 QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
+
     return "";
 }
