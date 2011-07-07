@@ -270,7 +270,9 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         /* Quick-and-dirty name fetching */
         nameOffset = workingPayload.indexOf("<name>");
         nameElement = workingPayload;
-        nameElement.truncate(nameElement.indexOf("<name>"));
+
+
+        nameElement.remove(0, artistOffset + artistElement.size() + 1);
 
         qDebug() << "<name> is at" << QString::number(nameOffset) << nameElement;
     }
