@@ -205,7 +205,10 @@ void MainWindow::BuildTwitterCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     /* Not a Twitter feed, but here for testing */
-    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
+   // LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
+
+
+    qDebug() << GetLastFmLatestTrack(LoadDiskFeed("../CodeTests/__MarkW__.json"));
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
