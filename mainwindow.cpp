@@ -260,7 +260,7 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
         qDebug() << "<artist> offset has moved to" << QString::number(artistOffset);
 
         /* Strip out MusicBrainz metadata */
-        workingPayload = workingPayload.remove(QRegExp("<mbid>")).remove("</mbid>");
+        workingPayload = workingPayload.remove("</mbid>");
         qDebug() << workingPayload;
 
         /* Quick-and-dirty name fetching */
@@ -268,9 +268,8 @@ QString MainWindow::GetLastFmLatestTrack(QString aXmlData) {
 
         qDebug() << "<name> is at" << QString::number(nameOffset);
 
-        //nameElement = workingPayload.section("<name>")
+        nameElement = workingPayload.right(nameOffset);
     }
 
-qDebug() << aXmlData;
 return "nothing to see";
 }
