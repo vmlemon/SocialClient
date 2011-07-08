@@ -212,8 +212,6 @@ void MainWindow::BuildFeedCache() {
 
     qDebug() << iLastFmCache.values();
 
-    qDebug() << GetLastFmLatestTrack(iLastFmCache.value("vmlemon"));
-
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -223,6 +221,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              iStartRender +
 
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+                             "Listening to: " + GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
