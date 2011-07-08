@@ -232,7 +232,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("9600")), GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("identica")), GetTwitterAvatarUri(iTwitterCache.value("identica")), "8A6B7D") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("identica")), GetTwitterAvatarUri(iTwitterCache.value("identica")), "F1C6F5") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
