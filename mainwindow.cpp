@@ -206,6 +206,9 @@ void MainWindow::BuildFeedCache() {
     /* Not a Twitter feed, but here for testing */
    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
 
+   /* A test of Identi.ca's "Twitter-compatible feeds" */
+   LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
+
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
     qDebug() << iTwitterCache.values();
@@ -227,6 +230,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
                              BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("9600")), GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
+                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("identica")), GetTwitterAvatarUri(iTwitterCache.value("identica")), "8A6B7D") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
