@@ -161,7 +161,8 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
         aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=" ||
         aReply->url().toString().startsWith("http://identi.ca/api/users/show.json?screen_name="))) {
         QString processedUri(aReply->url().toString().remove("http://api.twitter.com/1/users/show.json?id=")
-                             .remove("http://api.twitter.com/1/users/show.json?screen_name="));
+                             .remove("http://api.twitter.com/1/users/show.json?screen_name=")
+                             .remove("http://identi.ca/api/users/show.json?screen_name="));
         qDebug() << "Got a Twitter user URL" << processedUri;
 
         qDebug() << aReply->url().toString();
