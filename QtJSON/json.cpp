@@ -68,6 +68,14 @@ QVariant Json::parse(const QString &json, bool &success)
 	}
 }
 
+/* Hack for SocialClient */
+
+QByteArray Json::serialize(const QVariantMap &data)
+{
+        bool success = true;
+        return Json::serialize(data, success);
+}
+
 QByteArray Json::serialize(const QVariant &data)
 {
 	bool success = true;

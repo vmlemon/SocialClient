@@ -58,6 +58,7 @@ class Json
 		* \param success The success of the serialization
 		*/
 		static QByteArray serialize(const QVariant &data);
+                static QByteArray serialize(const QVariantMap &data);
 
 		/**
 		* This method generates a textual JSON representation
