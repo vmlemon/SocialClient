@@ -27,6 +27,7 @@ Contact::Contact():
     iStatusColour("")
 
 {
+
 }
 
 Contact::Contact(QString aJsonData){
