@@ -12,8 +12,10 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-        QtJSON/json.cpp
+        QtJSON/json.cpp \
+    Parsers/lastfm.cpp
 
-HEADERS  += mainwindow.h "QtJSON/json.h"
+HEADERS  += mainwindow.h "QtJSON/json.h" \
+    Parsers/lastfm.h
 
 FORMS    += mainwindow.ui
