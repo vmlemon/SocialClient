@@ -45,8 +45,12 @@ Contact::Contact(QString aJsonData){
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
     iLastFmUserName = dataMap["LastFmUserName"].toString();
 
-    if (iVersion == 1) {
+    if (iVersion == 1 && iStatusColour.length() != 0) {
         iStatusColour = dataMap["StatusColour"].toString();
+    }
+
+    if (iStatusColour.length() == 0) {
+        iVersion = 0;
     }
 }
 
