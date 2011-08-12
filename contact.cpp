@@ -67,7 +67,10 @@ QString Contact::Serialise() {
     contactMap["LastFmUserName"] = iLastFmUserName;
 
     /* Version 1 attributes */
-    contactMap["StatusColour"] = iStatusColour;
+    if (iVersion == 1) {
+        contactMap["StatusColour"] = iStatusColour;
+    }
+
 
     QByteArray contactArray = Json::serialize(contactMap);
 
@@ -118,4 +121,8 @@ QString Contact::GetLastFmUserName() {
 
 QString Contact::GetStatusColour() {
     return iStatusColour;
+}
+
+void Contact::SetStatusColour(QString aHexColour) {
+    iStatusColour = aHexColour;
 }

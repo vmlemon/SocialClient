@@ -14,16 +14,29 @@ public:
     /* Version 0 attributes */
     int GetVersion();
     qint64 GetUid();
+
     QString GetForename();
+    void SetForename(QString aForename);
+
     QString GetSurname();
+    void SetSurname(QString aSurname);
+
     QString GetEMailAddress();
+    void SetEMailAddress(QString aEMailAddress);
+
     QString GetTwitterUrl();
+    void SetTwitterUrl(QString aTwitterUrl);
+
     QString GetSkypeUserName();
+    void SetSkypeUserName(QString aSkypeUserName);
+
     int GetSkypeStatus();
+
     QString GetLastFmUserName();
 
     /* Version 1 attributes */
     QString GetStatusColour();
+    void SetStatusColour(QString aHexColour);
 
 protected:
 
@@ -40,7 +53,6 @@ protected:
 
     /* Version 1 attributes */
     QString iStatusColour;
-
 };
 
 #endif // CONTACT_H
