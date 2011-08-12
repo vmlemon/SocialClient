@@ -22,17 +22,16 @@ Contact::Contact(QString aJsonData){
     bool status;
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-    //qDebug() << "Avatar URI: " << dataMap["profile_image_url"].toString();
 
     iVersion = dataMap["Version"].toInt();
-    iUid = dataMap;
-    iForename("");
-    iSurname("");
-    iEMailAddress("");
+    iUid = dataMap["Uid"].toULongLong();
+    iForename = dataMap["Forename"].toString();
+    iSurname = dataMap["Surname"].toString();
+    iEMailAddress = dataMap["EmailAddress"].toString();
     iTwitterUrl("");
     iSkypeUserName("");
-    iSkypeStatus(0);
-    iLastFmUserName("");
+    iSkypeStatus = dataMap["SkypeStatus"].toInt();
+    iLastFmUserName = dataMap["LastFmUserName"].toString;
 
 
 }

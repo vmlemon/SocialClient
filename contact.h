@@ -9,7 +9,7 @@ class Contact
 public:
     Contact();
     Contact(QString aJsonData);
-    QString Contact::Serialise();
+    QString Serialise();
 
 protected:
     int iVersion;
