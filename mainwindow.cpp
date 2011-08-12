@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
 }
 
 QString iContentType = "data:text/html,";
@@ -144,14 +145,23 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
+/* Remove me later */
+Contact *test = new Contact();
+
 void MainWindow::BuildFeedCache() {
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=vmlemon");
+
+
+    test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
+    test->SetLastFmUserName("vmlemon");
+    test->SetStatusColour("E9F09C");
+
+    LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     /* Not a Twitter feed, but here for testing */
-   LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/vmlemon/recenttracks.xml?limit=1");
+   LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
    /* A test of Identi.ca's "Twitter-compatible feeds" */
    LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
@@ -170,7 +180,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
