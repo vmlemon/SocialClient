@@ -13,7 +13,7 @@ public:
 
     /* Version 0 attributes */
     int GetVersion();
-    int GetUid();
+    qint64 GetUid();
     QString GetForename();
     QString GetSurname();
     QString GetEMailAddress();
