@@ -66,6 +66,9 @@ QString Contact::Serialise() {
     contactMap["SkypeStatus"] = iSkypeStatus;
     contactMap["LastFmUserName"] = iLastFmUserName;
 
+    /* Version 1 attributes */
+    contactMap["StatusColour"] = iStatusColour;
+
     QByteArray contactArray = Json::serialize(contactMap);
 
     contactObject = QString::fromUtf8(contactArray);
