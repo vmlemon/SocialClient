@@ -1,4 +1,5 @@
 #include "skype.h"
+#include <QDebug>
 
 Skype::Skype()
 {
