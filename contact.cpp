@@ -75,7 +75,6 @@ QString Contact::Serialise() {
         contactMap["StatusColour"] = iStatusColour;
     }
 
-
     QByteArray contactArray = Json::serialize(contactMap);
 
     contactObject = QString::fromUtf8(contactArray);
