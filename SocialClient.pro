@@ -15,11 +15,13 @@ SOURCES += main.cpp\
         QtJSON/json.cpp \
     Parsers/lastfm.cpp \
     Parsers/skype.cpp \
-    Parsers/twitter.cpp
+    Parsers/twitter.cpp \
+    contact.cpp
 
 HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/lastfm.h \
     Parsers/skype.h \
-    Parsers/twitter.h
+    Parsers/twitter.h \
+    contact.h
 
 FORMS    += mainwindow.ui
