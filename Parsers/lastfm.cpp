@@ -1,4 +1,5 @@
 #include "lastfm.h"
+#include <QDebug>
 
 LastFm::LastFm()
 {

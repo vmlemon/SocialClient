@@ -1,6 +1,7 @@
 #include "twitter.h"
 #include <QtJSON/json.h>
 #include <QVariantMap>
+#include <QDebug>
 
 Twitter::Twitter()
 {
