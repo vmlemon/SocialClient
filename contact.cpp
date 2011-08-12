@@ -4,6 +4,8 @@
 #include <QByteArray>
 #include <QMap>
 
+#include <QDir>
+
 #include <QtJSON/json.h>
 
 Contact::Contact():
@@ -164,4 +166,8 @@ QString Contact::GetStatusColour() {
 
 void Contact::SetStatusColour(QString aHexColour) {
     iStatusColour = aHexColour;
+}
+
+QString Contact::GetDefaultContactsDir() {
+    return QDir::homePath() + "/.SocialClient/Contacts";
 }
