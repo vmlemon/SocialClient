@@ -40,7 +40,6 @@ public:
     QString ParseSkypeStatus(QString aStatusData);
     QString LoadHttpFeed(QString aHttpUri);
     void BuildFeedCache();
-    QString GetLastFmLatestTrack(QString aXmlData);
 
 private slots:
 
