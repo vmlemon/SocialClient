@@ -21,8 +21,6 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-
-
     if (!QDir(Contact::GetDefaultContactsDir()).exists()) {
         qDebug() << "Cannot locate the Contacts directory. Attempting to create it...";
 
@@ -35,8 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
         qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
     }
-
-
 }
 
 QString iContentType = "data:text/html,";
