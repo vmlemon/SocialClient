@@ -8,9 +8,9 @@
 #include <QFile>
 #include <QMap>
 
-#include <lastfm.h>
-#include <skype.h>
-#include <twitter.h>
+#include <Parsers/lastfm.h>
+#include <Parsers/skype.h>
+#include <Parsers/twitter.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -138,7 +138,7 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
 {
-   ui->SkypeStatus->setText(ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
+   ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
 void MainWindow::BuildFeedCache() {
@@ -167,14 +167,14 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
-                             "Listening to: " + GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("hideout")), GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
-                             BuildStatusItem(GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("9600")), GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
-                             BuildStatusItem(GetTwitterLatestTweet(iTwitterCache.value("identica")), GetTwitterAvatarUri(iTwitterCache.value("identica")), "F1C6F5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), "E9F09C") +
+                             "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("9600")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("identica")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("identica")), "F1C6F5") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
