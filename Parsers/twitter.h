@@ -7,8 +7,8 @@ class Twitter
 {
 public:
     Twitter();
-    QString GetTwitterAvatarUri(QString aJsonData);
-    QString GetTwitterLatestTweet(QString aJsonData);
+    static QString GetTwitterAvatarUri(QString aJsonData);
+    static QString GetTwitterLatestTweet(QString aJsonData);
 };
 
 #endif // TWITTER_H
