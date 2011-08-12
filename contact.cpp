@@ -7,6 +7,9 @@
 #include <QtJSON/json.h>
 
 Contact::Contact():
+
+    /* Version 0 attributes */
+
     iVersion(0),
     iUid(0),
     iForename(""),
@@ -25,6 +28,8 @@ Contact::Contact(QString aJsonData){
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
 
+    /* Version 0 attributes */
+
     iVersion = dataMap["Version"].toInt();
     iUid = dataMap["Uid"].toULongLong();
     iForename = dataMap["Forename"].toString();
@@ -39,6 +44,8 @@ Contact::Contact(QString aJsonData){
 QString Contact::Serialise() {
     QVariantMap contactMap;
     QString contactObject;
+
+    /* Version 0 attributes */
 
     contactMap["Version"] = iVersion;
     contactMap["Uid"] = iUid;
@@ -56,6 +63,8 @@ QString Contact::Serialise() {
 
     return contactObject;
 }
+
+/* Version 0 attributes */
 
 int Contact::GetVersion() {
     return iVersion;
@@ -89,6 +98,6 @@ int Contact::GetSkypeStatus() {
     return iSkypeStatus;
 }
 
-QString Contact::LastFmUserName() {
+QString Contact::GetLastFmUserName() {
     return iLastFmUserName;
 }
