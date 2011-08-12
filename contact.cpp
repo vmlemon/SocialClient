@@ -34,8 +34,6 @@ Contact::Contact(QString aJsonData){
     iSkypeUserName = dataMap["SkypeUserName"].toString();
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
     iLastFmUserName = dataMap["LastFmUserName"].toString();
-
-
 }
 
 QString Contact::Serialise() {
@@ -57,4 +55,40 @@ QString Contact::Serialise() {
     contactObject = QString::fromUtf8(contactArray);
 
     return contactObject;
+}
+
+int Contact::GetVersion() {
+    return iVersion;
+}
+
+qint64 Contact::GetUid() {
+    return iUid;
+}
+
+QString Contact::GetForename() {
+    return iForename;
+}
+
+QString Contact::GetSurname() {
+    return iSurname;
+}
+
+QString Contact::GetEMailAddress() {
+    return iEMailAddress;
+}
+
+QString Contact::GetTwitterUrl() {
+    return iTwitterUrl;
+}
+
+QString Contact::GetSkypeUserName() {
+    return iSkypeUserName;
+}
+
+int Contact::GetSkypeStatus() {
+    return iSkypeStatus;
+}
+
+QString Contact::LastFmUserName() {
+    return iLastFmUserName;
 }

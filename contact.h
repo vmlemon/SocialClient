@@ -11,6 +11,16 @@ public:
     Contact(QString aJsonData);
     QString Serialise();
 
+    int GetVersion();
+    int GetUid();
+    QString GetForename();
+    QString GetSurname();
+    QString GetEMailAddress();
+    QString GetTwitterUrl();
+    QString GetSkypeUserName();
+    int GetSkypeStatus();
+    QString LastFmUserName();
+
 protected:
     int iVersion;
     qint64 iUid;
