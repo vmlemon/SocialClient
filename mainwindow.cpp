@@ -3,14 +3,14 @@
 
 #include <QWebView>
 #include <QWebFrame>
-#include <QtJSON/json.h>
-#include <QVariantMap>
+
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
 
 #include <lastfm.h>
 #include <skype.h>
+#include <twitter.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -58,27 +58,6 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 void MainWindow::on_lineEdit_textChanged(const QString &arg1)
 {
     qDebug() << arg1;
-}
-
-QString MainWindow::GetTwitterAvatarUri(QString aJsonData) {
-
-    bool status;
-
-    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-    qDebug() << "Avatar URI: " << dataMap["profile_image_url"].toString();
-    return dataMap["profile_image_url"].toString();
-}
-
-QString MainWindow::GetTwitterLatestTweet(QString aJsonData) {
-
-    bool status;
-
-    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-
-    QVariantMap statusMap = dataMap["status"].toMap();
-
-    qDebug() << "Latest Tweet: " << statusMap["text"].toString();
-    return statusMap["text"].toString();
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
