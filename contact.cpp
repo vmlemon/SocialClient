@@ -42,8 +42,6 @@ QString Contact::Serialise() {
     QVariantMap contactMap;
     QString contactObject;
 
-    bool status;
-
     contactMap["Version"] = iVersion;
     contactMap["Uid"] = iUid;
     contactMap["Forename"] = iForename;
