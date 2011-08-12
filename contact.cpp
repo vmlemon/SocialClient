@@ -171,3 +171,8 @@ void Contact::SetStatusColour(QString aHexColour) {
 QString Contact::GetDefaultContactsDir() {
     return QDir::homePath() + "/.SocialClient/Contacts";
 }
+
+int Contact::CountStoredContacts() {
+    QDir dir = QDir(GetDefaultContactsDir());
+    return dir.count();
+}

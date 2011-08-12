@@ -44,6 +44,7 @@ public:
     void SetStatusColour(QString aHexColour);
 
     static QString GetDefaultContactsDir();
+    static int CountStoredContacts();
 
 protected:
 

@@ -19,7 +19,9 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
+    qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
 
 }
 
