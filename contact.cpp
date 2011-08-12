@@ -173,6 +173,12 @@ QString Contact::GetDefaultContactsDir() {
 }
 
 int Contact::CountStoredContacts() {
+
+    /*
+      Under Windows, this always counts 2 for an "empty" directory,
+       due to the fact that "." and ".." are pseudo-directories.
+     */
+
     QDir dir = QDir(GetDefaultContactsDir());
     return dir.count();
 }
