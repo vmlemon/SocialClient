@@ -2,11 +2,14 @@
 #define CONTACT_H
 
 #include <QString>
+#include <QtJSON/json.h>
 
 class Contact
 {
 public:
     Contact();
+    Contact(QString aJsonData);
+    QString Contact::Serialise();
 
 protected:
     int iVersion;
