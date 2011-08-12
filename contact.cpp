@@ -31,7 +31,7 @@ Contact::Contact(QString aJsonData){
     iTwitterUrl = dataMap["TwitterUrl"].toString();
     iSkypeUserName = dataMap["SkypeUserName"].toString();
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
-    iLastFmUserName = dataMap["LastFmUserName"].toString;
+    iLastFmUserName = dataMap["LastFmUserName"].toString();
 
 
 }
@@ -53,7 +53,7 @@ QString Contact::Serialise() {
 
     contactArray = Json::serialize(contactMap);
 
-    contactObject(contactArray);
+    contactObject(QString::fromRawData(contactArray));
 
     return contactObject;
 }
