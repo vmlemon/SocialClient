@@ -7,6 +7,7 @@
 #include <QBuffer>
 #include <QFile>
 #include <QMap>
+#include <QDir>
 
 #include <Parsers/lastfm.h>
 #include <Parsers/skype.h>
@@ -20,8 +21,21 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
-    qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
+
+
+    if (!QDir(Contact::GetDefaultContactsDir()).exists()) {
+        qDebug() << "Cannot locate the Contacts directory. Attempting to create it...";
+
+        QDir contactDir = QDir(Contact::GetDefaultContactsDir());
+        contactDir.mkpath(Contact::GetDefaultContactsDir());
+
+    }
+
+    else {
+        qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
+        qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
+    }
+
 
 }
 
