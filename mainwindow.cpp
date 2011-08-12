@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
 }
 
 QString iContentType = "data:text/html,";
-QString iStartRender = "<body bgcolor=\"black\" text=\"white\"><marquee>";
+QString iUtf8ContentType = "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />";
+QString iStartRender = iUtf8ContentType + "<body bgcolor=\"black\" text=\"white\"><marquee>";
 QString iEndRender = "</marquee> &nbsp; ";
 
 /* Username, Data */
