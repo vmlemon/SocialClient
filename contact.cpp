@@ -28,8 +28,8 @@ Contact::Contact(QString aJsonData){
     iForename = dataMap["Forename"].toString();
     iSurname = dataMap["Surname"].toString();
     iEMailAddress = dataMap["EmailAddress"].toString();
-    iTwitterUrl("");
-    iSkypeUserName("");
+    iTwitterUrl = dataMap["TwitterUrl"].toString();
+    iSkypeUserName = dataMap["SkypeUserName"].toString();
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
     iLastFmUserName = dataMap["LastFmUserName"].toString;
 
