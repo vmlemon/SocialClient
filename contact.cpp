@@ -10,7 +10,7 @@ Contact::Contact():
 
     /* Version 0 attributes */
 
-    iVersion(0),
+    iVersion(1),
     iUid(0),
     iForename(""),
     iSurname(""),
@@ -18,7 +18,12 @@ Contact::Contact():
     iTwitterUrl(""),
     iSkypeUserName(""),
     iSkypeStatus(0),
-    iLastFmUserName("")
+    iLastFmUserName(""),
+
+    /* Version 1 attributes */
+
+    iStatusColour("")
+
 {
 }
 
@@ -39,6 +44,10 @@ Contact::Contact(QString aJsonData){
     iSkypeUserName = dataMap["SkypeUserName"].toString();
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
     iLastFmUserName = dataMap["LastFmUserName"].toString();
+
+    if (iVersion == 1) {
+        iStatusColour = dataMap["StatusColour"].toString();
+    }
 }
 
 QString Contact::Serialise() {
@@ -100,4 +109,10 @@ int Contact::GetSkypeStatus() {
 
 QString Contact::GetLastFmUserName() {
     return iLastFmUserName;
+}
+
+/* Version 1 attributes */
+
+QString Contact::GetStatusColour() {
+    return iStatusColour;
 }

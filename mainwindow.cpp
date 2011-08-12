@@ -12,6 +12,8 @@
 #include <Parsers/skype.h>
 #include <Parsers/twitter.h>
 
+#include <contact.h>
+
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow)

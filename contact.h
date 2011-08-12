@@ -22,6 +22,9 @@ public:
     int GetSkypeStatus();
     QString GetLastFmUserName();
 
+    /* Version 1 attributes */
+    QString GetStatusColour();
+
 protected:
 
     /* Version 0 attributes */
@@ -34,6 +37,10 @@ protected:
     QString iSkypeUserName;
     int iSkypeStatus;
     QString iLastFmUserName;
+
+    /* Version 1 attributes */
+    QString iStatusColour;
+
 };
 
 #endif // CONTACT_H
