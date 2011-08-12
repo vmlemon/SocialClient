@@ -13,7 +13,10 @@ public:
 
     /* Version 0 attributes */
     int GetVersion();
+    void SetVersion(int aVersion);
+
     qint64 GetUid();
+    void SetUid(qint64 aUid);
 
     QString GetForename();
     void SetForename(QString aForename);
