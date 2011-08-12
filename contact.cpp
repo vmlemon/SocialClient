@@ -4,6 +4,8 @@
 #include <QByteArray>
 #include <QMap>
 
+#include <QtJSON/json.h>
+
 Contact::Contact():
     iVersion(0),
     iUid(0),
@@ -38,8 +40,9 @@ Contact::Contact(QString aJsonData){
 
 QString Contact::Serialise() {
     QVariantMap contactMap;
-    QByteArray contactArray;
     QString contactObject;
+
+    bool status;
 
     contactMap["Version"] = iVersion;
     contactMap["Uid"] = iUid;
@@ -51,9 +54,9 @@ QString Contact::Serialise() {
     contactMap["SkypeStatus"] = iSkypeStatus;
     contactMap["LastFmUserName"] = iLastFmUserName;
 
-    contactArray = Json::serialize(contactMap);
+    QByteArray contactArray = Json::serialize(contactMap);
 
-    contactObject(QString::fromRawData(contactArray));
+    contactObject = QString::fromUtf8(contactArray);
 
     return contactObject;
 }
