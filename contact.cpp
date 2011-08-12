@@ -85,36 +85,72 @@ int Contact::GetVersion() {
     return iVersion;
 }
 
+void Contact::SetVersion(int aVersion) {
+    iVersion = aVersion;
+}
+
 qint64 Contact::GetUid() {
     return iUid;
+}
+
+void Contact::SetUid(qint64 aUid) {
+    iUid = aUid;
 }
 
 QString Contact::GetForename() {
     return iForename;
 }
 
+void Contact::SetForename(QString aForename) {
+    iForename = aForename;
+}
+
 QString Contact::GetSurname() {
     return iSurname;
+}
+
+void Contact::SetSurname(QString aSurname) {
+    iSurname = aSurname;
 }
 
 QString Contact::GetEMailAddress() {
     return iEMailAddress;
 }
 
+void Contact::SetEMailAddress(QString aEMailAddress) {
+    iEMailAddress = aEMailAddress;
+}
+
 QString Contact::GetTwitterUrl() {
     return iTwitterUrl;
+}
+
+void Contact::SetTwitterUrl(QString aTwitterUrl) {
+    iTwitterUrl = aTwitterUrl;
 }
 
 QString Contact::GetSkypeUserName() {
     return iSkypeUserName;
 }
 
+void Contact::SetSkypeUserName(QString aSkypeUserName) {
+    iSkypeUserName = aSkypeUserName;
+}
+
 int Contact::GetSkypeStatus() {
     return iSkypeStatus;
 }
 
+void Contact::SetSkypeStatus(int aSkypeStatus) {
+    iSkypeStatus = aSkypeStatus;
+}
+
 QString Contact::GetLastFmUserName() {
     return iLastFmUserName;
+}
+
+void Contact::SetLastFmUserName(QString aLastFmUserName) {
+    iLastFmUserName = aLastFmUserName;
 }
 
 /* Version 1 attributes */
