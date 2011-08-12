@@ -31,8 +31,10 @@ public:
     void SetSkypeUserName(QString aSkypeUserName);
 
     int GetSkypeStatus();
+    void SetSkypeStatus(int aSkypeStatus);
 
     QString GetLastFmUserName();
+    void SetLastFmUserName(QString aLastFmUserName);
 
     /* Version 1 attributes */
     QString GetStatusColour();
