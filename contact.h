@@ -43,6 +43,8 @@ public:
     QString GetStatusColour();
     void SetStatusColour(QString aHexColour);
 
+    static QString GetDefaultContactsDir();
+
 protected:
 
     /* Version 0 attributes */

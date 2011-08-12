@@ -19,6 +19,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
 
 }
 
@@ -154,6 +155,8 @@ void MainWindow::BuildFeedCache() {
     test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
     test->SetLastFmUserName("vmlemon");
     test->SetStatusColour("E9F09C");
+
+    qDebug() << test->Serialise();
 
     LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
