@@ -11,17 +11,6 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-enum TSkypeStatus {
-    EUnknown = 0,
-    EOffline = 1,
-    EOnline = 2,
-    EAway = 3,
-    ENotAvailable = 4,
-    EDoNotDisturb = 5,
-    EInvisible = 6,
-    ESkypeMe = 7
-};
-
 namespace Ui {
     class MainWindow;
 }
@@ -37,7 +26,6 @@ public:
     QString GetTwitterAvatarUri(QString aJsonData);
     QString GetTwitterLatestTweet(QString aJsonData);
     QString LoadDiskFeed(QString aFilePath);
-    QString ParseSkypeStatus(QString aStatusData);
     QString LoadHttpFeed(QString aHttpUri);
     void BuildFeedCache();
 
