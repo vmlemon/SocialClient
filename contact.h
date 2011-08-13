@@ -46,6 +46,8 @@ public:
     static QString GetDefaultContactsDir();
     static int CountStoredContacts();
 
+    bool WriteContactFile();
+
 protected:
 
     /* Version 0 attributes */
