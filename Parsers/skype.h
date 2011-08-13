@@ -18,6 +18,7 @@ class Skype
 {
 public:
     Skype();
+    static int GetRawSkypeStatus (QString aStatusData);
     static QString ParseSkypeStatus(QString aStatusData);
 
 private:

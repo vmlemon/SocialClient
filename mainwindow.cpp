@@ -167,6 +167,9 @@ void MainWindow::BuildFeedCache() {
     test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
     test->SetLastFmUserName("vmlemon");
     test->SetStatusColour("E9F09C");
+    test->SetSkypeUserName("vmlemon");
+    test->SetSkypeStatus(Skype::GetRawSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + test->GetSkypeUserName() + ".num")));
+    test->WriteContactFile();
 
     qDebug() << test->Serialise();
 
@@ -208,5 +211,8 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
+
+    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(QString::number(test->GetSkypeStatus())));
+
 }
 
