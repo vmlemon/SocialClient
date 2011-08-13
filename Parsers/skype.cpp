@@ -5,6 +5,9 @@ Skype::Skype()
 {
 }
 
+int Skype::GetRawSkypeStatus (QString aStatusData) {
+    return aStatusData.toInt();
+}
 
 QString Skype::ParseSkypeStatus(QString aStatusData) {
     qDebug() << "aStatusData contains: " << aStatusData;
