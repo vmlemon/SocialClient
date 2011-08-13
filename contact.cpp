@@ -5,6 +5,8 @@
 #include <QMap>
 
 #include <QDir>
+#include <QFile>
+#include <QTextStream>
 
 #include <QtJSON/json.h>
 
@@ -181,5 +183,22 @@ int Contact::CountStoredContacts() {
      */
 
     QDir dir = QDir(GetDefaultContactsDir());
-    return dir.count();
+    return dir.count() - 2;
+}
+
+bool Contact::WriteContactFile() {
+    QFile workingFile(GetDefaultContactsDir() + "/" + QString::number(GetUid()));
+    workingFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+    QTextStream stream(&workingFile);
+
+    stream << Serialise();
+    workingFile.close();
+
+    if (!workingFile.exists()) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
