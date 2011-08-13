@@ -1,0 +1,126 @@
+{
+  "possibly_sensitive": false,
+  "in_reply_to_user_id": null,
+  "truncated": false,
+  "entities": {
+    "urls": [
+      {
+        "expanded_url": "http:\/\/wp.me\/paw5F-12k",
+        "indices": [
+          7,
+          26
+        ],
+        "display_url": "wp.me\/paw5F-12k",
+        "url": "http:\/\/t.co\/dhhSS6y"
+      }
+    ],
+    "hashtags": [
+      
+    ],
+    "user_mentions": [
+      
+    ]
+  },
+  "user": {
+    "notifications": false,
+    "profile_link_color": "93A644",
+    "protected": false,
+    "is_translator": false,
+    "statuses_count": 22431,
+    "favourites_count": 95,
+    "profile_sidebar_border_color": "eeeeee",
+    "followers_count": 1766,
+    "name": "H\u00e5kan Dahlstr\u00f6m",
+    "follow_request_sent": false,
+    "time_zone": "Stockholm",
+    "verified": false,
+    "profile_use_background_image": false,
+    "utc_offset": 3600,
+    "profile_image_url": "http:\/\/a3.twimg.com\/profile_images\/67707376\/squarelg_normal.jpg",
+    "description": "I am nobody. Who are you?",
+    "profile_background_color": "B2DFDA",
+    "lang": "en",
+    "profile_background_image_url": "http:\/\/a1.twimg.com\/images\/themes\/theme13\/bg.gif",
+    "screen_name": "hakandahlstrom",
+    "default_profile": false,
+    "listed_count": 317,
+    "location": "Helsingborg",
+    "contributors_enabled": false,
+    "profile_text_color": "333333",
+    "profile_background_image_url_https": "https:\/\/si0.twimg.com\/images\/themes\/theme13\/bg.gif",
+    "profile_sidebar_fill_color": "ffffff",
+    "url": "http:\/\/www.dahlstroms.com",
+    "id_str": "11029722",
+    "show_all_inline_media": false,
+    "geo_enabled": true,
+    "profile_background_tile": false,
+    "friends_count": 1022,
+    "profile_image_url_https": "https:\/\/si0.twimg.com\/profile_images\/67707376\/squarelg_normal.jpg",
+    "id": 11029722,
+    "default_profile_image": false,
+    "following": false,
+    "created_at": "Mon Dec 10 21:32:32 +0000 2007"
+  },
+  "in_reply_to_status_id": null,
+  "favorited": false,
+  "in_reply_to_status_id_str": null,
+  "place": {
+    "country_code": "SE",
+    "name": "Helsingborg",
+    "bounding_box": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            12.539814,
+            55.917016
+          ],
+          [
+            12.9891732,
+            55.917016
+          ],
+          [
+            12.9891732,
+            56.2622921
+          ],
+          [
+            12.539814,
+            56.2622921
+          ]
+        ]
+      ]
+    },
+    "attributes": {
+      
+    },
+    "full_name": "Helsingborg, Sk\u00e5ne",
+    "country": "Sweden",
+    "url": "http:\/\/api.twitter.com\/1\/geo\/id\/2406f69310767a43.json",
+    "id": "2406f69310767a43",
+    "place_type": "city"
+  },
+  "geo": {
+    "type": "Point",
+    "coordinates": [
+      56.043875,
+      12.695870
+    ]
+  },
+  "coordinates": {
+    "type": "Point",
+    "coordinates": [
+      12.695870,
+      56.043875
+    ]
+  },
+  "in_reply_to_screen_name": null,
+  "in_reply_to_user_id_str": null,
+  "source": "\u003Ca href=\"http:\/\/publicize.wp.com\/\" rel=\"nofollow\"\u003EWordPress.com\u003C\/a\u003E",
+  "id_str": "102335032634515457",
+  "contributors": null,
+  "retweeted": false,
+  "id": 102335032634515457,
+  "retweet_count": 0,
+  "text": "People http:\/\/t.co\/dhhSS6y",
+  "created_at": "Sat Aug 13 11:05:47 +0000 2011"
+}
