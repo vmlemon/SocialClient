@@ -23,15 +23,14 @@ void ContactBuilder::on_buttonBox_accepted()
 {
     Contact *tempContact = new Contact();
 
-    if (!tempContact->EntryZeroExists()) {
+    if (tempContact->EntryZeroExists() == false) {
         tempContact->SetUid(0);
     }
 
-    else {
+    if (tempContact->EntryZeroExists() == true && tempContact->CountStoredContacts() >=1){
 
-        if (tempContact->EntryZeroExists()) {
-            tempContact->SetUid(tempContact->CountStoredContacts() + 1);
-        }
+       /* Nasty Hack */
+            tempContact->SetUid(tempContact->CountStoredContacts() + 1 - 1);
     }
 
 
