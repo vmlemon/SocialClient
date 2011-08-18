@@ -65,7 +65,6 @@ protected:
     /* Version 1 attributes */
     QString iStatusColour;
 
-    bool iHaveZero;
 };
 
 #endif // CONTACT_H

@@ -12,6 +12,8 @@
 
 #include <QtJSON/json.h>
 
+bool iHaveZero;
+
 Contact::Contact():
 
     /* Version 0 attributes */
@@ -28,12 +30,10 @@ Contact::Contact():
 
     /* Version 1 attributes */
 
-    iStatusColour(""),
-
-    iHaveZero(false)
+    iStatusColour("")
 
 {
-
+    iHaveZero = false;
 }
 
 Contact::Contact(QString aJsonData){
@@ -191,11 +191,11 @@ int Contact::CountStoredContacts() {
 
     if (zero.exists()) {
         qDebug() << "0th entry exists";
-        iHaveZero(true);
+        iHaveZero = true;
     }
 
     else {
-        iHaveZero(false);
+        iHaveZero = false;
     }
 
     return dir.count() - 2;
