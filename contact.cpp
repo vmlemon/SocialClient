@@ -8,6 +8,8 @@
 #include <QFile>
 #include <QTextStream>
 
+#include <QDebug>
+
 #include <QtJSON/json.h>
 
 Contact::Contact():
@@ -26,7 +28,9 @@ Contact::Contact():
 
     /* Version 1 attributes */
 
-    iStatusColour("")
+    iStatusColour(""),
+
+    iHaveZero(false)
 
 {
 
@@ -183,6 +187,17 @@ int Contact::CountStoredContacts() {
      */
 
     QDir dir = QDir(GetDefaultContactsDir());
+    QFile zero(dir.path() + "/0");
+
+    if (zero.exists()) {
+        qDebug() << "0th entry exists";
+        iHaveZero(true);
+    }
+
+    else {
+        iHaveZero(false);
+    }
+
     return dir.count() - 2;
 }
 
@@ -201,4 +216,8 @@ bool Contact::WriteContactFile() {
     else {
         return true;
     }
+}
+
+bool Contact::EntryZeroExists() {
+    return iHaveZero;
 }
