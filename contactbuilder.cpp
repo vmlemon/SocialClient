@@ -11,6 +11,7 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     iColour("")
 {
     ui->setupUi(this);
+    qDebug() << iColour.length();
 }
 
 ContactBuilder::~ContactBuilder()
@@ -22,6 +23,20 @@ void ContactBuilder::on_buttonBox_accepted()
 {
     Contact *tempContact = new Contact();
     tempContact->SetUid(tempContact->CountStoredContacts() + 1);
+
+    if (iColour.length() != 0) {
+        tempContact->SetStatusColour(iColour);
+    }
+
+    tempContact->SetForename(ui->Forename->text());
+    tempContact->SetSurname(ui->Surname->text());
+    tempContact->SetEMailAddress(ui->EMail->text());
+    tempContact->SetTwitterUrl(ui->TwitterHandle->text());
+    tempContact->SetSkypeUserName(ui->SkypeHandle->text());
+    tempContact->SetLastFmUserName(ui->LastFmHandle->text());
+    tempContact->Serialise();
+    tempContact->WriteContactFile();
+
 }
 
 void ContactBuilder::on_SelectColour_clicked()
