@@ -166,16 +166,16 @@ Contact *test = new Contact();
 void MainWindow::BuildFeedCache() {
 
 
-    test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
-    test->SetLastFmUserName("vmlemon");
-    test->SetStatusColour("E9F09C");
-    test->SetSkypeUserName("vmlemon");
-    test->SetSkypeStatus(Skype::GetRawSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + test->GetSkypeUserName() + ".num")));
-    test->WriteContactFile();
+    //test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
+    //test->SetLastFmUserName("vmlemon");
+    //test->SetStatusColour("E9F09C");
+    //test->SetSkypeUserName("vmlemon");
+    //test->SetSkypeStatus(Skype::GetRawSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + test->GetSkypeUserName() + ".num")));
+    //test->WriteContactFile();
 
-    qDebug() << test->Serialise();
+    //qDebug() << test->Serialise();
 
-    LoadHttpFeed(test->GetTwitterUrl());
+    //LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
