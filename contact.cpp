@@ -33,7 +33,7 @@ Contact::Contact():
     iStatusColour("")
 
 {
-    iHaveZero = false;
+    CountStoredContacts();
 }
 
 Contact::Contact(QString aJsonData){
