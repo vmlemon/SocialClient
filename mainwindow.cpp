@@ -5,9 +5,10 @@
 #include <QWebFrame>
 
 #include <QBuffer>
-#include <QFile>
 #include <QMap>
 #include <QDir>
+
+#include <file.h>
 
 #include <Parsers/lastfm.h>
 #include <Parsers/skype.h>
@@ -83,22 +84,7 @@ void MainWindow::resizeEvent(QResizeEvent *aEvent) {
     ui->webView->resize(aEvent->size().width(), ui->webView->height());
 }
 
-QString MainWindow::LoadDiskFeed(QString aFilePath) {
 
-    QFile feedFile(aFilePath);
-    QString feedLine;
-
-    if (!feedFile.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        qDebug() << "Could not read from " << aFilePath;
-    }
-
-    QTextStream feedStream(&feedFile);
-
-    while (!feedStream.atEnd()) {
-             feedLine = feedStream.readLine();
-    }
-    return feedLine;
-}
 
 QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
@@ -161,7 +147,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 }
 
 /* Remove me later */
-Contact *test = new Contact();
+Contact *test = new Contact(0);
 
 void MainWindow::BuildFeedCache() {
 
@@ -175,7 +161,7 @@ void MainWindow::BuildFeedCache() {
 
     //qDebug() << test->Serialise();
 
-    //LoadHttpFeed(test->GetTwitterUrl());
+    LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
@@ -202,9 +188,9 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(LoadDiskFeed("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUri(LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("9600")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("identica")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("identica")), "F1C6F5") +

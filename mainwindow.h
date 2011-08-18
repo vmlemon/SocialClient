@@ -23,7 +23,6 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
-    QString LoadDiskFeed(QString aFilePath);
     QString LoadHttpFeed(QString aHttpUri);
     void BuildFeedCache();
 
