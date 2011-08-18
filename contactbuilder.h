@@ -2,6 +2,7 @@
 #define CONTACTBUILDER_H
 
 #include <QDialog>
+#include <QString>
 
 namespace Ui {
     class ContactBuilder;
@@ -15,8 +16,14 @@ public:
     explicit ContactBuilder(QWidget *parent = 0);
     ~ContactBuilder();
 
+private slots:
+    void on_buttonBox_accepted();
+
+    void on_SelectColour_clicked();
+
 private:
     Ui::ContactBuilder *ui;
+    QString iColour;
 };
 
 #endif // CONTACTBUILDER_H
