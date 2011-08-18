@@ -72,7 +72,14 @@
     <addaction name="separator"/>
     <addaction name="actionGet_Skype_Status"/>
    </widget>
+   <widget class="QMenu" name="menuContacts">
+    <property name="title">
+     <string>Contacts</string>
+    </property>
+    <addaction name="actionCreate_Contact"/>
+   </widget>
    <addaction name="menuFile"/>
+   <addaction name="menuContacts"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -101,6 +108,11 @@
   <action name="actionUpdate_List">
    <property name="text">
     <string>Update List</string>
+   </property>
+  </action>
+  <action name="actionCreate_Contact">
+   <property name="text">
+    <string>Create Contact...</string>
    </property>
   </action>
  </widget>

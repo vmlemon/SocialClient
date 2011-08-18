@@ -38,6 +38,8 @@ private slots:
 
     void on_actionUpdate_Ticker_triggered();
 
+    void on_actionCreate_Contact_triggered();
+
 private:
     Ui::MainWindow *ui;
 
