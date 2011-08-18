@@ -35,7 +35,14 @@ void ContactBuilder::on_buttonBox_accepted()
 
 
     if (iColour.length() != 0) {
+        tempContact->SetVersion(1);
         tempContact->SetStatusColour(iColour);
+    }
+
+    else
+
+    {
+        tempContact->SetVersion(0);
     }
 
     tempContact->SetForename(ui->Forename->text());
