@@ -23,13 +23,13 @@ void ContactBuilder::on_buttonBox_accepted()
 {
     Contact *tempContact = new Contact();
 
-    if (!tempContact->iHaveZero()) {
+    if (!tempContact->EntryZeroExists()) {
         tempContact->SetUid(0);
     }
 
     else {
 
-        if (tempContact->iHaveZero()) {
+        if (tempContact->EntryZeroExists()) {
             tempContact->SetUid(tempContact->CountStoredContacts() + 1);
         }
     }
