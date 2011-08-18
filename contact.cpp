@@ -5,12 +5,13 @@
 #include <QMap>
 
 #include <QDir>
-#include <QFile>
 #include <QTextStream>
 
 #include <QDebug>
 
 #include <QtJSON/json.h>
+
+#include <file.h>
 
 bool iHaveZero;
 
@@ -34,6 +35,10 @@ Contact::Contact():
 
 {
     CountStoredContacts();
+}
+
+Contact::Contact (int aContactUid) {
+    Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
 }
 
 Contact::Contact(QString aJsonData){
