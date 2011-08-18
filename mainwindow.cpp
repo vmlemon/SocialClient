@@ -13,6 +13,8 @@
 #include <Parsers/skype.h>
 #include <Parsers/twitter.h>
 
+#include <contactbuilder.h>
+
 #include <contact.h>
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -216,3 +218,9 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
 }
 
+
+void MainWindow::on_actionCreate_Contact_triggered()
+{
+    ContactBuilder cb = new ContactBuilder();
+    cb.show();
+}
