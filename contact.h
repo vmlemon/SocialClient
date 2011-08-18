@@ -47,6 +47,7 @@ public:
     static int CountStoredContacts();
 
     bool WriteContactFile();
+    bool EntryZeroExists();
 
 protected:
 
@@ -63,6 +64,8 @@ protected:
 
     /* Version 1 attributes */
     QString iStatusColour;
+
+    bool iHaveZero;
 };
 
 #endif // CONTACT_H

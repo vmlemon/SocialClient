@@ -22,7 +22,18 @@ ContactBuilder::~ContactBuilder()
 void ContactBuilder::on_buttonBox_accepted()
 {
     Contact *tempContact = new Contact();
-    tempContact->SetUid(tempContact->CountStoredContacts() + 1);
+
+    if (!tempContact->iHaveZero()) {
+        tempContact->SetUid(0);
+    }
+
+    else {
+
+        if (tempContact->iHaveZero()) {
+            tempContact->SetUid(tempContact->CountStoredContacts() + 1);
+        }
+    }
+
 
     if (iColour.length() != 0) {
         tempContact->SetStatusColour(iColour);
