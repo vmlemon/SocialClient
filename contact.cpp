@@ -38,7 +38,9 @@ Contact::Contact():
 }
 
 Contact::Contact (int aContactUid) {
-    Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
+    Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
+    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
+    qDebug() << aContactUid << ptc->GetDefaultContactsDir();
 }
 
 Contact::Contact(QString aJsonData){

@@ -50,6 +50,9 @@ QMap<QString, QString> iLastFmCache;
 
 QString iNetworkData;
 
+/* Remove me later */
+Contact *test;
+
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -137,6 +140,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
+    test = new Contact(0);
     BuildFeedCache();
 
 }
@@ -146,8 +150,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
-/* Remove me later */
-Contact *test = new Contact(0);
+
 
 void MainWindow::BuildFeedCache() {
 
