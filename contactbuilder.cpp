@@ -4,6 +4,7 @@
 #include <contact.h>
 #include <QColorDialog>
 #include <QDebug>
+#include <QColor>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
@@ -60,6 +61,12 @@ void ContactBuilder::on_buttonBox_accepted()
 void ContactBuilder::on_SelectColour_clicked()
 {
     QColorDialog *qcd = new QColorDialog();
-    iColour = qcd->getColor().name();
+    QColor colour = qcd->getColor();
+    QString styleBase = "* { background-color:";
+    QString styleClose = "}";
+
+    iColour = colour.name();
+    ui->SelectColour->setStyleSheet(styleBase +  iColour + styleClose);
+
 
 }
