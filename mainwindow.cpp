@@ -110,12 +110,10 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=") ||
         aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=") ||
         aReply->url().toString().startsWith("http://identi.ca/api/users/show.json?screen_name=")) {
-        QString processedUri(aReply->url().toString().remove("http://api.twitter.com/1/users/show.json?id=")
-                             .remove("http://api.twitter.com/1/users/show.json?screen_name=")
-                             .remove("http://identi.ca/api/users/show.json?screen_name="));
+        QString processedUri(Twitter::ReduceUrl(aReply->url().toString()));
         qDebug() << "Got a Twitter user URL" << processedUri;
 
-        qDebug() << aReply->url().toString();
+        qDebug() << processedUri;
 
         iTwitterCache.insert(processedUri, iNetworkData);
 
@@ -191,7 +189,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("vmlemon")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), test->GetStatusColour()) +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
