@@ -233,6 +233,7 @@ bool Contact::ReadContactFile (int aContactUid) {
     iSkypeUserName = ptc->GetSkypeUserName();
     iSkypeStatus = ptc->GetSkypeStatus();
     iLastFmUserName = ptc->GetLastFmUserName();
+    iStatusColour = ptc->GetStatusColour();
 
     return true;
 }
