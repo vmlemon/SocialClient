@@ -189,8 +189,10 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))), Twitter::GetTwitterAvatarUri(iTwitterCache.value("vmlemon")), test->GetStatusColour()) +
-                             "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value("vmlemon")) +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+                                             Twitter::GetTwitterAvatarUri(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+                                                                          test->GetStatusColour()) +
+                             "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value(test->GetLastFmUserName())) +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
