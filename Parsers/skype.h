@@ -2,7 +2,7 @@
 #define SKYPE_H
 
 #include <QString>
-#include <QMap>
+#include <QVariantMap>
 
 enum TSkypeStatus {
     EUnknown = 0,
@@ -28,13 +28,9 @@ public:
     static QString GetUnknownColour();
 
     /* Cache */
-    void WriteToCache(QString aUsername, QString aData);
-    QString GetStatusColour(QString aUsername);
-
-private:
-    /* Username, Data */
-    QMap<QString, QString> iSkypeCache;
-
+    static void WriteToCache(QString aUsername, QString aData);
+    static QString GetStatusColour(QString aUsername);
+    static QString GetDefaultCacheDir();
 };
 
 #endif // SKYPE_H

@@ -35,6 +35,19 @@ MainWindow::MainWindow(QWidget *parent) :
         qDebug() << "Will look inside" << Contact::GetDefaultContactsDir() << "for contacts";
         qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
     }
+
+    if (!QDir(Skype::GetDefaultCacheDir()).exists()) {
+        qDebug() << "Cannot locate the Skype cache directory. Attempting to create it...";
+
+        QDir skypeCacheDir = QDir(Skype::GetDefaultCacheDir());
+        skypeCacheDir.mkpath(Skype::GetDefaultCacheDir());
+    }
+
+    else {
+        qDebug() << "Will look inside" << Skype::GetDefaultCacheDir() << "for cached Skype status data";
+        //qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
+    }
+
 }
 
 QString iContentType = "data:text/html,";
@@ -119,9 +132,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
         QString processedUri(aReply->url().toString().remove("http://mystatus.skype.com/").remove(".num"));
         qDebug() << "Got a Skype status URL" << (processedUri);
 
-        //Skype so;
-
-        //so.WriteToCache(processedUri, iNetworkData);
+        Skype::WriteToCache(processedUri, iNetworkData);
     }
 
     if (aReply->url().toString().startsWith("http://ws.audioscrobbler.com/1.0/user/") &&

@@ -1,11 +1,14 @@
 #include "skype.h"
 #include <QDebug>
+#include <QtJSON/json.h>
+#include <QDir>
+#include <file.h>
+#include <QTextStream>
 
 Skype::Skype()
 {
+
 }
-
-
 
 int Skype::GetRawSkypeStatus (QString aStatusData) {
     return aStatusData.toInt();
@@ -64,13 +67,61 @@ QString Skype::GetUnknownColour() {
 }
 
 void Skype::WriteToCache(QString aUsername, QString aData) {
-    iSkypeCache.insert(aUsername, aData);
-    qDebug() << "Skype cache:" << iSkypeCache.keys() << iSkypeCache.values();
+
+    QFile workingFile(GetDefaultCacheDir() + "/" + aUsername);
+
+    QVariantMap skypeMap;
+    QString skypeObject;
+
+    /* Username, Data */
+    skypeMap["Username"] = aUsername;
+    skypeMap["Data"] = aData;
+
+    qDebug() << "Skype cache:" << skypeMap.keys() << skypeMap.values();
+
+    QByteArray skypeArray = Json::serialize(skypeMap);
+    skypeObject = QString::fromUtf8(skypeArray);
+
+    workingFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+    QTextStream stream(&workingFile);
+
+    stream << skypeObject;
+    workingFile.close();
 }
 
 QString Skype::GetStatusColour(QString aUsername) {
-    qDebug() << aUsername;
-    qDebug() << iSkypeCache.values() << iSkypeCache.keys();
 
-    return "?";
+    QString jsonData = File::LoadDiskFeed(GetDefaultCacheDir() + "/" + aUsername);
+    bool status;
+
+    QVariantMap dataMap = Json::parse(jsonData, status).toMap();
+    qDebug() << dataMap["Data"];
+
+    switch (dataMap["Data"].toInt()) {
+    case EOnline:
+        return GetOnlineColour();
+
+        qDebug() << "Online";
+
+        break;
+
+    case EOffline:
+        return GetOfflineColour();
+
+        qDebug() << "Offline";
+
+        break;
+
+    case EUnknown:
+        return GetUnknownColour();
+
+        qDebug() << "Unknown";
+
+        break;
+    }
+}
+
+QString Skype::GetDefaultCacheDir() {
+    return QDir::homePath() + "/.SocialClient/Cache/Skype";
 }
