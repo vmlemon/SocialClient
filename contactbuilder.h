@@ -4,6 +4,8 @@
 #include <QDialog>
 #include <QString>
 
+#include <contact.h>
+
 namespace Ui {
     class ContactBuilder;
 }
@@ -31,6 +33,7 @@ private slots:
 private:
     Ui::ContactBuilder *ui;
     QString iColour;
+    Contact *iTempContact;
 };
 
 #endif // CONTACTBUILDER_H

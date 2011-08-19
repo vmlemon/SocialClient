@@ -1,7 +1,6 @@
 #include "contactbuilder.h"
 #include "ui_contactbuilder.h"
 
-#include <contact.h>
 #include <QColorDialog>
 #include <QDebug>
 #include <QColor>
@@ -12,10 +11,17 @@
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactBuilder),
-    iColour("")
+    iColour(""),
+    iTempContact()
 {
     ui->setupUi(this);
-    this->setWindowTitle("Create New Contact");
+
+    QString windowTitle = "Create New Contact (" +
+            QString::number(iTempContact->CountStoredContacts() + 1 - 1) +
+            ")";
+
+    this->setWindowTitle(windowTitle);
+
     qDebug() << iColour.length();
 }
 
@@ -26,39 +32,37 @@ ContactBuilder::~ContactBuilder()
 
 void ContactBuilder::on_buttonBox_accepted()
 {
-    Contact *tempContact = new Contact();
-
-    if (tempContact->EntryZeroExists() == false) {
-        tempContact->SetUid(0);
+    if (iTempContact->EntryZeroExists() == false) {
+        iTempContact->SetUid(0);
     }
 
-    if (tempContact->EntryZeroExists() == true && tempContact->CountStoredContacts() >=1){
+    if (iTempContact->EntryZeroExists() == true && iTempContact->CountStoredContacts() >=1){
 
        /* Nasty Hack */
-            tempContact->SetUid(tempContact->CountStoredContacts() + 1 - 1);
+            iTempContact->SetUid(iTempContact->CountStoredContacts() + 1 - 1);
     }
 
 
     if (iColour.length() != 0) {
-        tempContact->SetVersion(1);
-        tempContact->SetStatusColour(iColour);
+        iTempContact->SetVersion(1);
+        iTempContact->SetStatusColour(iColour);
     }
 
     else
 
     {
-        tempContact->SetVersion(0);
+        iTempContact->SetVersion(0);
     }
 
-    tempContact->SetForename(ui->Forename->text());
-    tempContact->SetSurname(ui->Surname->text());
-    tempContact->SetEMailAddress(ui->EMail->text());
-    tempContact->SetTwitterUrl(ui->TwitterHandle->text());
-    tempContact->SetSkypeUserName(ui->SkypeHandle->text());
-    tempContact->SetLastFmUserName(ui->LastFmHandle->text());
-    tempContact->WriteContactFile();
+    iTempContact->SetForename(ui->Forename->text());
+    iTempContact->SetSurname(ui->Surname->text());
+    iTempContact->SetEMailAddress(ui->EMail->text());
+    iTempContact->SetTwitterUrl(ui->TwitterHandle->text());
+    iTempContact->SetSkypeUserName(ui->SkypeHandle->text());
+    iTempContact->SetLastFmUserName(ui->LastFmHandle->text());
+    iTempContact->WriteContactFile();
 
-    delete tempContact;
+    delete iTempContact;
 }
 
 void ContactBuilder::on_SelectColour_clicked()
