@@ -21,6 +21,8 @@ private slots:
 
     void on_SelectColour_clicked();
 
+    void on_SkypeHandle_textEdited(const QString &arg1);
+
 private:
     Ui::ContactBuilder *ui;
     QString iColour;
