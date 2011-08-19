@@ -92,7 +92,7 @@
   <widget class="QStatusBar" name="statusBar"/>
   <action name="actionUpdate_Twitter_Feeds">
    <property name="text">
-    <string>Build Twitter Cache</string>
+    <string>Build Feed Cache</string>
    </property>
   </action>
   <action name="actionGet_Skype_Status">
