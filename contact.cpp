@@ -235,6 +235,10 @@ bool Contact::ReadContactFile (int aContactUid) {
     iLastFmUserName = ptc->GetLastFmUserName();
     iStatusColour = ptc->GetStatusColour();
 
+    qDebug() << ptc->GetStatusColour();
+
+    delete ptc;
+
     return true;
 }
 

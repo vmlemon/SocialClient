@@ -159,7 +159,7 @@ void MainWindow::BuildFeedCache() {
 
     //test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
     //test->SetLastFmUserName("vmlemon");
-    //test->SetStatusColour("E9F09C");
+    test->SetStatusColour("E9F09C");
     //test->SetSkypeUserName("vmlemon");
     //test->SetSkypeStatus(Skype::GetRawSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + test->GetSkypeUserName() + ".num")));
     //test->WriteContactFile();
