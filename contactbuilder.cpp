@@ -62,11 +62,9 @@ void ContactBuilder::on_SelectColour_clicked()
 {
     QColorDialog *qcd = new QColorDialog();
     QColor colour = qcd->getColor();
-    QString styleBase = "* { background-color:";
-    QString styleClose = "}";
 
     iColour = colour.name();
-    ui->SelectColour->setStyleSheet(styleBase +  iColour + styleClose);
+    ui->SelectColour->setStyleSheet("* { background-color:" +  iColour + "}");
 
 
 }
