@@ -11,6 +11,7 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     iColour("")
 {
     ui->setupUi(this);
+    this->setWindowTitle("Create New Contact");
     qDebug() << iColour.length();
 }
 
