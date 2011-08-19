@@ -222,8 +222,17 @@ bool Contact::WriteContactFile() {
 
 bool Contact::ReadContactFile (int aContactUid) {
     Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
-    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
-    qDebug() << aContactUid << GetDefaultContactsDir();
+//    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
+//    qDebug() << aContactUid << GetDefaultContactsDir();
+    iVersion = ptc->GetVersion();
+    iUid = ptc->GetUid();
+    iForename = ptc->GetForename();
+    iSurname = ptc->GetSurname();
+    iEMailAddress = ptc->GetEMailAddress();
+    iTwitterUrl = ptc->GetTwitterUrl();
+    iSkypeUserName = ptc->GetSkypeUserName();
+    iSkypeStatus = ptc->GetSkypeStatus();
+    iLastFmUserName = ptc->GetLastFmUserName();
 
     return true;
 }
