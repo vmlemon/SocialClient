@@ -138,18 +138,35 @@ QString Contact::GetTwitterUrl() {
     return iTwitterUrl;
 }
 
+/* Return the Twitter URL for a given UID */
+QString Contact::GetTwitterUrl(int aUid) {
+    Contact *ptc = new Contact();
+
+    ptc->ReadContactFile(aUid);
+
+    QString url(ptc->GetTwitterUrl());
+
+    return url;
+
+    delete ptc;
+}
+
+/* Set this instance's Twitter URL */
 void Contact::SetTwitterUrl(QString aTwitterUrl) {
     iTwitterUrl = aTwitterUrl;
 }
 
+/* Get this instance's Skype Username */
 QString Contact::GetSkypeUserName() {
     return iSkypeUserName;
 }
 
+/* Set this instance's Skype Username */
 void Contact::SetSkypeUserName(QString aSkypeUserName) {
     iSkypeUserName = aSkypeUserName;
 }
 
+/* Get this instance's Skype Username */
 int Contact::GetSkypeStatus() {
     return iSkypeStatus;
 }
@@ -222,8 +239,6 @@ bool Contact::WriteContactFile() {
 
 bool Contact::ReadContactFile (int aContactUid) {
     Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
-//    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
-//    qDebug() << aContactUid << GetDefaultContactsDir();
     iVersion = ptc->GetVersion();
     iUid = ptc->GetUid();
     iForename = ptc->GetForename();
