@@ -5,6 +5,7 @@
 #include <QColorDialog>
 #include <QDebug>
 #include <QColor>
+#include <QLineEdit>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
@@ -64,7 +65,28 @@ void ContactBuilder::on_SelectColour_clicked()
     QColor colour = qcd->getColor();
 
     iColour = colour.name();
-    ui->SelectColour->setStyleSheet("* { background-color:" +  iColour + "}");
+    qDebug() << iColour;
+
+    if (!iColour.contains("#000000")) {
+        ui->SelectColour->setStyleSheet("* { background-color:" +  iColour + "}");
+    }
+
+    else {
+        ui->SelectColour->setStyleSheet("");
+    }
 
     delete qcd;
+}
+
+void ContactBuilder::on_SkypeHandle_textEdited(const QString &arg1)
+{
+    if (arg1.length() != 0) {
+       ui->SkypeHandle->setStyleSheet("* { background-color: #98F794}");
+    }
+
+    else {
+        ui->SkypeHandle->setStyleSheet("");
+    }
+
+
 }
