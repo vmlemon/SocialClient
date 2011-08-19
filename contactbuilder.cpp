@@ -36,7 +36,7 @@ void ContactBuilder::on_buttonBox_accepted()
         iTempContact->SetUid(0);
     }
 
-    if (iTempContact->EntryZeroExists() == true && iTempContact->CountStoredContacts() >=1){
+    if (iTempContact->EntryZeroExists() == true){
 
        /* Nasty Hack */
             iTempContact->SetUid(iTempContact->CountStoredContacts() + 1 - 1);

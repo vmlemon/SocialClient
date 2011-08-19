@@ -197,7 +197,7 @@ QString Contact::GetDefaultContactsDir() {
     return QDir::homePath() + "/.SocialClient/Contacts";
 }
 
-int Contact::CountStoredContacts() {
+qint64 Contact::CountStoredContacts() {
 
     /*
       Under Windows, this always counts 2 for an "empty" directory,

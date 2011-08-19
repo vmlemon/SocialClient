@@ -46,7 +46,7 @@ public:
     void SetStatusColour(QString aHexColour);
 
     static QString GetDefaultContactsDir();
-    static int CountStoredContacts();
+    static qint64 CountStoredContacts();
 
     bool WriteContactFile();
     bool EntryZeroExists();
