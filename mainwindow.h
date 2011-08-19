@@ -28,7 +28,7 @@ public:
 
 private slots:
 
-    void on_lineEdit_textChanged(const QString &arg1);
+    void on_lineEdit_textChanged(const QString &aText);
     void finishedSlot(QNetworkReply* aReply);
 
     void on_actionUpdate_Twitter_Feeds_triggered();

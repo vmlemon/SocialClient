@@ -2,6 +2,7 @@
 #define SKYPE_H
 
 #include <QString>
+#include <QMap>
 
 enum TSkypeStatus {
     EUnknown = 0,
