@@ -53,9 +53,9 @@ void ContactBuilder::on_buttonBox_accepted()
     tempContact->SetTwitterUrl(ui->TwitterHandle->text());
     tempContact->SetSkypeUserName(ui->SkypeHandle->text());
     tempContact->SetLastFmUserName(ui->LastFmHandle->text());
-    tempContact->Serialise();
     tempContact->WriteContactFile();
 
+    delete tempContact;
 }
 
 void ContactBuilder::on_SelectColour_clicked()
@@ -66,5 +66,5 @@ void ContactBuilder::on_SelectColour_clicked()
     iColour = colour.name();
     ui->SelectColour->setStyleSheet("* { background-color:" +  iColour + "}");
 
-
+    delete qcd;
 }
