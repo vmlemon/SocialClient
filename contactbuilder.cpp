@@ -80,9 +80,9 @@ void ContactBuilder::on_SelectColour_clicked()
     delete qcd;
 }
 
-void ContactBuilder::on_SkypeHandle_textEdited(const QString &arg1)
+void ContactBuilder::on_SkypeHandle_textEdited(const QString &aText)
 {
-    if (arg1.length() != 0) {
+    if (aText.length() != 0) {
         ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetOnlineColour() + "}");
     }
 
@@ -90,5 +90,24 @@ void ContactBuilder::on_SkypeHandle_textEdited(const QString &arg1)
         ui->SkypeHandle->setStyleSheet("");
     }
 
+    if (ui->CopyUserNames->isChecked()) {
+     ui->TwitterHandle->setText(aText);
+     ui->LastFmHandle->setText(aText);
+    }
+}
 
+void ContactBuilder::on_TwitterHandle_textEdited(const QString &aText)
+{
+    if (ui->CopyUserNames->isChecked()) {
+     ui->SkypeHandle->setText(aText);
+     ui->LastFmHandle->setText(aText);
+    }
+}
+
+void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
+{
+    if (ui->CopyUserNames->isChecked()) {
+     ui->SkypeHandle->setText(aText);
+     ui->TwitterHandle->setText(aText);
+    }
 }

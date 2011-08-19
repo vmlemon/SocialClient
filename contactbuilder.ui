@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>413</width>
+    <width>418</width>
     <height>310</height>
    </rect>
   </property>
@@ -18,12 +18,12 @@
     <rect>
      <x>10</x>
      <y>10</y>
-     <width>391</width>
+     <width>405</width>
      <height>291</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">
-    <item row="7" column="0">
+    <item row="11" column="0">
      <widget class="QDialogButtonBox" name="buttonBox">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
@@ -47,28 +47,28 @@
       </property>
      </widget>
     </item>
-    <item row="2" column="0">
+    <item row="3" column="0">
      <widget class="QLabel" name="EMailLabel">
       <property name="text">
        <string>E-Mail Address: </string>
       </property>
      </widget>
     </item>
-    <item row="3" column="0">
+    <item row="5" column="0">
      <widget class="QLabel" name="TwitterHandleLabel">
       <property name="text">
        <string>Twitter Username: </string>
       </property>
      </widget>
     </item>
-    <item row="4" column="0">
+    <item row="6" column="0">
      <widget class="QLabel" name="SkypeHandleLabel">
       <property name="text">
        <string>Skype Username: </string>
       </property>
      </widget>
     </item>
-    <item row="5" column="0">
+    <item row="7" column="0">
      <widget class="QLabel" name="LastFmHandleLabel">
       <property name="text">
        <string>Last.FM Username: </string>
@@ -81,29 +81,79 @@
     <item row="1" column="1">
      <widget class="QLineEdit" name="Surname"/>
     </item>
-    <item row="2" column="1">
+    <item row="3" column="1">
      <widget class="QLineEdit" name="EMail"/>
     </item>
-    <item row="3" column="1">
+    <item row="5" column="1">
      <widget class="QLineEdit" name="TwitterHandle"/>
     </item>
-    <item row="4" column="1">
+    <item row="6" column="1">
      <widget class="QLineEdit" name="SkypeHandle"/>
     </item>
-    <item row="5" column="1">
+    <item row="7" column="1">
      <widget class="QLineEdit" name="LastFmHandle"/>
     </item>
-    <item row="6" column="0">
+    <item row="10" column="0">
      <widget class="QLabel" name="TickerColourLabel">
       <property name="text">
        <string>Ticker Item Colour: </string>
       </property>
      </widget>
     </item>
-    <item row="6" column="1">
+    <item row="10" column="1">
      <widget class="QPushButton" name="SelectColour">
       <property name="text">
        <string>Select Colour</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="Line" name="NameLine">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="0">
+     <widget class="Line" name="EMailLine">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="Line" name="UsernamesLine">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="1">
+     <widget class="QCheckBox" name="CopyUserNames">
+      <property name="text">
+       <string>Use the same username for 
+these accounts</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="Line" name="line_2">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="1">
+     <widget class="Line" name="line_3">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
       </property>
      </widget>
     </item>
