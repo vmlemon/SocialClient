@@ -140,7 +140,9 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
-    test = new Contact(0);
+    test = new Contact();
+    test->ReadContactFile(0);
+
     BuildFeedCache();
 
 }

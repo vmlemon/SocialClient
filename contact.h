@@ -8,7 +8,7 @@ class Contact
 {
 public:
     Contact();
-    Contact (int aContactUid);
+    bool ReadContactFile (int aContactUid);
     Contact(QString aJsonData);
     QString Serialise();
 
