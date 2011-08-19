@@ -5,6 +5,8 @@ Skype::Skype()
 {
 }
 
+
+
 int Skype::GetRawSkypeStatus (QString aStatusData) {
     return aStatusData.toInt();
 }
@@ -59,4 +61,16 @@ QString Skype::GetOfflineColour() {
 
 QString Skype::GetUnknownColour() {
     return "#F7EA94"; /* Yellow */
+}
+
+void Skype::WriteToCache(QString aUsername, QString aData) {
+    iSkypeCache.insert(aUsername, aData);
+    qDebug() << "Skype cache:" << iSkypeCache.keys() << iSkypeCache.values();
+}
+
+QString Skype::GetStatusColour(QString aUsername) {
+    qDebug() << aUsername;
+    qDebug() << iSkypeCache.values() << iSkypeCache.keys();
+
+    return "?";
 }

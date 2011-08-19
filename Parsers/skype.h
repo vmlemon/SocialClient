@@ -27,7 +27,14 @@ public:
     static QString GetOfflineColour();
     static QString GetUnknownColour();
 
+    /* Cache */
+    void WriteToCache(QString aUsername, QString aData);
+    QString GetStatusColour(QString aUsername);
+
 private:
+    /* Username, Data */
+    QMap<QString, QString> iSkypeCache;
+
 };
 
 #endif // SKYPE_H

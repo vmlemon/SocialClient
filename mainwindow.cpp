@@ -43,7 +43,6 @@ QString iStartRender = "<head>" + iUtf8ContentType + "</head>" + "<body bgcolor=
 QString iEndRender = "</marquee> &nbsp; ";
 
 /* Username, Data */
-QMap<QString, QString> iSkypeCache;
 QMap<QString, QString> iTwitterCache;
 QMap<QString, QString> iLastFmCache;
 
@@ -119,7 +118,10 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     if (aReply->url().toString().startsWith("http://mystatus.skype.com")) {
         QString processedUri(aReply->url().toString().remove("http://mystatus.skype.com/").remove(".num"));
         qDebug() << "Got a Skype status URL" << (processedUri);
-        iSkypeCache.insert(processedUri, iNetworkData);
+
+        //Skype so;
+
+        //so.WriteToCache(processedUri, iNetworkData);
     }
 
     if (aReply->url().toString().startsWith("http://ws.audioscrobbler.com/1.0/user/") &&
