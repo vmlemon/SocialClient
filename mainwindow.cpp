@@ -148,8 +148,6 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 
 void MainWindow::BuildFeedCache() {
 
-    test->SetStatusColour("E9F09C");
-
     LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");

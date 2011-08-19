@@ -55,11 +55,13 @@ Contact::Contact(QString aJsonData){
     iSkypeStatus = dataMap["SkypeStatus"].toInt();
     iLastFmUserName = dataMap["LastFmUserName"].toString();
 
-    if (iVersion == 1 && iStatusColour.length() != 0) {
+    if (iVersion == 1 || iStatusColour.length() != 0) {
+        qDebug() << "Got a version 1 (or later) file";
         iStatusColour = dataMap["StatusColour"].toString();
     }
 
     if (iStatusColour.length() == 0) {
+        qDebug() << "Got a version 0 file";
         iVersion = 0;
     }
 }
@@ -95,10 +97,12 @@ QString Contact::Serialise() {
 /* Version 0 attributes */
 
 int Contact::GetVersion() {
+    qDebug() << "iVersion says: " << iVersion;
     return iVersion;
 }
 
 void Contact::SetVersion(int aVersion) {
+    qDebug() << "aVersion says: " << aVersion << "iVersion says: " << iVersion;
     iVersion = aVersion;
 }
 
@@ -193,6 +197,7 @@ QString Contact::GetStatusColour() {
 }
 
 void Contact::SetStatusColour(QString aHexColour) {
+    qDebug() << "aHexColour is " << aHexColour;
     iStatusColour = aHexColour;
 }
 
@@ -251,7 +256,7 @@ bool Contact::ReadContactFile (int aContactUid) {
     iSkypeUserName = ptc->GetSkypeUserName();
     iSkypeStatus = ptc->GetSkypeStatus();
     iLastFmUserName = ptc->GetLastFmUserName();
-    iStatusColour = ptc->GetStatusColour();
+    SetStatusColour(ptc->GetStatusColour());
 
     qDebug() << ptc->GetStatusColour();
 
