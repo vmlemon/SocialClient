@@ -48,3 +48,15 @@ QString Skype::ParseSkypeStatus(QString aStatusData) {
             break;
     }
 }
+
+QString Skype::GetOnlineColour() {
+    return "#98F794"; /* Green */
+}
+
+QString Skype::GetOfflineColour() {
+    return "#F7949E"; /* Pink */
+}
+
+QString Skype::GetUnknownColour() {
+    return "#F7EA94"; /* Yellow */
+}
