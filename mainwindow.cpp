@@ -197,5 +197,4 @@ void MainWindow::on_actionCreate_Contact_triggered()
 {
     ContactBuilder *cb = new ContactBuilder();
     cb->show();
-    delete cb;
 }
