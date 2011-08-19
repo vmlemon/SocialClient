@@ -11,8 +11,7 @@
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactBuilder),
-    iColour(""),
-    iTempContact()
+    iColour("")
 {
     ui->setupUi(this);
 
@@ -32,6 +31,8 @@ ContactBuilder::~ContactBuilder()
 
 void ContactBuilder::on_buttonBox_accepted()
 {
+    iTempContact = new Contact();
+
     if (iTempContact->EntryZeroExists() == false) {
         iTempContact->SetUid(0);
     }

@@ -103,10 +103,13 @@ void Contact::SetVersion(int aVersion) {
 }
 
 qint64 Contact::GetUid() {
+    qDebug() << "GetUid() says" << iUid;
     return iUid;
 }
 
 void Contact::SetUid(qint64 aUid) {
+    qDebug() << "aUid says" << aUid << "iUid says" << iUid;
+
     iUid = aUid;
 }
 
