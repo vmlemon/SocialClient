@@ -37,12 +37,6 @@ Contact::Contact():
     CountStoredContacts();
 }
 
-Contact::Contact (int aContactUid) {
-    Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
-    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
-    qDebug() << aContactUid << ptc->GetDefaultContactsDir();
-}
-
 Contact::Contact(QString aJsonData){
 
     bool status;
@@ -224,6 +218,16 @@ bool Contact::WriteContactFile() {
         return true;
     }
 }
+
+
+bool Contact::ReadContactFile (int aContactUid) {
+    Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
+    qDebug() << File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid));
+    qDebug() << aContactUid << GetDefaultContactsDir();
+
+    return true;
+}
+
 
 bool Contact::EntryZeroExists() {
     return iHaveZero;
