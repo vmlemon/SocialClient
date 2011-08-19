@@ -88,9 +88,8 @@ void ContactBuilder::on_SelectColour_clicked()
 void ContactBuilder::on_SkypeHandle_textEdited(const QString &aText)
 {
     if (aText.length() != 0) {
-        Skype so;
-        qDebug() << so.GetStatusColour(aText);
-        ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetOnlineColour() + "}");
+        Skype::GetStatusColour(aText);
+        ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetStatusColour(aText) + "}");
     }
 
     else {
