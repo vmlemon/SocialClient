@@ -29,6 +29,7 @@ public:
     void SetEMailAddress(QString aEMailAddress);
 
     QString GetTwitterUrl();
+    static QString GetTwitterUrl(int aUid);
     void SetTwitterUrl(QString aTwitterUrl);
 
     QString GetSkypeUserName();
