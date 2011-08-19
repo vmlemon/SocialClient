@@ -77,9 +77,9 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     return result;
 }
 
-void MainWindow::on_lineEdit_textChanged(const QString &arg1)
+void MainWindow::on_lineEdit_textChanged(const QString &aText)
 {
-    qDebug() << arg1;
+    qDebug() << aText;
 }
 
 void MainWindow::resizeEvent(QResizeEvent *aEvent) {
@@ -154,10 +154,10 @@ void MainWindow::BuildFeedCache() {
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     /* Not a Twitter feed, but here for testing */
-   LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
+    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
    /* A test of Identi.ca's "Twitter-compatible feeds" */
-   LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
+    LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
