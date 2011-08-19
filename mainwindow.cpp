@@ -29,7 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
         QDir contactDir = QDir(Contact::GetDefaultContactsDir());
         contactDir.mkpath(Contact::GetDefaultContactsDir());
-
     }
 
     else {
@@ -87,8 +86,6 @@ void MainWindow::resizeEvent(QResizeEvent *aEvent) {
     ui->webView->resize(aEvent->size().width(), ui->webView->height());
 }
 
-
-
 QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
     QNetworkAccessManager *netArbitrator = new QNetworkAccessManager(this);
@@ -142,7 +139,6 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
     test->ReadContactFile(0);
 
     BuildFeedCache();
-
 }
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
@@ -150,19 +146,9 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
-
-
 void MainWindow::BuildFeedCache() {
 
-
-    //test->SetTwitterUrl("http://api.twitter.com/1/users/show.json?id=vmlemon");
-    //test->SetLastFmUserName("vmlemon");
     test->SetStatusColour("E9F09C");
-    //test->SetSkypeUserName("vmlemon");
-    //test->SetSkypeStatus(Skype::GetRawSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + test->GetSkypeUserName() + ".num")));
-    //test->WriteContactFile();
-
-    //qDebug() << test->Serialise();
 
     LoadHttpFeed(test->GetTwitterUrl());
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
@@ -178,9 +164,7 @@ void MainWindow::BuildFeedCache() {
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
     qDebug() << iTwitterCache.keys();
     qDebug() << iTwitterCache.values();
-
     qDebug() << iLastFmCache.values();
-
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -209,9 +193,9 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
 }
 
-
 void MainWindow::on_actionCreate_Contact_triggered()
 {
     ContactBuilder *cb = new ContactBuilder();
     cb->show();
+    delete cb;
 }
