@@ -27,3 +27,9 @@ QString Twitter::GetTwitterLatestTweet(QString aJsonData) {
     qDebug() << "Latest Tweet: " << statusMap["text"].toString();
     return statusMap["text"].toString();
 }
+
+QString Twitter::ReduceUrl(QString aUrl) {
+    return aUrl.remove("http://api.twitter.com/1/users/show.json?id=")
+                         .remove("http://api.twitter.com/1/users/show.json?screen_name=")
+                         .remove("http://identi.ca/api/users/show.json?screen_name=");
+}

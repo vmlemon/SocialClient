@@ -9,6 +9,7 @@ public:
     Twitter();
     static QString GetTwitterAvatarUri(QString aJsonData);
     static QString GetTwitterLatestTweet(QString aJsonData);
+    static QString ReduceUrl(QString aUrl);
 };
 
 #endif // TWITTER_H
