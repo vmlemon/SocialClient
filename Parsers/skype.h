@@ -21,6 +21,11 @@ public:
     static int GetRawSkypeStatus (QString aStatusData);
     static QString ParseSkypeStatus(QString aStatusData);
 
+    /* Status colours */
+    static QString GetOnlineColour();
+    static QString GetOfflineColour();
+    static QString GetUnknownColour();
+
 private:
 };
 

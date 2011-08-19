@@ -7,6 +7,8 @@
 #include <QColor>
 #include <QLineEdit>
 
+#include <Parsers/skype.h>
+
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactBuilder),
@@ -81,9 +83,7 @@ void ContactBuilder::on_SelectColour_clicked()
 void ContactBuilder::on_SkypeHandle_textEdited(const QString &arg1)
 {
     if (arg1.length() != 0) {
-       ui->SkypeHandle->setStyleSheet("* { background-color: #98F794}"); /* Green -online */
-       /* Pink - offline (F7949E) */
-       /* Yellow - other (F7EA94) */
+        ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetOnlineColour() + "}");
     }
 
     else {
