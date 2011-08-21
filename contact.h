@@ -45,6 +45,7 @@ public:
 
     /* Version 1 attributes */
     QString GetStatusColour();
+    static QString GetStatusColour(int aUid);
     void SetStatusColour(QString aHexColour);
 
     static QString GetDefaultContactsDir();
