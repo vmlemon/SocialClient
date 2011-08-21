@@ -194,9 +194,17 @@ void MainWindow::PopulateRamCache() {
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
         LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(pos));
 
-        iStatusToRender = BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache[pos]),
-                                                      Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos))),
-                                                      Contact::GetStatusColour(pos));
+        iStatusToRender = "";
+
+        /*qDebug() << BuildStatusItem(
+                            Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos))),
+                            Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos)),
+                            Contact::GetStatusColour(pos)
+                            );*/
+
+        qDebug() << Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos)));
+        //qDebug() << Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos));
+        //qDebug() << Contact::GetStatusColour(pos);
     }
 
     qDebug() << iSkypeUidCache;

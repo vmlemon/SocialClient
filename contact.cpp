@@ -214,6 +214,16 @@ QString Contact::GetStatusColour() {
     return iStatusColour;
 }
 
+QString Contact::GetStatusColour(int aUid) {
+    Contact *ptc = new Contact();
+
+    ptc->ReadContactFile(aUid);
+
+    return ptc->GetStatusColour();
+
+    delete ptc;
+}
+
 void Contact::SetStatusColour(QString aHexColour) {
     qDebug() << "aHexColour is " << aHexColour;
     iStatusColour = aHexColour;
