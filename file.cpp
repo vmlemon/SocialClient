@@ -47,8 +47,6 @@ void File::DirectoryProbe(QString aDirectoryPath) {
     QDir dir = QDir(aDirectoryPath);
 
     QString dirNameOrType;
-    QString genericText1 = "Cannot locate the ";
-    QString genericText2 = "directory. Attempting to create it...";
 
     if (aDirectoryPath.contains("Skype")) {
         dirNameOrType = "Skype cache";
@@ -63,7 +61,7 @@ void File::DirectoryProbe(QString aDirectoryPath) {
     }
 
     if (!dir.exists()) {
-        qDebug() << genericText1 << dirNameOrType << genericText2;
+        qDebug() << "Cannot locate the" << dirNameOrType << "directory. Attempting to create it...";
 
         dir.mkpath(aDirectoryPath);
     }
