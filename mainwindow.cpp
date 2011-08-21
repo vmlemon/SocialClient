@@ -147,10 +147,6 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 
 void MainWindow::BuildFeedCache() {
 
-    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
-    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
-    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
-
     /* Not a Twitter feed, but here for testing */
     LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
