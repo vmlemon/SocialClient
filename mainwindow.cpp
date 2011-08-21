@@ -130,19 +130,13 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
-    test = new Contact();
-    test->ReadContactFile(0);
 
     BuildFeedCache();
 }
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
 {
-    QString status = LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num");
-    test->SetSkypeStatus(Skype::GetRawSkypeStatus(status));
-    test->WriteContactFile();
-
-    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(status));
+  //  ui->SkypeStatus->setText(Skype::ParseSkypeStatus(status));
 }
 
 void MainWindow::BuildFeedCache() {
@@ -198,7 +192,8 @@ void MainWindow::PopulateRamCache() {
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
         iSkypeUidCache.insert(pos, Contact::GetSkypeUserName(pos));
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
-        LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
+        LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" +
+                     Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
 
         tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
         colourMap.insert(pos, Contact::GetStatusColour(pos));
@@ -208,6 +203,16 @@ void MainWindow::PopulateRamCache() {
         colour = Contact::GetStatusColour(pos);
 
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
+
+        /* Attempt to set Skype statuses for UIDs */
+        QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num");
+
+        Contact *su = new Contact();
+        su->ReadContactFile(pos);
+        su->SetSkypeStatus();
+
+        test->SetSkypeStatus(Skype::GetRawSkypeStatus(skypeStatus));
+        test->WriteContactFile();
 
     }
 
