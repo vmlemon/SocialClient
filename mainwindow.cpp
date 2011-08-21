@@ -18,7 +18,8 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
+    ui(new Ui::MainWindow),
+    iStatusToRender("")
 {
     ui->setupUi(this);
 
@@ -146,36 +147,30 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 
 void MainWindow::BuildFeedCache() {
 
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(0));
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
-    LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
+    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
+    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
+    //LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
 
     /* Not a Twitter feed, but here for testing */
     LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
     /* A test of Identi.ca's "Twitter-compatible feeds" */
-    LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
+    //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
+
+        PopulateRamCache();
 
     qDebug() << "The cache contains " << QString::number(iTwitterDataCache.size()) << "items";
     qDebug() << iTwitterDataCache.keys();
     qDebug() << iTwitterDataCache.values();
     qDebug() << iLastFmCache.values();
 
-    PopulateRamCache();
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
-
-    QString statusToRender = "Nothing yet";
-            /* BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.key(0))),
-                            Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
-                            test->GetStatusColour()); */
-
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
-                             statusToRender +
+                             iStatusToRender +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
@@ -197,6 +192,11 @@ void MainWindow::PopulateRamCache() {
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
         iSkypeUidCache.insert(pos, Contact::GetSkypeUserName(pos));
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
+        LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(pos));
+
+        iStatusToRender = BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache[pos]),
+                                                      Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos))),
+                                                      Contact::GetStatusColour(pos));
     }
 
     qDebug() << iSkypeUidCache;
