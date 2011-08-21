@@ -146,7 +146,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 
 void MainWindow::BuildFeedCache() {
 
-    LoadHttpFeed(test->GetTwitterUrl());
+    LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(0));
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=hideout");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?id=pjwaffle");
     LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=9600");
@@ -168,10 +168,10 @@ void MainWindow::BuildFeedCache() {
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
 
-    QString statusToRender =
-            BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+    QString statusToRender = "Nothing yet";
+            /* BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.key(0))),
                             Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
-                            test->GetStatusColour());
+                            test->GetStatusColour()); */
 
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
