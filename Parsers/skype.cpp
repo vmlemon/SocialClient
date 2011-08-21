@@ -68,10 +68,7 @@ QString Skype::GetUnknownColour() {
 
 void Skype::WriteToCache(QString aUsername, QString aData) {
 
-    QFile workingFile(GetDefaultCacheDir() + "/" + aUsername);
-
     QVariantMap skypeMap;
-    QString skypeObject;
 
     /* Username, Data */
     skypeMap["Username"] = aUsername;
@@ -80,14 +77,9 @@ void Skype::WriteToCache(QString aUsername, QString aData) {
     qDebug() << "Skype cache:" << skypeMap.keys() << skypeMap.values();
 
     QByteArray skypeArray = Json::serialize(skypeMap);
-    skypeObject = QString::fromUtf8(skypeArray);
 
-    workingFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    File::SaveDiskFile(GetDefaultCacheDir() + "/" + aUsername, QString::fromUtf8(skypeArray));
 
-    QTextStream stream(&workingFile);
-
-    stream << skypeObject;
-    workingFile.close();
 }
 
 QString Skype::GetStatusColour(QString aUsername) {
