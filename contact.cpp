@@ -34,7 +34,7 @@ Contact::Contact():
     iStatusColour("")
 
 {
-    CountStoredContacts();
+    //CountStoredContacts();
 }
 
 Contact::Contact(QString aJsonData){
@@ -208,7 +208,6 @@ QString Contact::GetDefaultContactsDir() {
 
     if (!contactDir.exists()) {
         qDebug() << "Cannot locate the Contacts directory. Attempting to create it...";
-
 
         contactDir.mkpath(path);
     }
