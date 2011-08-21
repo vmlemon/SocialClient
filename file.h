@@ -9,6 +9,7 @@ class File
 public:
     File();
     static QString LoadDiskFile(QString aFilePath);
+    static bool SaveDiskFile(QString aFilePath, QString aFileData);
 };
 
 #endif // FILE_H

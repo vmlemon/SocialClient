@@ -227,20 +227,7 @@ qint64 Contact::CountStoredContacts() {
 }
 
 bool Contact::WriteContactFile() {
-    QFile workingFile(GetDefaultContactsDir() + "/" + QString::number(GetUid()));
-    workingFile.open(QIODevice::WriteOnly | QIODevice::Text);
-
-    QTextStream stream(&workingFile);
-
-    stream << Serialise();
-    workingFile.close();
-
-    if (!workingFile.exists()) {
-        return false;
-    }
-    else {
-        return true;
-    }
+    return File::SaveDiskFile(GetDefaultContactsDir() + "/" + QString::number(GetUid()), Serialise());
 }
 
 bool Contact::ReadContactFile (int aContactUid) {
