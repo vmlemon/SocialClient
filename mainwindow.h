@@ -42,6 +42,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     void PopulateRamCache();
+    QString iStatusToRender;
 
 protected:
     void resizeEvent(QResizeEvent *aEvent);
