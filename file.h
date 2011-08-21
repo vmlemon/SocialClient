@@ -2,6 +2,7 @@
 #define FILE_H
 
 #include <QString>
+#include <QDir>
 
 class File
 {

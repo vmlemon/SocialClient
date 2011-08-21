@@ -3,8 +3,6 @@
 #include <QVariantMap>
 #include <QByteArray>
 #include <QMap>
-
-#include <QDir>
 #include <QTextStream>
 
 #include <QDebug>

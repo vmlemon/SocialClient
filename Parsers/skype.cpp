@@ -1,7 +1,6 @@
 #include "skype.h"
 #include <QDebug>
 #include <QtJSON/json.h>
-#include <QDir>
 #include <file.h>
 #include <QTextStream>
 
