@@ -31,6 +31,7 @@ public:
     static void WriteToCache(QString aUsername, QString aData);
     static QString GetStatusColour(QString aUsername);
     static QString GetDefaultCacheDir();
+    static void DirectoryProbe();
 };
 
 #endif // SKYPE_H

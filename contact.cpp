@@ -269,3 +269,17 @@ bool Contact::ReadContactFile (int aContactUid) {
 bool Contact::EntryZeroExists() {
     return iHaveZero;
 }
+
+void Contact::DirectoryProbe() {
+    if (!QDir(GetDefaultContactsDir()).exists()) {
+        qDebug() << "Cannot locate the Contacts directory. Attempting to create it...";
+
+        QDir contactDir = QDir(GetDefaultContactsDir());
+        contactDir.mkpath(GetDefaultContactsDir());
+    }
+
+    else {
+        qDebug() << "Will look inside" << GetDefaultContactsDir() << "for contacts";
+        qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
+    }
+}
