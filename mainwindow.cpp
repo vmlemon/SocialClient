@@ -44,9 +44,6 @@ QMap<qint64, QString> iTwitterUidCache;
 
 QString iNetworkData;
 
-/* Remove me later */
-Contact *test;
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -142,7 +139,7 @@ void MainWindow::on_actionGet_Skype_Status_triggered()
 void MainWindow::BuildFeedCache() {
 
     /* Not a Twitter feed, but here for testing */
-    LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
+    //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
     /* A test of Identi.ca's "Twitter-compatible feeds" */
     //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
@@ -168,7 +165,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
 
-    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(QString::number(test->GetSkypeStatus())));
+    //ui->SkypeStatus->setText(Skype::ParseSkypeStatus(QString::number(test->GetSkypeStatus())));
 }
 
 void MainWindow::on_actionCreate_Contact_triggered()
