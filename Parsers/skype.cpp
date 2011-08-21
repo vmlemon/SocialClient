@@ -92,7 +92,7 @@ void Skype::WriteToCache(QString aUsername, QString aData) {
 
 QString Skype::GetStatusColour(QString aUsername) {
 
-    QString jsonData = File::LoadDiskFeed(GetDefaultCacheDir() + "/" + aUsername);
+    QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
     bool status;
 
     QVariantMap dataMap = Json::parse(jsonData, status).toMap();
@@ -136,6 +136,5 @@ void Skype::DirectoryProbe() {
 
     else {
         qDebug() << "Will look inside" << GetDefaultCacheDir() << "for cached Skype status data";
-        //qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
     }
 }

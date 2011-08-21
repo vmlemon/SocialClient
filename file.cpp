@@ -5,7 +5,7 @@ File::File()
 {
 }
 
-QString File::LoadDiskFeed(QString aFilePath) {
+QString File::LoadDiskFile(QString aFilePath) {
 
     QFile feedFile(aFilePath);
     QString feedLine;

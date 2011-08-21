@@ -7,7 +7,7 @@ Twitter::Twitter()
 {
 }
 
-QString Twitter::GetTwitterAvatarUri(QString aJsonData) {
+QString Twitter::GetTwitterAvatarUrl(QString aJsonData) {
 
     bool status;
 
