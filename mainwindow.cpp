@@ -205,7 +205,7 @@ void MainWindow::PopulateRamCache() {
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
         /* Attempt to set Skype statuses for UIDs */
-        QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num");
+        QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
 
         Contact *su = new Contact();
         su->ReadContactFile(pos);
