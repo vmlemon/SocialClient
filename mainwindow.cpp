@@ -194,5 +194,9 @@ void MainWindow::on_actionCreate_Contact_triggered()
 }
 
 void MainWindow::PopulateRamCache() {
-    //iSkypeCache.insert()
+    int pos = 0;
+
+    for (pos; pos < Contact::CountStoredContacts(); pos++) {
+        iSkypeCache.insert(pos, Contact::GetSkypeUserName(pos));
+    }
 }

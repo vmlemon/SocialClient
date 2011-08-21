@@ -33,11 +33,11 @@ public:
     void SetTwitterUrl(QString aTwitterUrl);
 
     QString GetSkypeUserName();
-    QString GetSkypeUserName(int aUid);
+    static QString GetSkypeUserName(int aUid);
     void SetSkypeUserName(QString aSkypeUserName);
 
     int GetSkypeStatus();
-    int GetSkypeStatus(int aUid);
+    static int GetSkypeStatus(int aUid);
     void SetSkypeStatus(int aSkypeStatus);
 
     QString GetLastFmUserName();
