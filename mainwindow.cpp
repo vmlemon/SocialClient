@@ -53,9 +53,9 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
 
     QString icon = "<img src=\"" + iconUri + "\" height=\"24\" width=\"24\"/>";
     QString statusStart = QString().append("<span style=\"")
-                                   .append("background-color:")
-                                   .append(statusColour)
-                                   .append("; color:6E5E5E;\">");
+            .append("background-color:")
+            .append(statusColour)
+            .append("; color:6E5E5E;\">");
     QString statusFont("<font face=\"S60 Sans\">");
     QString statusEnd("</font></span>");
 
@@ -78,31 +78,29 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
     QNetworkAccessManager *netArbitrator = new QNetworkAccessManager(this);
     QObject::connect(netArbitrator, SIGNAL(finished(QNetworkReply*)),
-             this, SLOT(finishedSlot(QNetworkReply*)));
+                     this, SLOT(finishedSlot(QNetworkReply*)));
 
     QUrl url(aHttpUri);
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
     qDebug() << "Have" << reply->size() << "bytes";
 
-     return iNetworkData;
-    }
+    return iNetworkData;
+}
 
 void MainWindow::finishedSlot(QNetworkReply* aReply) {
     iNetworkData = QString(aReply->readAll().data());
 
     qDebug() << "Inside finishedSlot()" /* iNetworkData */;
 
-
     if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=") ||
-        aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=") ||
-        aReply->url().toString().startsWith("http://identi.ca/api/users/show.json?screen_name=")) {
+            aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=") ||
+            aReply->url().toString().startsWith("http://identi.ca/api/users/show.json?screen_name=")) {
         QString processedUri(Twitter::ReduceUrl(aReply->url().toString()));
         qDebug() << "Got a Twitter user URL" << processedUri;
 
         qDebug() << processedUri;
 
         iTwitterCache.insert(processedUri, iNetworkData);
-
     }
 
     if (aReply->url().toString().startsWith("http://mystatus.skype.com")) {
@@ -133,7 +131,7 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
 {
-   ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
+    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
 }
 
 void MainWindow::BuildFeedCache() {
@@ -146,7 +144,7 @@ void MainWindow::BuildFeedCache() {
     /* Not a Twitter feed, but here for testing */
     LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
-   /* A test of Identi.ca's "Twitter-compatible feeds" */
+    /* A test of Identi.ca's "Twitter-compatible feeds" */
     LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
 
     qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
@@ -163,7 +161,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
 
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
                                              Twitter::GetTwitterAvatarUri(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
-                                                                          test->GetStatusColour()) +
+                                             test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value(test->GetLastFmUserName())) +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
@@ -178,7 +176,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     qDebug() << ui->webView->url().toString();
 
     ui->SkypeStatus->setText(Skype::ParseSkypeStatus(QString::number(test->GetSkypeStatus())));
-
 }
 
 void MainWindow::on_actionCreate_Contact_triggered()
