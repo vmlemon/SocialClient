@@ -148,9 +148,7 @@ QString Contact::GetTwitterUrl(int aUid) {
 
     ptc->ReadContactFile(aUid);
 
-    QString url(ptc->GetTwitterUrl());
-
-    return url;
+    return ptc->GetTwitterUrl();
 
     delete ptc;
 }
@@ -158,6 +156,17 @@ QString Contact::GetTwitterUrl(int aUid) {
 /* Set this instance's Twitter URL */
 void Contact::SetTwitterUrl(QString aTwitterUrl) {
     iTwitterUrl = aTwitterUrl;
+}
+
+/* Return the Skype Username for a given UID */
+QString Contact::GetSkypeUserName(int aUid) {
+    Contact *ptc = new Contact();
+
+    ptc->ReadContactFile(aUid);
+
+    return ptc->GetSkypeUserName();
+
+    delete ptc;
 }
 
 /* Get this instance's Skype Username */
@@ -170,9 +179,21 @@ void Contact::SetSkypeUserName(QString aSkypeUserName) {
     iSkypeUserName = aSkypeUserName;
 }
 
-/* Get this instance's Skype Username */
+/* Get this instance's Skype Status */
 int Contact::GetSkypeStatus() {
     return iSkypeStatus;
+}
+
+
+/* Return the Skype Status for a given UID */
+int Contact::GetSkypeStatus(int aUid) {
+    Contact *ptc = new Contact();
+
+    ptc->ReadContactFile(aUid);
+
+    return ptc->GetSkypeStatus();
+
+    delete ptc;
 }
 
 void Contact::SetSkypeStatus(int aSkypeStatus) {

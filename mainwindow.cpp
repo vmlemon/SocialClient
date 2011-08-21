@@ -24,6 +24,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
     File::DirectoryProbe(Contact::GetDefaultContactsDir());
     File::DirectoryProbe(Skype::GetDefaultCacheDir());
+
+    PopulateRamCache();
 }
 
 QString iContentType = "data:text/html,";
@@ -34,6 +36,9 @@ QString iEndRender = "</marquee> &nbsp; ";
 /* Username, Data */
 QMap<QString, QString> iTwitterCache;
 QMap<QString, QString> iLastFmCache;
+
+/* UID, Username */
+QMap<qint64, QString> iSkypeCache;
 
 QString iNetworkData;
 
@@ -186,4 +191,8 @@ void MainWindow::on_actionCreate_Contact_triggered()
 {
     ContactBuilder *cb = new ContactBuilder();
     cb->show();
+}
+
+void MainWindow::PopulateRamCache() {
+    //iSkypeCache.insert()
 }

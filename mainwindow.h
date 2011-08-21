@@ -41,6 +41,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+    void PopulateRamCache();
 
 protected:
     void resizeEvent(QResizeEvent *aEvent);
