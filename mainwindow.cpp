@@ -39,6 +39,7 @@ QMap<QString, QString> iLastFmCache;
 
 /* UID, Username */
 QMap<qint64, QString> iSkypeUidCache;
+QMap<qint64, QString> iTwitterUidCache;
 
 QString iNetworkData;
 
@@ -200,7 +201,9 @@ void MainWindow::PopulateRamCache() {
 
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
         iSkypeUidCache.insert(pos, Contact::GetSkypeUserName(pos));
+        iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
     }
 
     qDebug() << iSkypeUidCache;
+    qDebug() << iTwitterUidCache;
 }
