@@ -194,7 +194,7 @@ void MainWindow::PopulateRamCache() {
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
         LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(pos));
 
-        iStatusToRender = "";
+        iStatusToRender = Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos)));
 
         /*qDebug() << BuildStatusItem(
                             Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos))),
@@ -202,7 +202,6 @@ void MainWindow::PopulateRamCache() {
                             Contact::GetStatusColour(pos)
                             );*/
 
-        qDebug() << Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos)));
         //qDebug() << Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos));
         //qDebug() << Contact::GetStatusColour(pos);
     }
