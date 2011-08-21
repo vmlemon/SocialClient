@@ -160,6 +160,8 @@ void MainWindow::BuildFeedCache() {
     qDebug() << iTwitterCache.keys();
     qDebug() << iTwitterCache.values();
     qDebug() << iLastFmCache.values();
+
+    PopulateRamCache();
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
