@@ -244,7 +244,7 @@ bool Contact::WriteContactFile() {
 }
 
 bool Contact::ReadContactFile (int aContactUid) {
-    Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
+    Contact *ptc = new Contact(File::LoadDiskFile(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
     iVersion = ptc->GetVersion();
     iUid = ptc->GetUid();
     iForename = ptc->GetForename();

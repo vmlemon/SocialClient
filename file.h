@@ -8,7 +8,7 @@ class File
 {
 public:
     File();
-    static QString LoadDiskFeed(QString aFilePath);
+    static QString LoadDiskFile(QString aFilePath);
 };
 
 #endif // FILE_H

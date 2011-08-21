@@ -160,15 +160,15 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              iStartRender +
 
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
-                                             Twitter::GetTwitterAvatarUri(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+                                             Twitter::GetTwitterAvatarUrl(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
                                              test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value(test->GetLastFmUserName())) +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("hideout")), "CAD2ED") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUri(File::LoadDiskFeed("../CodeTests/__MarkW__.json")), "D3F5D5") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("pjwaffle")), "FFC6A1") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("9600")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("9600")), "E199F0") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("identica")), Twitter::GetTwitterAvatarUri(iTwitterCache.value("identica")), "F1C6F5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFile("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUrl(File::LoadDiskFile("../CodeTests/wtroberts.json")), "EDCACA") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("hideout")), "CAD2ED") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFile("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUrl(File::LoadDiskFile("../CodeTests/__MarkW__.json")), "D3F5D5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("pjwaffle")), "FFC6A1") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("9600")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("9600")), "E199F0") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("identica")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("identica")), "F1C6F5") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
