@@ -191,6 +191,10 @@ void MainWindow::PopulateRamCache() {
     QMap<qint64, QString> tweetMap;
     QMap<qint64, QString> colourMap;
 
+    QString avatarUrl;
+    QString latestTweet;
+    QString colour;
+
     int pos = 0;
 
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
@@ -201,9 +205,11 @@ void MainWindow::PopulateRamCache() {
         tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
         colourMap.insert(pos, Contact::GetStatusColour(pos));
 
-        iStatusToRender.append(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)));
-        qDebug() << Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos)));
+        avatarUrl = Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos)));
+        latestTweet = Twitter::GetTwitterLatestTweet(tweetMap.value(pos));
+        colour = Contact::GetStatusColour(pos);
 
+        iStatusToRender.append(BuildStatusItem(latestTweet, avatarUrl, colour));
 
     }
 
