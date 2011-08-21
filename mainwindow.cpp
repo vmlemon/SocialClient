@@ -22,8 +22,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    Contact::DirectoryProbe();
-    Skype::DirectoryProbe();
+    File::DirectoryProbe(Contact::GetDefaultContactsDir());
+    File::DirectoryProbe(Skype::GetDefaultCacheDir());
 }
 
 QString iContentType = "data:text/html,";

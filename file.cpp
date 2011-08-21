@@ -1,5 +1,9 @@
 #include "file.h"
 #include <QDebug>
+#include <QDir>
+#include <QFile>
+
+#include <contact.h>
 
 File::File()
 {
@@ -38,3 +42,44 @@ bool File::SaveDiskFile(QString aFilePath, QString aFileData) {
         return true;
     }
 }
+
+void File::DirectoryProbe(QString aDirectoryPath) {
+
+    QDir dir = QDir(aDirectoryPath);
+
+    QString dirNameOrType;
+    QString genericText1 = "Cannot locate the ";
+    QString genericText2 = "directory. Attempting to create it...";
+
+    if (aDirectoryPath.contains("Skype")) {
+        dirNameOrType = "Skype cache";
+    }
+
+    if (aDirectoryPath.contains("Contacts")) {
+        dirNameOrType = "Contacts";
+    }
+
+    else {
+        dirNameOrType = aDirectoryPath;
+    }
+
+    if (!dir.exists()) {
+        qDebug() << genericText1 << dirNameOrType << genericText2;
+
+        dir.mkpath(aDirectoryPath);
+    }
+
+    else {
+        /* Familiar formatting */
+        if (aDirectoryPath.contains("Skype")) {
+            qDebug() << "Will look inside" << aDirectoryPath << "for cached Skype status data";
+        }
+
+        if (aDirectoryPath.contains("Contacts")) {
+            qDebug() << "Will look inside" << aDirectoryPath << "for contacts";
+            qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
+        }
+
+    }
+}
+

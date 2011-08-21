@@ -51,8 +51,6 @@ public:
     bool WriteContactFile();
     bool EntryZeroExists();
 
-    static void DirectoryProbe();
-
 protected:
 
     /* Version 0 attributes */
