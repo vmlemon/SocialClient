@@ -32,7 +32,6 @@ Contact::Contact():
     /* Version 1 attributes */
 
     iStatusColour("")
-
 {
     CountStoredContacts();
 }
@@ -244,7 +243,6 @@ bool Contact::WriteContactFile() {
     }
 }
 
-
 bool Contact::ReadContactFile (int aContactUid) {
     Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
     iVersion = ptc->GetVersion();
@@ -264,7 +262,6 @@ bool Contact::ReadContactFile (int aContactUid) {
 
     return true;
 }
-
 
 bool Contact::EntryZeroExists() {
     return iHaveZero;
