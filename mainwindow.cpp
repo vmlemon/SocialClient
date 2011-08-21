@@ -168,6 +168,7 @@ void MainWindow::BuildFeedCache() {
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
+    PopulateRamCache();
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
                              iStatusToRender +
@@ -187,6 +188,7 @@ void MainWindow::on_actionCreate_Contact_triggered()
 }
 
 void MainWindow::PopulateRamCache() {
+    iStatusToRender.clear();
 
     QMap<qint64, QString> tweetMap;
     QMap<qint64, QString> colourMap;
@@ -209,10 +211,7 @@ void MainWindow::PopulateRamCache() {
         latestTweet = Twitter::GetTwitterLatestTweet(tweetMap.value(pos));
         colour = Contact::GetStatusColour(pos);
 
-        iStatusToRender = "";
-        iStatusToRender.append(BuildStatusItem(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)),
-                                              Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos))),
-                                              Contact::GetStatusColour(pos)));
+        iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
     }
 
