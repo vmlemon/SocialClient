@@ -205,5 +205,5 @@ void MainWindow::PopulateRamCache() {
     }
 
     qDebug() << iSkypeUidCache;
-    qDebug() << iTwitterUidCache;
+    qDebug() << "Twitter UIDs in cache: " <<iTwitterUidCache << "Usernames: " << iTwitterDataCache.keys();
 }
