@@ -34,11 +34,11 @@ QString iStartRender = "<head>" + iUtf8ContentType + "</head>" + "<body bgcolor=
 QString iEndRender = "</marquee> &nbsp; ";
 
 /* Username, Data */
-QMap<QString, QString> iTwitterCache;
+QMap<QString, QString> iTwitterDataCache;
 QMap<QString, QString> iLastFmCache;
 
 /* UID, Username */
-QMap<qint64, QString> iSkypeCache;
+QMap<qint64, QString> iSkypeUidCache;
 
 QString iNetworkData;
 
@@ -105,7 +105,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
         qDebug() << processedUri;
 
-        iTwitterCache.insert(processedUri, iNetworkData);
+        iTwitterDataCache.insert(processedUri, iNetworkData);
     }
 
     if (aReply->url().toString().startsWith("http://mystatus.skype.com")) {
@@ -156,9 +156,9 @@ void MainWindow::BuildFeedCache() {
     /* A test of Identi.ca's "Twitter-compatible feeds" */
     LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
 
-    qDebug() << "The cache contains " << QString::number(iTwitterCache.size()) << "items";
-    qDebug() << iTwitterCache.keys();
-    qDebug() << iTwitterCache.values();
+    qDebug() << "The cache contains " << QString::number(iTwitterDataCache.size()) << "items";
+    qDebug() << iTwitterDataCache.keys();
+    qDebug() << iTwitterDataCache.values();
     qDebug() << iLastFmCache.values();
 
     PopulateRamCache();
@@ -170,16 +170,16 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
 
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
-                                             Twitter::GetTwitterAvatarUrl(iTwitterCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
+                                             Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Twitter::ReduceUrl(test->GetTwitterUrl()))),
                                              test->GetStatusColour()) +
                              "Listening to: " + LastFm::GetLastFmLatestTrack(iLastFmCache.value(test->GetLastFmUserName())) +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFile("../CodeTests/wtroberts.json")), Twitter::GetTwitterAvatarUrl(File::LoadDiskFile("../CodeTests/wtroberts.json")), "EDCACA") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("hideout")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("hideout")), "CAD2ED") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value("hideout")), Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value("hideout")), "CAD2ED") +
                              BuildStatusItem(Twitter::GetTwitterLatestTweet(File::LoadDiskFile("../CodeTests/__MarkW__.json")), Twitter::GetTwitterAvatarUrl(File::LoadDiskFile("../CodeTests/__MarkW__.json")), "D3F5D5") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("pjwaffle")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("pjwaffle")), "FFC6A1") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("9600")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("9600")), "E199F0") +
-                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterCache.value("identica")), Twitter::GetTwitterAvatarUrl(iTwitterCache.value("identica")), "F1C6F5") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value("pjwaffle")), Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value("pjwaffle")), "FFC6A1") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value("9600")), Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value("9600")), "E199F0") +
+                             BuildStatusItem(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value("identica")), Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value("identica")), "F1C6F5") +
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
@@ -199,8 +199,8 @@ void MainWindow::PopulateRamCache() {
     int pos = 0;
 
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
-        iSkypeCache.insert(pos, Contact::GetSkypeUserName(pos));
+        iSkypeUidCache.insert(pos, Contact::GetSkypeUserName(pos));
     }
 
-    qDebug() << iSkypeCache;
+    qDebug() << iSkypeUidCache;
 }
