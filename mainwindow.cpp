@@ -187,6 +187,10 @@ void MainWindow::on_actionCreate_Contact_triggered()
 }
 
 void MainWindow::PopulateRamCache() {
+
+    QMap<qint64, QString> tweetMap;
+    QMap<qint64, QString> colourMap;
+
     int pos = 0;
 
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
@@ -194,10 +198,12 @@ void MainWindow::PopulateRamCache() {
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
         LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" + Contact::GetTwitterUrl(pos));
 
-        iStatusToRender.append(Twitter::GetTwitterLatestTweet(iTwitterDataCache.value(iTwitterUidCache.value(pos))));
+        tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
+        colourMap.insert(pos, Contact::GetStatusColour(pos));
+
+        iStatusToRender.append(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)));
 
                            // Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos));
-                            qDebug() << "UID is coloured: " << Contact::GetStatusColour(pos);
 
         //qDebug() << Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(pos));
         //qDebug() << Contact::GetStatusColour(pos);
