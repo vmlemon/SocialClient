@@ -190,7 +190,6 @@ void MainWindow::PopulateRamCache() {
 
     QMap<qint64, QString> tweetMap;
     QMap<qint64, QString> colourMap;
-    QMap<qint64, QString> statusMap;
 
     QString avatarUrl;
     QString latestTweet;
@@ -211,12 +210,9 @@ void MainWindow::PopulateRamCache() {
         colour = Contact::GetStatusColour(pos);
 
         iStatusToRender = "";
-
-        statusMap.insert(pos, BuildStatusItem(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)),
+        iStatusToRender.append(BuildStatusItem(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)),
                                               Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos))),
                                               Contact::GetStatusColour(pos)));
-
-        iStatusToRender.append(statusMap.value(pos));
 
     }
 
