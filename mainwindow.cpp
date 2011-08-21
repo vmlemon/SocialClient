@@ -82,6 +82,7 @@ QString MainWindow::LoadHttpFeed(QString aHttpUri) {
 
     QUrl url(aHttpUri);
     QNetworkReply *reply = netArbitrator->get(QNetworkRequest(QUrl(url)));
+    qDebug() << "Have" << reply->size() << "bytes";
 
      return iNetworkData;
     }
