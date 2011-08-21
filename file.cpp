@@ -21,3 +21,20 @@ QString File::LoadDiskFile(QString aFilePath) {
     }
     return feedLine;
 }
+
+bool File::SaveDiskFile(QString aFilePath, QString aFileData) {
+    QFile workingFile(aFilePath);
+    workingFile.open(QIODevice::WriteOnly | QIODevice::Text);
+
+    QTextStream stream(&workingFile);
+
+    stream << aFileData;
+    workingFile.close();
+
+    if (!workingFile.exists()) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
