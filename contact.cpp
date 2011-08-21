@@ -34,7 +34,7 @@ Contact::Contact():
     iStatusColour("")
 
 {
-    //CountStoredContacts();
+    CountStoredContacts();
 }
 
 Contact::Contact(QString aJsonData){
@@ -202,22 +202,7 @@ void Contact::SetStatusColour(QString aHexColour) {
 }
 
 QString Contact::GetDefaultContactsDir() {
-
-    QString path = QDir::homePath() + "/.SocialClient/Contacts";
-    QDir contactDir = QDir(path);
-
-    if (!contactDir.exists()) {
-        qDebug() << "Cannot locate the Contacts directory. Attempting to create it...";
-
-        contactDir.mkpath(path);
-    }
-
-    else {
-        qDebug() << "Will look inside" << path << "for contacts";
-        qDebug() << "Discovered" << QString::number(Contact::CountStoredContacts()) << "contacts";
-    }
-
-    return path;
+    return QDir::homePath() + "/.SocialClient/Contacts";
 }
 
 qint64 Contact::CountStoredContacts() {
@@ -258,6 +243,7 @@ bool Contact::WriteContactFile() {
         return true;
     }
 }
+
 
 bool Contact::ReadContactFile (int aContactUid) {
     Contact *ptc = new Contact(File::LoadDiskFeed(GetDefaultContactsDir() + "/" + QString::number(aContactUid)));
