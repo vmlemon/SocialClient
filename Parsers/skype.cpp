@@ -113,7 +113,7 @@ QString Skype::GetStatusColour(QString aUsername) {
 
         break;
 
-    case EUnknown:
+    default:
         return GetUnknownColour();
 
         qDebug() << "Unknown";
