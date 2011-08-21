@@ -1,6 +1,5 @@
 #include "file.h"
 #include <QDebug>
-#include <QDir>
 #include <QFile>
 
 #include <contact.h>
