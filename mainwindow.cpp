@@ -210,6 +210,8 @@ void MainWindow::PopulateRamCache() {
         latestTweet = Twitter::GetTwitterLatestTweet(tweetMap.value(pos));
         colour = Contact::GetStatusColour(pos);
 
+        iStatusToRender = "";
+
         statusMap.insert(pos, BuildStatusItem(Twitter::GetTwitterLatestTweet(tweetMap.value(pos)),
                                               Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos))),
                                               Contact::GetStatusColour(pos)));
