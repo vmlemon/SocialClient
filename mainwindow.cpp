@@ -131,7 +131,11 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 
 void MainWindow::on_actionGet_Skype_Status_triggered()
 {
-    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num")));
+    QString status = LoadHttpFeed("http://mystatus.skype.com/" + ui->lineEdit->text() + ".num");
+    test->SetSkypeStatus(Skype::GetRawSkypeStatus(status));
+    test->WriteContactFile();
+
+    ui->SkypeStatus->setText(Skype::ParseSkypeStatus(status));
 }
 
 void MainWindow::BuildFeedCache() {
