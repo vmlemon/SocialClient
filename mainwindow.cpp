@@ -209,10 +209,9 @@ void MainWindow::PopulateRamCache() {
 
         Contact *su = new Contact();
         su->ReadContactFile(pos);
-        su->SetSkypeStatus();
 
-        test->SetSkypeStatus(Skype::GetRawSkypeStatus(skypeStatus));
-        test->WriteContactFile();
+        su->SetSkypeStatus(Skype::GetRawSkypeStatus(skypeStatus));
+        su->WriteContactFile();
 
     }
 
