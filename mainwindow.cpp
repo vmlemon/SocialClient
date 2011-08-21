@@ -6,8 +6,6 @@
 
 #include <QBuffer>
 #include <QMap>
-#include <QDir>
-
 #include <file.h>
 
 #include <Parsers/lastfm.h>
