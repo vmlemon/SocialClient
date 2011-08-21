@@ -18,7 +18,8 @@ SOURCES += main.cpp\
     Parsers/twitter.cpp \
     contact.cpp \
     contactbuilder.cpp \
-    file.cpp
+    file.cpp \
+    contacteditor.cpp
 
 HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/lastfm.h \
@@ -26,7 +27,9 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/twitter.h \
     contact.h \
     contactbuilder.h \
-    file.h
+    file.h \
+    contacteditor.h
 
 FORMS    += mainwindow.ui \
-    contactbuilder.ui
+    contactbuilder.ui \
+    contacteditor.ui
