@@ -123,19 +123,5 @@ QString Skype::GetStatusColour(QString aUsername) {
 }
 
 QString Skype::GetDefaultCacheDir() {
-
-    QString path = QDir::homePath() + "/.SocialClient/Cache/Skype";
-    QDir skypeCacheDir = QDir(path);
-
-    if (!skypeCacheDir.exists()) {
-        qDebug() << "Cannot locate the Skype cache directory. Attempting to create it...";
-
-        skypeCacheDir.mkpath(path);
-    }
-
-    else {
-        qDebug() << "Will look inside" << path << "for cached Skype status data";
-    }
-
-    return path;
+    return QDir::homePath() + "/.SocialClient/Cache/Skype";
 }
