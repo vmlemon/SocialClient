@@ -197,6 +197,7 @@ int Contact::GetSkypeStatus(int aUid) {
 }
 
 void Contact::SetSkypeStatus(int aSkypeStatus) {
+    qDebug() << "[Contact] Setting Skype status to: " << aSkypeStatus;
     iSkypeStatus = aSkypeStatus;
 }
 
