@@ -209,9 +209,9 @@ void MainWindow::PopulateRamCache() {
             Contact *su = new Contact();
             su->ReadContactFile(pos);
 
-            su->SetSkypeStatus(Skype::GetRawSkypeStatus(skypeStatus));
+            su->SetSkypeStatus(Skype::ReadFromCache(su->GetSkypeUserName()).toInt());
             su->WriteContactFile();
-            qDebug() << "Attempted to set Skype status to" << su->GetSkypeStatus();
+            qDebug() << "Attempted to set Skype status to" << skypeStatus;
         }
 
 
