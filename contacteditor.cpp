@@ -1,6 +1,7 @@
 #include "contacteditor.h"
 #include "ui_contacteditor.h"
 #include <Parsers/skype.h>
+#include <QDebug>
 
 ContactEditor::ContactEditor(QWidget *parent) :
     QDialog(parent),
@@ -26,6 +27,8 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
     ui->EMailField->setText(iTempContact->GetEMailAddress());
     ui->SkypeUsernameField->setText(iTempContact->GetSkypeUserName());
 
-    ui->SkypeStatusLabel->setText(Skype::ParseSkypeStatus(QString::number(iTempContact->GetSkypeStatus())));
+    ui->SkypeStatusLabel->setText(Skype::ParseSkypeStatus(
+                                      QString::number(iTempContact->GetSkypeStatus(aText.toLongLong()))));
+    qDebug() << iTempContact->GetSkypeStatus();
 
 }
