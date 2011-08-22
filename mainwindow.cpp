@@ -183,7 +183,6 @@ void MainWindow::PopulateRamCache() {
         colour = Contact::GetStatusColour(pos);
 
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
-        ui->webView->reload();
 
         /* Attempt to set Skype statuses for UIDs */
         if (iSkypeUidCache.value(pos).length() != 0) {
