@@ -30,8 +30,6 @@ private slots:
     void on_lineEdit_textChanged(const QString &aText);
     void finishedSlot(QNetworkReply* aReply);
 
-    void on_actionUpdate_Twitter_Feeds_triggered();
-
     void on_actionUpdate_Ticker_triggered();
 
     void on_actionCreate_Contact_triggered();
