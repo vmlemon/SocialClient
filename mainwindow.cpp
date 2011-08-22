@@ -209,10 +209,10 @@ void MainWindow::PopulateRamCache() {
             Contact *su = new Contact();
             su->ReadContactFile(pos);
 
-            qDebug() << "User's status:" << Skype::ReadFromCache(su->GetSkypeUserName());
-            //su->SetSkypeStatus(Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt());
-            //su->WriteContactFile();
-            //qDebug() << "Attempted to set Skype status to" << Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt();
+            qDebug() << "User's status:" << Skype::ReadFromCache(Contact::GetSkypeUserName(pos));
+            su->SetSkypeStatus(Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt());
+            su->WriteContactFile();
+            qDebug() << "Attempted to set Skype status to" << Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt();
         //}
 
 
