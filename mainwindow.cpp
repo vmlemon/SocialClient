@@ -202,7 +202,7 @@ void MainWindow::PopulateRamCache() {
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
         /* Attempt to set Skype statuses for UIDs */
-        if (QString::number(Contact::GetSkypeStatus(pos)).length() !=0) {
+        if (iSkypeUidCache.value(pos).length() != 0) {
             QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
 
             Contact *su = new Contact();
