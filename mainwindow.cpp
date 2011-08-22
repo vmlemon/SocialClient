@@ -128,24 +128,19 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
-
-    /* Not a Twitter feed, but here for testing */
-    //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
-
-    /* A test of Identi.ca's "Twitter-compatible feeds" */
-    //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
-
         PopulateRamCache();
 
-    qDebug() << "The cache contains " << QString::number(iTwitterDataCache.size()) << "items";
-    qDebug() << iTwitterDataCache.keys();
-    qDebug() << iTwitterDataCache.values();
-    qDebug() << iLastFmCache.values();
+
 
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
+    /* Not a Twitter feed, but here for testing */
+    //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
+
+    /* A test of Identi.ca's "Twitter-compatible feeds" */
+    //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
     PopulateRamCache();
     ui->webView->setUrl(QUrl(iContentType +
                              iStartRender +
@@ -210,6 +205,12 @@ void MainWindow::PopulateRamCache() {
 
     qDebug() << iSkypeUidCache;
     qDebug() << "Twitter UIDs in cache: " <<iTwitterUidCache << "Usernames: " << iTwitterDataCache.keys();
+
+    qDebug() << "The cache contains " << QString::number(iTwitterDataCache.size()) << "items";
+    qDebug() << iTwitterDataCache.keys();
+    qDebug() << iTwitterDataCache.values();
+    qDebug() << iLastFmCache.values();
+
 }
 
 void MainWindow::on_actionContact_Viewer_triggered()
