@@ -76,19 +76,9 @@
    <addaction name="menuFile"/>
    <addaction name="menuContacts"/>
   </widget>
-  <action name="actionUpdate_Twitter_Feeds">
-   <property name="text">
-    <string>Build Feed Cache</string>
-   </property>
-  </action>
   <action name="actionUpdate_Ticker">
    <property name="text">
     <string>Update Ticker</string>
-   </property>
-  </action>
-  <action name="actionUpdate_List">
-   <property name="text">
-    <string>Update List</string>
    </property>
   </action>
   <action name="actionCreate_Contact">
