@@ -21,6 +21,8 @@ public:
 private slots:
     void on_UidField_textChanged(const QString &aText);
 
+    void on_buttonBox_accepted();
+
 private:
     Ui::ContactEditor *ui;
     Contact *iTempContact;
