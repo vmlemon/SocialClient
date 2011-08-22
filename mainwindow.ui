@@ -43,10 +43,7 @@
     <property name="title">
      <string>File</string>
     </property>
-    <addaction name="actionUpdate_Twitter_Feeds"/>
-    <addaction name="separator"/>
     <addaction name="actionUpdate_Ticker"/>
-    <addaction name="separator"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
@@ -64,11 +61,6 @@
   <action name="actionUpdate_Twitter_Feeds">
    <property name="text">
     <string>Build Feed Cache</string>
-   </property>
-  </action>
-  <action name="actionGet_Skype_Status">
-   <property name="text">
-    <string>Get Skype Status</string>
    </property>
   </action>
   <action name="actionUpdate_Ticker">

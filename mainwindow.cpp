@@ -126,14 +126,6 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     aReply->close();
 }
 
-void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
-{
-        PopulateRamCache();
-
-
-
-}
-
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
     /* Not a Twitter feed, but here for testing */
