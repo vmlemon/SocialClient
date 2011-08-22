@@ -42,7 +42,10 @@
     <item row="0" column="1">
      <widget class="QLineEdit" name="UidField">
       <property name="inputMask">
-       <string>0; </string>
+       <string/>
+      </property>
+      <property name="maxLength">
+       <number>32767</number>
       </property>
      </widget>
     </item>
@@ -57,6 +60,53 @@
      <widget class="QLabel" name="UidCount">
       <property name="text">
        <string>*UidPlaceHolder*</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="ForenameField"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="ForenameLabel">
+      <property name="text">
+       <string>Forename: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="SurnameLabel">
+      <property name="text">
+       <string>Surname: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="SurnameField"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="EMailLabel">
+      <property name="text">
+       <string>E-Mail Address: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="EMailField"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="SkypeUsernameLabel">
+      <property name="text">
+       <string>Skype Username: </string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="SkypeUsernameField"/>
+    </item>
+    <item row="5" column="2">
+     <widget class="QLabel" name="SkypeStatusLabel">
+      <property name="text">
+       <string>*StatusPlaceHolder*</string>
       </property>
      </widget>
     </item>
