@@ -203,7 +203,7 @@ void MainWindow::PopulateRamCache() {
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
         /* Attempt to set Skype statuses for UIDs */
-        if (!iSkypeUidCache.value(pos).contains(QRegExp("[0-9]"))) {
+        if (iSkypeUidCache.value(pos).length() != 0) {
             LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
 
             Contact *su = new Contact();
