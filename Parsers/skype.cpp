@@ -81,7 +81,18 @@ void Skype::WriteToCache(QString aUsername, QString aData) {
 
 }
 
-QString Skype::GetStatusColour(QString aUsername) {
+QString Skype::ReadFromCache(QString aUsername) {
+
+    QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
+    bool status;
+
+    QVariantMap dataMap = Json::parse(jsonData, status).toMap();
+    qDebug() << dataMap["Data"];
+
+    return ParseSkypeStatus(dataMap["Data"].toInt());
+}
+
+QString Skype::GetUserStatus(QString aUsername) {
 
     QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
     bool status;
@@ -112,6 +123,7 @@ QString Skype::GetStatusColour(QString aUsername) {
         break;
     }
 }
+
 
 QString Skype::GetDefaultCacheDir() {
     return QDir::homePath() + "/.SocialClient/Cache/Skype";

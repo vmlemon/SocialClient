@@ -211,6 +211,7 @@ void MainWindow::PopulateRamCache() {
 
             su->SetSkypeStatus(Skype::GetRawSkypeStatus(skypeStatus));
             su->WriteContactFile();
+            qDebug() << "Attempted to set Skype status to" << su->GetSkypeStatus();
         }
 
 
