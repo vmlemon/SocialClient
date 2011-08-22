@@ -205,7 +205,7 @@ void MainWindow::PopulateRamCache() {
         /* Attempt to set Skype statuses for UIDs */
         if (!iSkypeUidCache.value(pos).isEmpty()) {
             QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
-            //Skype::WriteToCache()
+            Skype::WriteToCache(iSkypeUidCache.value(pos), skypeStatus);
 
             Contact *su = new Contact();
             su->ReadContactFile(pos);
