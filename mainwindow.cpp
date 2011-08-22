@@ -132,11 +132,6 @@ void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
     BuildFeedCache();
 }
 
-void MainWindow::on_actionGet_Skype_Status_triggered()
-{
-  //  ui->SkypeStatus->setText(Skype::ParseSkypeStatus(status));
-}
-
 void MainWindow::BuildFeedCache() {
 
     /* Not a Twitter feed, but here for testing */
@@ -165,8 +160,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->show();
     qDebug() << ui->webView->url().toString();
-
-    //ui->SkypeStatus->setText(Skype::ParseSkypeStatus(QString::number(test->GetSkypeStatus())));
 }
 
 void MainWindow::on_actionCreate_Contact_triggered()

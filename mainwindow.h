@@ -33,8 +33,6 @@ private slots:
 
     void on_actionUpdate_Twitter_Feeds_triggered();
 
-    void on_actionGet_Skype_Status_triggered();
-
     void on_actionUpdate_Ticker_triggered();
 
     void on_actionCreate_Contact_triggered();

@@ -47,7 +47,6 @@
     <addaction name="separator"/>
     <addaction name="actionUpdate_Ticker"/>
     <addaction name="separator"/>
-    <addaction name="actionGet_Skype_Status"/>
     <addaction name="separator"/>
     <addaction name="actionExit"/>
    </widget>
