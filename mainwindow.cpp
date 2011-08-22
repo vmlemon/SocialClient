@@ -194,6 +194,8 @@ void MainWindow::PopulateRamCache() {
                      Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
 
         tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
+
+        qDebug() << tweetMap;
         colourMap.insert(pos, Contact::GetStatusColour(pos));
 
         avatarUrl = Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos)));
