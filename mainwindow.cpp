@@ -27,7 +27,7 @@ MainWindow::MainWindow(QWidget *parent) :
     File::DirectoryProbe(Contact::GetDefaultContactsDir());
     File::DirectoryProbe(Skype::GetDefaultCacheDir());
 
-    PopulateRamCache();
+    on_actionUpdate_Ticker_triggered();
 }
 
 QString iContentType = "data:text/html,";
