@@ -71,6 +71,8 @@
     <addaction name="actionUpdate_Ticker"/>
     <addaction name="separator"/>
     <addaction name="actionGet_Skype_Status"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
    </widget>
    <widget class="QMenu" name="menuContacts">
     <property name="title">
@@ -120,6 +122,11 @@
   <action name="actionContact_Viewer">
    <property name="text">
     <string>Contact Viewer</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
    </property>
   </action>
  </widget>

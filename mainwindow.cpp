@@ -229,3 +229,8 @@ void MainWindow::on_actionContact_Viewer_triggered()
     ContactEditor *ce = new ContactEditor();
     ce->show();
 }
+
+void MainWindow::on_actionExit_triggered()
+{
+    QApplication::quit();
+}

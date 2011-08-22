@@ -41,6 +41,8 @@ private slots:
 
     void on_actionContact_Viewer_triggered();
 
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
     void PopulateRamCache();
