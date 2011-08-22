@@ -89,10 +89,10 @@ QString Skype::ReadFromCache(QString aUsername) {
     QVariantMap dataMap = Json::parse(jsonData, status).toMap();
     qDebug() << dataMap["Data"];
 
-    return ParseSkypeStatus(dataMap["Data"].toInt());
+    return ParseSkypeStatus(QString::number(dataMap["Data"].toInt()));
 }
 
-QString Skype::GetUserStatus(QString aUsername) {
+QString Skype::GetStatusColour(QString aUsername) {
 
     QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
     bool status;
