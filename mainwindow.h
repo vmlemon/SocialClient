@@ -24,7 +24,6 @@ public:
     ~MainWindow();
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
     QString LoadHttpFeed(QString aHttpUri);
-    void BuildFeedCache();
 
 private slots:
 

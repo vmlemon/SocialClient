@@ -129,11 +129,6 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 void MainWindow::on_actionUpdate_Twitter_Feeds_triggered()
 {
 
-    BuildFeedCache();
-}
-
-void MainWindow::BuildFeedCache() {
-
     /* Not a Twitter feed, but here for testing */
     //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
