@@ -27,8 +27,7 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
     ui->EMailField->setText(iTempContact->GetEMailAddress());
     ui->SkypeUsernameField->setText(iTempContact->GetSkypeUserName());
 
-    ui->SkypeStatusLabel->setText(Skype::ParseSkypeStatus(
-                                      QString::number(iTempContact->GetSkypeStatus(aText.toLongLong()))));
+    ui->SkypeStatusLabel->setText(Skype::ReadFromCache(ui->SkypeUsernameField->text()));
     qDebug() << iTempContact->GetSkypeStatus();
 
 }

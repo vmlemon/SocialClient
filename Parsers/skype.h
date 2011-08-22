@@ -29,6 +29,7 @@ public:
 
     /* Cache */
     static void WriteToCache(QString aUsername, QString aData);
+    static QString ReadFromCache(QString aUsername);
     static QString GetStatusColour(QString aUsername);
     static QString GetDefaultCacheDir();
     static void DirectoryProbe();
