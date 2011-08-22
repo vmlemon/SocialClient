@@ -13,6 +13,7 @@
 #include <Parsers/twitter.h>
 
 #include <contactbuilder.h>
+#include <contacteditor.h>
 
 #include <contact.h>
 
@@ -217,4 +218,10 @@ void MainWindow::PopulateRamCache() {
 
     qDebug() << iSkypeUidCache;
     qDebug() << "Twitter UIDs in cache: " <<iTwitterUidCache << "Usernames: " << iTwitterDataCache.keys();
+}
+
+void MainWindow::on_actionContact_Viewer_triggered()
+{
+    ContactEditor *ce = new ContactEditor();
+    ce->show();
 }

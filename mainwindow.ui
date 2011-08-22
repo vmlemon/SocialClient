@@ -77,6 +77,8 @@
      <string>Contacts</string>
     </property>
     <addaction name="actionCreate_Contact"/>
+    <addaction name="separator"/>
+    <addaction name="actionContact_Viewer"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuContacts"/>
@@ -113,6 +115,11 @@
   <action name="actionCreate_Contact">
    <property name="text">
     <string>Create Contact...</string>
+   </property>
+  </action>
+  <action name="actionContact_Viewer">
+   <property name="text">
+    <string>Contact Viewer</string>
    </property>
   </action>
  </widget>
