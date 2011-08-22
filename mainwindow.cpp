@@ -30,9 +30,9 @@ MainWindow::MainWindow(QWidget *parent) :
 
     on_actionUpdate_Ticker_triggered();
 
-    QTimer *timer = new QTimer(this);
-    connect(timer, SIGNAL(timeout()), this, SLOT(on_actionUpdate_Ticker_triggered()));
-    timer->start(60000);
+    //QTimer *timer = new QTimer(this);
+    //connect(timer, SIGNAL(timeout()), this, SLOT(on_actionUpdate_Ticker_triggered()));
+    //timer->start(60000);
 }
 
 QString iContentType = "data:text/html,";
