@@ -203,13 +203,15 @@ void MainWindow::PopulateRamCache() {
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
         /* Attempt to set Skype statuses for UIDs */
-        if (iSkypeUidCache.value(pos).length() != 0) {
+        if (!iSkypeUidCache.value(pos).isEmpty()) {
             QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
+            //Skype::WriteToCache()
 
             Contact *su = new Contact();
             su->ReadContactFile(pos);
 
-            su->SetSkypeStatus(Skype::ReadFromCache(su->GetSkypeUserName()).toInt());
+            qDebug() << "User's status:" << Skype::ReadFromCache(su->GetSkypeUserName()).toInt();
+            su->SetSkypeStatus(Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt());
             su->WriteContactFile();
             qDebug() << "Attempted to set Skype status to" << skypeStatus;
         }
