@@ -124,6 +124,8 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     }
 
     aReply->close();
+
+    ui->webView->reload();
 }
 
 void MainWindow::on_actionUpdate_Ticker_triggered()
@@ -140,7 +142,10 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                              iEndRender));
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
+
+    ui->webView->reload();
     ui->webView->show();
+
     qDebug() << ui->webView->url().toString();
 }
 
@@ -202,6 +207,8 @@ void MainWindow::PopulateRamCache() {
     qDebug() << iTwitterDataCache.keys();
     qDebug() << iTwitterDataCache.values();
     qDebug() << iLastFmCache.values();
+
+    ui->webView->reload();
 
 }
 
