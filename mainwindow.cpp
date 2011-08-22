@@ -203,18 +203,17 @@ void MainWindow::PopulateRamCache() {
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
 
         /* Attempt to set Skype statuses for UIDs */
-        if (!iSkypeUidCache.value(pos).isEmpty()) {
-            QString skypeStatus = LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
-            Skype::WriteToCache(iSkypeUidCache.value(pos), skypeStatus);
+        //if (!iSkypeUidCache.value(pos).contains(QRegExp("[0-9]"))) {
+            LoadHttpFeed("http://mystatus.skype.com/" + iSkypeUidCache.value(pos) + ".num");
 
             Contact *su = new Contact();
             su->ReadContactFile(pos);
 
-            qDebug() << "User's status:" << Skype::ReadFromCache(su->GetSkypeUserName()).toInt();
-            su->SetSkypeStatus(Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt());
-            su->WriteContactFile();
-            qDebug() << "Attempted to set Skype status to" << skypeStatus;
-        }
+            qDebug() << "User's status:" << Skype::ReadFromCache(su->GetSkypeUserName());
+            //su->SetSkypeStatus(Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt());
+            //su->WriteContactFile();
+            //qDebug() << "Attempted to set Skype status to" << Skype::ReadFromCache(iSkypeUidCache.value(pos)).toInt();
+        //}
 
 
     }
