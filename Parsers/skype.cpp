@@ -89,8 +89,10 @@ QString Skype::ReadFromCache(QString aUsername) {
     QVariantMap dataMap = Json::parse(jsonData, status).toMap();
     qDebug() << "[Skype] Skype cache contains:" << dataMap["Data"];
 
-    return ParseSkypeStatus(QString::number(dataMap["Data"].toInt()));
+    return QString::number(dataMap["Data"].toInt());
 }
+
+
 
 QString Skype::GetStatusColour(QString aUsername) {
 
