@@ -31,3 +31,16 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
     qDebug() << iTempContact->GetSkypeStatus();
 
 }
+
+void ContactEditor::on_buttonBox_accepted()
+{
+    iTempContact->SetForename(ui->ForenameField->text());
+    iTempContact->SetSurname(ui->SurnameField->text());
+    iTempContact->SetEMailAddress(ui->EMailField->text());
+    iTempContact->SetSkypeUserName(ui->SkypeUsernameField->text());
+    iTempContact->SetSkypeStatus(Skype::ReadFromCache(ui->SkypeUsernameField->text()).toInt());
+
+    qDebug() << "Going to write: " << iTempContact->Serialise();
+
+    iTempContact->WriteContactFile();
+}
