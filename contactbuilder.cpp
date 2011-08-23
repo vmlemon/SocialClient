@@ -5,6 +5,8 @@
 #include <QDebug>
 #include <QColor>
 #include <QLineEdit>
+#include <QClipboard>
+#include <QMimeData>
 
 #include <Parsers/skype.h>
 
@@ -22,6 +24,11 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     this->setWindowTitle(windowTitle);
 
     qDebug() << iColour.length();
+
+    QClipboard *clipboard = QApplication::clipboard();
+    qDebug() << clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").toHex();
+    //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
+    //For "echo123", this is 070000006500630068006f00310032003300
 }
 
 ContactBuilder::~ContactBuilder()
