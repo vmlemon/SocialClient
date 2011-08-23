@@ -152,7 +152,12 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     qDebug() << "Processed data is " << round1Data.size();
     pos = 0;
 
-
+    for (pos = 0; pos < round1Data.size(); pos++) {
+        QString tempData;
+        tempData.append(round1Data.at(0)).round1Data.at(pos + 1);
+        round2Data = tempData;
+        qDebug() << tempData;
+    }
 
     /*
 0 a
