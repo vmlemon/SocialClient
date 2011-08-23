@@ -139,7 +139,7 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     qDebug() << "Got data:" << aRawData.toHex() << "of length" << QString::number(stringSize);
 
     for (pos = 0; pos < stringSize; pos++) {
-        int offset = 3;
+        int offset = 2;
 
         QString data;
 
