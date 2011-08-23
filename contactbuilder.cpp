@@ -26,15 +26,11 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     qDebug() << iColour.length();
 
     QClipboard *clipboard = QApplication::clipboard();
-    QMimeData *mimeData = clipboard->mimeData(QClipboard::Clipboard)->data();
 
-    if (mimeData.hasFormat("SkypeIdentityList")) {
-       qDebug() << Skype::ParseClipboardData(mimeData.data("SkypeIdentityList"));
+    if (clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").length() != 0) {
+        QByteArray mimeData = clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList");
+        qDebug() << Skype::ParseClipboardData(mimeData);
     }
-
-
-
-
 }
 
 ContactBuilder::~ContactBuilder()
