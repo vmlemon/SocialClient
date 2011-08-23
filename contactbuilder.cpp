@@ -137,7 +137,8 @@ void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
 void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
     if (aEvent->mimeData()->hasText() ||
             aEvent->mimeData()->hasUrls() ||
-            aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
+            aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
+            aEvent->mimeData()->hasFormat("UniformResourceLocator")) {
         aEvent->acceptProposedAction();
     }
 }
@@ -149,6 +150,19 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         QByteArray mimeData = aEvent->mimeData()->data("SkypeIdentityList");
 
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
+    }
+
+    if (aEvent->mimeData()->hasFormat("UniformResourceLocator")) {
+
+        QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
+        QString rawData = mimeData;
+
+        qDebug() << rawData;
+
+        if (rawData.contains("http://twitter.com/#!/")) {
+            ui->TwitterHandle->setText(rawData.remove("http://twitter.com/#!/"));
+        }
+
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
