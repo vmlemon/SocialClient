@@ -164,12 +164,12 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         }
     }
 
-    //else if (aEvent->mimeData()->hasText() == true) {
-       // QString rawText = aEvent->mimeData()->text();
+    else if (aEvent->mimeData()->hasText() == true) {
+        QString rawText = aEvent->mimeData()->text();
 
-        //QString originalText = ui->AddressField->text();
-
-        //ui->AddressField->setText(originalText + rawText);
-    //}
+        if (rawText.contains("http://twitter.com/#!/")) {
+            ui->TwitterHandle->setText(rawText.remove("http://twitter.com/#!/"));
+        }
+    }
 
 }
