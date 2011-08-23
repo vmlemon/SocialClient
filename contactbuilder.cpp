@@ -9,6 +9,7 @@
 #include <QMimeData>
 #include <QDropEvent>
 #include <QDragEnterEvent>
+#include <QUrl>
 
 #include <Parsers/skype.h>
 
@@ -150,15 +151,15 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
     }
 
-    //if (aEvent->mimeData()->hasUrls() == true) {
+    if (aEvent->mimeData()->hasUrls() == true) {
 
-        //QString firstRawURL = event->mimeData()->urls().first().toString();
+        QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
 
-        //QString originalText = ui->AddressField->text();
+        if (firstRawUrl.contains("http://www.last.fm/user")) {
+            ui->LastFmHandle->setText(firstRawUrl.remove("http://www.last.fm/user/"));
+        }
+    }
 
-        //ui->AddressField->setText(originalText + firstRawURL);
-
-//}
     //else if (aEvent->mimeData()->hasText() == true) {
        // QString rawText = aEvent->mimeData()->text();
 
