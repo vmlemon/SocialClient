@@ -154,38 +154,10 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
 
     for (pos = 0; pos < round1Data.size(); pos++) {
         QString tempData;
-        tempData.append(round1Data.at(0)).round1Data.at(pos + 1);
+        tempData.append(round1Data.at(0)).append(round1Data.at(pos + 1));
         round2Data = tempData;
         qDebug() << tempData;
     }
-
-    /*
-0 a
-1
-2 p
-3
-4 a
-5
-6 c
-7
-8 h
-9
-10 e
-11
-12 l
-13
-14 o
-15
-16 g
-17
-18 g
-19
-20 e
-21
-22 r
-
-
-      */
 
     return round2Data.simplified();
 }
