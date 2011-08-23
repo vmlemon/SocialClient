@@ -27,8 +27,12 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     QClipboard *clipboard = QApplication::clipboard();
     qDebug() << clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").toHex();
+
+    ushort test = 0x070000006500630068006f00310032003300;
     //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
     //For "echo123", this is 070000006500630068006f00310032003300
+    //First byte is length of string, counting from 1
+    //qDebug() << QString::fromUtf16(clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList"));
 }
 
 ContactBuilder::~ContactBuilder()
