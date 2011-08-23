@@ -134,9 +134,22 @@ QString Skype::GetDefaultCacheDir() {
 QString Skype::ParseClipboardData(QByteArray aRawData) {
     QByteArray workingData = aRawData;
     int stringSize = aRawData.at(0);
+    int pos = 0;
 
     qDebug() << "Got data:" << aRawData.toHex() << "of length" << QString::number(stringSize);
-    workingData.chop(stringSize);
+
+    for (pos = 0; pos < stringSize; pos++) {
+        int offset = 3;
+
+        QString data;
+
+        data.append(workingData.at(pos + offset + 2));
+
+        qDebug() << data;
+    }
+
+
+    qDebug() << aRawData.length() << workingData.length();
 
     //ushort test = 0x070000006500630068006f00310032003300;
     //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
