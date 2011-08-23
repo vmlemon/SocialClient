@@ -130,3 +130,19 @@ QString Skype::GetStatusColour(QString aUsername) {
 QString Skype::GetDefaultCacheDir() {
     return QDir::homePath() + "/.SocialClient/Cache/Skype";
 }
+
+QString Skype::ParseClipboardData(QByteArray aRawData) {
+    QByteArray workingData = aRawData;
+    int stringSize = aRawData.at(0);
+
+    qDebug() << "Got data:" << aRawData.toHex() << "of length" << QString::number(stringSize);
+    workingData.chop(stringSize);
+
+    //ushort test = 0x070000006500630068006f00310032003300;
+    //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
+    //For "echo123", this is 070000006500630068006f00310032003300
+    //First byte is length of string, counting from 1
+    //qDebug() << QString::fromUtf16(test);
+    //http://forum.skype.com/index.php?showtopic=372541
+    return "";
+}
