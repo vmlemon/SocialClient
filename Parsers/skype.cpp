@@ -136,9 +136,10 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     int stringSize = aRawData.at(0);
     int pos = 0;
 
-    qDebug() << "Got data:" << aRawData.toHex() << "of length" << QString::number(stringSize);
+    qDebug() << "Got data:" << aRawData.toHex() << "of internal length" << QString::number(stringSize);
+    qDebug() << "Size of array after filling is" << aRawData.size();
 
-    for (pos = 0; pos < stringSize; pos++) {
+    for (pos = 0; pos <= aRawData.length(); pos++) {
         int offset = 2;
 
         QString data;
@@ -146,6 +147,11 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
         data.append(workingData.at(pos + offset + 2));
 
         qDebug() << data;
+
+        if (data.length() == stringSize) {
+            break;
+        }
+
     }
 
 
