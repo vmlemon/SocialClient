@@ -161,8 +161,9 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     if (aEvent->mimeData()->hasUrls() == true) {
 
-        qDebug() << "hasUrls()";
+
         QString firstRawUrl = Poach(aEvent->mimeData()->urls().first().toString());
+         qDebug() << "hasUrls()" << firstRawUrl;
         DisperseUri(firstRawUrl);
     }
 
@@ -177,9 +178,10 @@ void ContactBuilder::DisperseUri(QString aUri) {
 
     qDebug() << "Dispersing" << aUri;
 
-    if (aUri.startsWith("http://twitter.com/#/")) {
+    if (aUri.startsWith("http://twitter.com/#")) {
 
         QString twitterUrl = Poach(aUri.remove("http://twitter.com/#/"));
+        qDebug() << "Twitter HashURL" << twitterUrl;
 
         ui->TwitterHandle->setText(twitterUrl);
     }
@@ -202,13 +204,15 @@ QString ContactBuilder::Poach(QString aUri) {
         qDebug() << aUri.indexOf("\n\r") << aUri.indexOf(" ");
         poached.simplified().chop(aUri.indexOf(" "));
 
-        if (poached.contains("http://twitter.com/#/")) {
-            return poached.remove("http://twitter.com/#/");
-        }
+        //if (poached.contains("http://twitter.com/#/")) {
+        //    qDebug() << "Poached a Twitter HashURL" <<  poached.remove("http://twitter.com/#/");
+        //    return poached.remove("http://twitter.com/#/");
+        //}
 
-        else {
-            return poached;
-        }
+        //else {
+            qDebug() << "Poacher has seen" << poached;
+           // return poached;
+        //}
     }
 
     else {
