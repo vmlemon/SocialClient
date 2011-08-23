@@ -158,16 +158,8 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
         if (!round1Data.at(pos).isNull()) {
             notNull = pos;
             qDebug() << "NOT A NULL: " << round1Data.at(pos) << "AT: " << pos;
-            //tempData = tempData + round1Data.at(pos);
         }
-
-        //qDebug() << "Round 2 position: " << pos;
-
-        //round2Data = tempData;
-        //qDebug() << tempData;
     }
-
-    //round2Data.append(round1Data.at(0)).append(round1Data.at(2)).append(round1Data.at(4));
 
     return round1Data.simplified();
 }
