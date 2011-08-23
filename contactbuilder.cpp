@@ -172,14 +172,14 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
 void ContactBuilder::DisperseUri(QString aUri) {
     if (aUri.contains("http://twitter.com/#!/")) {
-        ui->TwitterHandle->setText(rawText.simplified().remove("http://twitter.com/#!/"));
+        ui->TwitterHandle->setText(aUri.simplified().remove("http://twitter.com/#!/"));
     }
 
     if (aUri.contains("http://www.last.fm/user")) {
-        ui->LastFmHandle->setText(firstRawUrl.simplified().remove("http://www.last.fm/user/"));
+        ui->LastFmHandle->setText(aUri.simplified().remove("http://www.last.fm/user/"));
     }
 
-    if (firstRawUrl.contains("mailto:")) {
-        ui->EMail->setText(firstRawUrl.simplified().remove("mailto:"));
+    if (aUri.contains("mailto:")) {
+        ui->EMail->setText(aUri.simplified().remove("mailto:"));
     }
 }
