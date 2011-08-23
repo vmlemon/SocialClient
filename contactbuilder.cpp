@@ -57,7 +57,6 @@ void ContactBuilder::on_buttonBox_accepted()
             iTempContact->SetUid(iTempContact->CountStoredContacts() + 1 - 1);
     }
 
-
     if (iColour.length() != 0) {
         iTempContact->SetVersion(1);
         iTempContact->SetStatusColour(iColour);
@@ -156,33 +155,31 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
         QString rawData = mimeData;
-
-        qDebug() << rawData;
-
-        if (rawData.contains("http://twitter.com/#!/")) {
-            ui->TwitterHandle->setText(rawData.remove("http://twitter.com/#!/").simplified());
-        }
+        DisperseUri(rawData);
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
 
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
-
-        if (firstRawUrl.contains("http://www.last.fm/user")) {
-            ui->LastFmHandle->setText(firstRawUrl.remove("http://www.last.fm/user/"));
-        }
-
-        if (firstRawUrl.contains("mailto:")) {
-            ui->EMail->setText(firstRawUrl.remove("mailto:"));
-        }
+        DisperseUri(firstRawUrl);
     }
 
     else if (aEvent->mimeData()->hasText() == true) {
         QString rawText = aEvent->mimeData()->text();
+        DisperseUri(rawText);
+    }
+}
 
-        if (rawText.contains("http://twitter.com/#!/")) {
-            ui->TwitterHandle->setText(rawText.remove("http://twitter.com/#!/").simplified());
-        }
+void ContactBuilder::DisperseUri(QString aUri) {
+    if (aUri.contains("http://twitter.com/#!/")) {
+        ui->TwitterHandle->setText(rawText.simplified().remove("http://twitter.com/#!/"));
     }
 
+    if (aUri.contains("http://www.last.fm/user")) {
+        ui->LastFmHandle->setText(firstRawUrl.simplified().remove("http://www.last.fm/user/"));
+    }
+
+    if (firstRawUrl.contains("mailto:")) {
+        ui->EMail->setText(firstRawUrl.simplified().remove("mailto:"));
+    }
 }
