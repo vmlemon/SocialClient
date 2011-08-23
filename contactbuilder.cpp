@@ -140,28 +140,13 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
 
 void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
-    if (event->mimeData()->hasUrls() == true) {
+    if (aEvent->mimeData()->hasUrls() == true) {
 
         QString firstRawURL = event->mimeData()->urls().first().toString();
 
         QString originalText = ui->AddressField->text();
 
-#ifdef Q_OS_WIN
-
-        if (ui->actionAdd_to_Playlist->isChecked() == true) {
-            ui->PlaylistItems->addItem(dBackplane->SanitiseForDisplay(firstRawURL));
-
-            dBackplane->SetContentSource(Backplane::EDiskFile);
-        }
-
-        else {
-            ui->AddressField->setText(originalText + dBackplane->SanitiseForDisplay(firstRawURL));
-        }
-
-#else
         ui->AddressField->setText(originalText + firstRawURL);
-
-#endif
 
 }
     else if (event->mimeData()->hasText() == true) {
