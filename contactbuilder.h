@@ -35,6 +35,7 @@ private:
     QString iColour;
     Contact *iTempContact;
     void DisperseUri(QString aUri);
+    QString Poach(QString aUri);
 
 protected:
     void dropEvent(QDropEvent *aEvent);

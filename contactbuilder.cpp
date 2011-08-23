@@ -10,6 +10,7 @@
 #include <QDropEvent>
 #include <QDragEnterEvent>
 #include <QUrl>
+#include <QWindowsMime>
 
 #include <Parsers/skype.h>
 
@@ -153,32 +154,52 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     if (aEvent->mimeData()->hasFormat("UniformResourceLocator")) {
 
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
-        QString rawData = mimeData;
+        QString rawData = Poach(mimeData);
         DisperseUri(rawData);
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
 
-        QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
+        QString firstRawUrl = Poach(aEvent->mimeData()->urls().first().toString());
         DisperseUri(firstRawUrl);
     }
 
     else if (aEvent->mimeData()->hasText() == true) {
-        QString rawText = aEvent->mimeData()->text();
+        QString rawText = Poach(aEvent->mimeData()->text());
         DisperseUri(rawText);
     }
 }
 
 void ContactBuilder::DisperseUri(QString aUri) {
-    if (aUri.contains("http://twitter.com/#!/")) {
-        ui->TwitterHandle->setText(aUri.simplified().remove("http://twitter.com/#!/"));
+
+    QString poachedUri = Poach(aUri);
+
+    qDebug() << "Dispersing" << poachedUri;
+
+    if (poachedUri.contains("http://twitter.com/#!/")) {
+        ui->TwitterHandle->setText(poachedUri.remove("http://twitter.com/#!/"));
     }
 
-    if (aUri.contains("http://www.last.fm/user")) {
-        ui->LastFmHandle->setText(aUri.simplified().remove("http://www.last.fm/user/"));
+    if (poachedUri.contains("http://www.last.fm/user")) {
+        ui->LastFmHandle->setText(poachedUri.remove("http://www.last.fm/user/"));
     }
 
-    if (aUri.contains("mailto:")) {
-        ui->EMail->setText(aUri.simplified().remove("mailto:"));
+    if (poachedUri.contains("mailto:")) {
+        ui->EMail->setText(poachedUri.remove("mailto:"));
+    }
+}
+
+QString ContactBuilder::Poach(QString aUri) {
+    /* Safari hack */
+    if (aUri.contains(" ")) {
+        qDebug() << "This seems to be a URL from Safari";
+        qDebug() << aUri.indexOf("\n\r") << aUri.indexOf(" ");
+        aUri.chop(aUri.indexOf(" "));
+
+        return aUri.simplified();
+    }
+
+    else {
+        return aUri.simplified();
     }
 }
