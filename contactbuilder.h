@@ -34,6 +34,7 @@ private:
     Ui::ContactBuilder *ui;
     QString iColour;
     Contact *iTempContact;
+    void DisperseUri(QString aUri);
 
 protected:
     void dropEvent(QDropEvent *aEvent);
