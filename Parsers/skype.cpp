@@ -137,25 +137,16 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     int pos = 0;
 
     QString data;
+    char tempChar;
 
     qDebug() << "Got data:" << aRawData.toHex() << "of internal length" << QString::number(stringSize);
     qDebug() << "Size of array after filling is" << aRawData.size();
 
     for (pos = 0; pos < aRawData.length() - 5; pos++) {
-
-        if (QString(workingData.at(pos)).size() != 0) {
-            qDebug() << pos << ":" << workingData.at(pos + 2 + 2);
-        }
+        tempChar = workingData.at(pos + 2 + 2);
+        qDebug() << pos <<tempChar;
+        data = data + tempChar;
     }
 
-
-    qDebug() << aRawData.length() << workingData.length();
-
-    //ushort test = 0x070000006500630068006f00310032003300;
-    //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
-    //For "echo123", this is 070000006500630068006f00310032003300
-    //First byte is length of string, counting from 1
-    //qDebug() << QString::fromUtf16(test);
-    //http://forum.skype.com/index.php?showtopic=372541
-    return data;
+    return data.simplified();
 }
