@@ -147,7 +147,6 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     if (aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
 
         QByteArray mimeData = aEvent->mimeData()->data("SkypeIdentityList");
-
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
     }
 
