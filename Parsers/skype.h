@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QVariantMap>
+#include <QByteArray>
 
 enum TSkypeStatus {
     EUnknown = 0,
@@ -33,6 +34,10 @@ public:
     static QString GetStatusColour(QString aUsername);
     static QString GetDefaultCacheDir();
     static void DirectoryProbe();
+
+    /* Internal data formats */
+    static QString ParseClipboardData(QByteArray aRawData);
+
 };
 
 #endif // SKYPE_H
