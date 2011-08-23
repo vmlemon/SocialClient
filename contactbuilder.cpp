@@ -15,8 +15,7 @@
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactBuilder),
-    iColour(""),
-    setAcceptDrops(true)
+    iColour("")
 {
     ui->setupUi(this);
 
@@ -34,6 +33,8 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
         QByteArray mimeData = clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList");
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
     }
+
+    ui->SkypeHandle->setAcceptDrops(true);
 }
 
 ContactBuilder::~ContactBuilder()
@@ -133,28 +134,37 @@ void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
 /* Listen for DragEnter events */
 
 void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
-    if (aEvent->mimeData()->hasText() == true || event->mimeData()->hasUrls() == true) {
-        event->acceptProposedAction();
+    if (aEvent->mimeData()->hasText() ||
+            aEvent->mimeData()->hasUrls() ||
+            aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
+        aEvent->acceptProposedAction();
     }
 }
 
 void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
-    if (aEvent->mimeData()->hasUrls() == true) {
+    if (aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
 
-        QString firstRawURL = event->mimeData()->urls().first().toString();
+        QByteArray mimeData = aEvent->mimeData()->data("SkypeIdentityList");
+
+        ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
+    }
+
+    //if (aEvent->mimeData()->hasUrls() == true) {
+
+        //QString firstRawURL = event->mimeData()->urls().first().toString();
 
         //QString originalText = ui->AddressField->text();
 
         //ui->AddressField->setText(originalText + firstRawURL);
 
-}
-    else if (aEvent->mimeData()->hasText() == true) {
-        QString rawText = aEvent->mimeData()->text();
+//}
+    //else if (aEvent->mimeData()->hasText() == true) {
+       // QString rawText = aEvent->mimeData()->text();
 
         //QString originalText = ui->AddressField->text();
 
         //ui->AddressField->setText(originalText + rawText);
-    }
+    //}
 
 }
