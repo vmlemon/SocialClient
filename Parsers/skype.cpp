@@ -137,7 +137,6 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     int pos = 0;
 
     QString round1Data;
-    QString round2Data;
     char tempChar;
 
     qDebug() << "Got data:" << aRawData.toHex() << "of internal length" << QString::number(stringSize);
@@ -150,22 +149,25 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     }
 
     qDebug() << "Processed data is " << round1Data.size();
-    pos = 0;
+    //pos = 0;
 
-//    for (pos = 0; pos < round1Data.size(); pos++) {
-//        QString tempData = round1Data.at(0);
+    for (pos = 0; pos < round1Data.size() ; pos++) {
+        QString tempData = round1Data.at(0);
+        int notNull;
 
-//        tempData = tempData + round1Data.at(pos + 1);
-//        qDebug() << "Round 2 position: " << pos;
+        if (!round1Data.at(pos).isNull()) {
+            notNull = pos;
+            qDebug() << "NOT A NULL: " << round1Data.at(pos) << "AT: " << pos;
+            //tempData = tempData + round1Data.at(pos);
+        }
 
-//        tempData = tempData + round1Data.at(pos + 2);
+        //qDebug() << "Round 2 position: " << pos;
 
-//        round2Data = tempData;
-//        qDebug() << tempData;
-//    }
+        //round2Data = tempData;
+        //qDebug() << tempData;
+    }
 
-    round2Data.append(round1Data.at(0)).append(round1Data.at(2)).append(round1Data.at(4));
-    qDebug() << round2Data;
+    //round2Data.append(round1Data.at(0)).append(round1Data.at(2)).append(round1Data.at(4));
 
-    return round2Data.simplified();
+    return round1Data.simplified();
 }
