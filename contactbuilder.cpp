@@ -26,13 +26,19 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     qDebug() << iColour.length();
 
     QClipboard *clipboard = QApplication::clipboard();
-    qDebug() << clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").toHex();
+    QByteArray identity = clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList");
 
-    ushort test = 0x070000006500630068006f00310032003300;
+    int stringSize = identity.at(0);
+
+    qDebug() << "Got data:" << identity.toHex() << "String length: " << QString::number(stringSize);
+    identity.chop(stringSize);
+    qDebug() << QString::fromUtf8(QString::identity, identity.at(stringSize) );
+
+    //ushort test = 0x070000006500630068006f00310032003300;
     //For a user named "apachelogger", this returns 0c0000006100700061006300680065006c006f006700670065007200
     //For "echo123", this is 070000006500630068006f00310032003300
     //First byte is length of string, counting from 1
-    //qDebug() << QString::fromUtf16(clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList"));
+    //qDebug() << QString::fromUtf16(test);
 }
 
 ContactBuilder::~ContactBuilder()
