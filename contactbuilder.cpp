@@ -172,20 +172,18 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
 void ContactBuilder::DisperseUri(QString aUri) {
 
-    QString poachedUri = Poach(aUri);
+    qDebug() << "Dispersing" << aUri;
 
-    qDebug() << "Dispersing" << poachedUri;
-
-    if (poachedUri.contains("http://twitter.com/#!/")) {
-        ui->TwitterHandle->setText(poachedUri.remove("http://twitter.com/#!/"));
+    if (aUri.contains("http://twitter.com/#!/")) {
+        ui->TwitterHandle->setText(Poach(aUri.remove("http://twitter.com/#!/")));
     }
 
-    if (poachedUri.contains("http://www.last.fm/user")) {
-        ui->LastFmHandle->setText(poachedUri.remove("http://www.last.fm/user/"));
+    if (aUri.contains("http://www.last.fm/user")) {
+        ui->LastFmHandle->setText(Poach(aUri.remove("http://www.last.fm/user/")));
     }
 
-    if (poachedUri.contains("mailto:")) {
-        ui->EMail->setText(poachedUri.remove("mailto:"));
+    if (aUri.contains("mailto:")) {
+        ui->EMail->setText(Poach(aUri.remove("mailto:")));
     }
 }
 
