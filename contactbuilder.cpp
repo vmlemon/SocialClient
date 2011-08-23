@@ -144,17 +144,17 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
         QString firstRawURL = event->mimeData()->urls().first().toString();
 
-        QString originalText = ui->AddressField->text();
+        //QString originalText = ui->AddressField->text();
 
-        ui->AddressField->setText(originalText + firstRawURL);
+        //ui->AddressField->setText(originalText + firstRawURL);
 
 }
-    else if (event->mimeData()->hasText() == true) {
-        QString rawText = event->mimeData()->text();
+    else if (aEvent->mimeData()->hasText() == true) {
+        QString rawText = aEvent->mimeData()->text();
 
-        QString originalText = ui->AddressField->text();
+        //QString originalText = ui->AddressField->text();
 
-        ui->AddressField->setText(originalText + rawText);
+        //ui->AddressField->setText(originalText + rawText);
     }
 
 }
