@@ -7,13 +7,16 @@
 #include <QLineEdit>
 #include <QClipboard>
 #include <QMimeData>
+#include <QDropEvent>
+#include <QDragEnterEvent>
 
 #include <Parsers/skype.h>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ContactBuilder),
-    iColour("")
+    iColour(""),
+    setAcceptDrops(true)
 {
     ui->setupUi(this);
 
@@ -125,4 +128,48 @@ void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
      ui->SkypeHandle->setText(aText);
      ui->TwitterHandle->setText(aText);
     }
+}
+
+/* Listen for DragEnter events */
+
+void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
+    if (aEvent->mimeData()->hasText() == true || event->mimeData()->hasUrls() == true) {
+        event->acceptProposedAction();
+    }
+}
+
+void ContactBuilder::dropEvent(QDropEvent *aEvent) {
+
+    if (event->mimeData()->hasUrls() == true) {
+
+        QString firstRawURL = event->mimeData()->urls().first().toString();
+
+        QString originalText = ui->AddressField->text();
+
+#ifdef Q_OS_WIN
+
+        if (ui->actionAdd_to_Playlist->isChecked() == true) {
+            ui->PlaylistItems->addItem(dBackplane->SanitiseForDisplay(firstRawURL));
+
+            dBackplane->SetContentSource(Backplane::EDiskFile);
+        }
+
+        else {
+            ui->AddressField->setText(originalText + dBackplane->SanitiseForDisplay(firstRawURL));
+        }
+
+#else
+        ui->AddressField->setText(originalText + firstRawURL);
+
+#endif
+
+}
+    else if (event->mimeData()->hasText() == true) {
+        QString rawText = event->mimeData()->text();
+
+        QString originalText = ui->AddressField->text();
+
+        ui->AddressField->setText(originalText + rawText);
+    }
+
 }

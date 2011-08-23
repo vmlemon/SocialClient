@@ -34,6 +34,10 @@ private:
     Ui::ContactBuilder *ui;
     QString iColour;
     Contact *iTempContact;
+
+protected:
+    void dropEvent(QDropEvent *aEvent);
+    void dragEnterEvent(QDragEnterEvent *aEvent);
 };
 
 #endif // CONTACTBUILDER_H
