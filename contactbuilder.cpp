@@ -160,7 +160,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         qDebug() << rawData;
 
         if (rawData.contains("http://twitter.com/#!/")) {
-            ui->TwitterHandle->setText(rawData.remove("http://twitter.com/#!/"));
+            ui->TwitterHandle->setText(rawData.remove("http://twitter.com/#!/").simplified());
         }
     }
 
@@ -181,7 +181,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         QString rawText = aEvent->mimeData()->text();
 
         if (rawText.contains("http://twitter.com/#!/")) {
-            ui->TwitterHandle->setText(rawText.remove("http://twitter.com/#!/"));
+            ui->TwitterHandle->setText(rawText.remove("http://twitter.com/#!/").simplified());
         }
     }
 
