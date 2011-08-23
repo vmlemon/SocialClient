@@ -153,6 +153,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     if (aEvent->mimeData()->hasFormat("UniformResourceLocator")) {
 
+        qDebug() << "UniformResourceLocator";
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
         QString rawData = Poach(mimeData);
         DisperseUri(rawData);
@@ -160,11 +161,13 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     if (aEvent->mimeData()->hasUrls() == true) {
 
+        qDebug() << "hasUrls()";
         QString firstRawUrl = Poach(aEvent->mimeData()->urls().first().toString());
         DisperseUri(firstRawUrl);
     }
 
     else if (aEvent->mimeData()->hasText() == true) {
+        qDebug() << "hasText()";
         QString rawText = Poach(aEvent->mimeData()->text());
         DisperseUri(rawText);
     }
@@ -174,8 +177,11 @@ void ContactBuilder::DisperseUri(QString aUri) {
 
     qDebug() << "Dispersing" << aUri;
 
-    if (aUri.contains("http://twitter.com/#!/")) {
-        ui->TwitterHandle->setText(Poach(aUri.remove("http://twitter.com/#!/")));
+    if (aUri.startsWith("http://twitter.com/#/")) {
+
+        QString twitterUrl = Poach(aUri.remove("http://twitter.com/#/"));
+
+        ui->TwitterHandle->setText(twitterUrl);
     }
 
     if (aUri.contains("http://www.last.fm/user")) {
@@ -190,11 +196,19 @@ void ContactBuilder::DisperseUri(QString aUri) {
 QString ContactBuilder::Poach(QString aUri) {
     /* Safari hack */
     if (aUri.contains(" ")) {
+        QString poached = aUri;
+
         qDebug() << "This seems to be a URL from Safari";
         qDebug() << aUri.indexOf("\n\r") << aUri.indexOf(" ");
-        aUri.chop(aUri.indexOf(" "));
+        poached.simplified().chop(aUri.indexOf(" "));
 
-        return aUri.simplified();
+        if (poached.contains("http://twitter.com/#/")) {
+            return poached.remove("http://twitter.com/#/");
+        }
+
+        else {
+            return poached;
+        }
     }
 
     else {
