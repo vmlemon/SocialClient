@@ -29,7 +29,7 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     if (clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").length() != 0) {
         QByteArray mimeData = clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList");
-        qDebug() << Skype::ParseClipboardData(mimeData);
+        ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
     }
 }
 
