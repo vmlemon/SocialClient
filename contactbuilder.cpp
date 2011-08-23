@@ -158,6 +158,10 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         if (firstRawUrl.contains("http://www.last.fm/user")) {
             ui->LastFmHandle->setText(firstRawUrl.remove("http://www.last.fm/user/"));
         }
+
+        if (firstRawUrl.contains("mailto:")) {
+            ui->EMail->setText(firstRawUrl.remove("mailto:"));
+        }
     }
 
     //else if (aEvent->mimeData()->hasText() == true) {
