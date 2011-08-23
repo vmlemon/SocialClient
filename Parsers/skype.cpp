@@ -150,7 +150,7 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
         int offset = 2;
 
         qDebug() << pos << ":" << workingData.at(pos + offset + 2) << data;
-        dump.insert(pos - 1, workingData.at(pos + offset + 2));
+        dump.append(workingData.at(pos + offset + 2));
 
     }
 
