@@ -99,24 +99,6 @@ void ContactBuilder::on_SelectColour_clicked()
     delete qcd;
 }
 
-void ContactBuilder::on_SkypeHandle_textEdited(const QString &aText)
-{
-    if (aText.length() != 0) {
-        Skype::GetStatusColour(aText);
-        ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetStatusColour(aText) + "}");
-    }
-
-    else {
-        ui->SkypeHandle->setStyleSheet("");
-    }
-
-    if (ui->CopyUserNames->isChecked()) {
-     ui->TwitterHandle->setText(aText);
-     ui->LastFmHandle->setText(aText);
-    }
-}
-
-
 void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
 {
     if (ui->CopyUserNames->isChecked()) {
@@ -223,6 +205,23 @@ void ContactBuilder::on_TwitterHandle_textChanged(const QString &aText)
 {
     if (ui->CopyUserNames->isChecked()) {
      ui->SkypeHandle->setText(aText);
+     ui->LastFmHandle->setText(aText);
+    }
+}
+
+void ContactBuilder::on_SkypeHandle_textChanged(const QString &aText)
+{
+    if (aText.length() != 0) {
+        Skype::GetStatusColour(aText);
+        ui->SkypeHandle->setStyleSheet("* { background-color:" + Skype::GetStatusColour(aText) + "}");
+    }
+
+    else {
+        ui->SkypeHandle->setStyleSheet("");
+    }
+
+    if (ui->CopyUserNames->isChecked()) {
+     ui->TwitterHandle->setText(aText);
      ui->LastFmHandle->setText(aText);
     }
 }
