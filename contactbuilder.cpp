@@ -219,10 +219,10 @@ QString ContactBuilder::Poach(QString aUri) {
     }
 }
 
-void ContactBuilder::on_TwitterHandle_textChanged(const QString &Text)
+void ContactBuilder::on_TwitterHandle_textChanged(const QString &aText)
 {
     if (ui->CopyUserNames->isChecked()) {
-     ui->SkypeHandle->setText(ui->TwitterHandle->text());
-     ui->LastFmHandle->setText(ui->TwitterHandle->text());
+     ui->SkypeHandle->setText(aText);
+     ui->LastFmHandle->setText(aText);
     }
 }
