@@ -117,6 +117,15 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
     }
 }
 
+/* Internet Explorer 9 drags
+  ("application/x-qt-windows-mime;value="UntrustedDragDrop"",
+ "application/x-qt-windows-mime;value="msSourceUrl"",
+ "application/x-qt-windows-mime;value="FileGroupDescriptor"",
+ "application/x-qt-windows-mime;value="FileGroupDescriptorW"",
+ "application/x-qt-windows-mime;value="FileContents"", "text/uri-list")
+ */
+
+
 void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     qDebug() << "Got a drop event. Data formats are: " << aEvent->mimeData()->formats();
