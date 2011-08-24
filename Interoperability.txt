@@ -11,12 +11,55 @@ Skype |
  
      SkypeIdentityList | VCard | DragImageBits | DragContext
 
+SkypeIdentityList |
+-------------------
+
+  * This consists of UTF-16 text, prefixed with a length byte and padding.
+
+  * A codec for this format (which supports decoding only) is implemented in 
+     Skype::ParseClipboardData() in /Parsers/skype.cpp.
+
+   00000000  07 00 00 00  65 00 63 00  ....e.c.
+
+   00000008  68 00 6F 00  31 00 32 00  h.o.1.2.
+   00000010  33 00                     3.
+
+VCard |
+-------
+
+  * This format is currently unimplemented in SocialClient.
+
+  * This appears to be a standard, ASCII/UTF-8-encoded vCard 3.0 document,
+     containing the following elements:
+
+     * BEGIN      
+     * VERSION
+     * N
+     * X-SKYPE-USERNAME
+     * FN
+     * X-SKYPE-DISPLAYNAME
+     * X-SKYPE-LANGUAGE
+     * URL
+     * NOTE
+     * REV
+     * END
+
+DragContext |
+-------------
+
+   00000000  00 00 00 00  01 00 00 00  ........
+
+   00000008  00 00 00 00  00 00 00 00  ........
+
+ 
+
 Contact List/Accounts Data |
 ----------------------------
 
 Pidgin |
 --------
 
-  * The Windows version doesn't seem to support using D&D (or the clipboard) to export contact data elsewhere
+  * The Windows version doesn't seem to support using D&D (or the clipboard) to export contact
+     data elsewhere.
  
-  * The Linux version supports both D&D and C&P of accounts and contact list 
+  * The Linux version supports both D&D and C&P of accounts and contact list items
