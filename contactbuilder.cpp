@@ -113,7 +113,8 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
             aEvent->mimeData()->hasUrls() ||
             aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
             aEvent->mimeData()->hasFormat("UniformResourceLocator")||
-            aEvent->mimeData()->hasFormat("FileGroupDescriptor")){
+            aEvent->mimeData()->hasFormat("FileGroupDescriptor")||
+            aEvent->mimeData()->hasFormat("application/kopete.metacontacts.list")){
         aEvent->acceptProposedAction();
     }
 }
@@ -141,6 +142,14 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
         QString rawData = Poach(mimeData);
         DisperseUri(rawData);
+    }
+
+    if (aEvent->mimeData()->hasFormat("application/kopete.metacontacts.list")) {
+        qDebug() << "application/kopete.metacontacts.list";
+        QByteArray mimeData = aEvent->mimeData()->data("application/kopete.metacontacts.list");
+        qDebug() << mimeData.toHex();
+        //QString rawData = Poach(mimeData);
+        //DisperseUri(rawData);
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
