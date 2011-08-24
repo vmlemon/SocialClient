@@ -25,10 +25,9 @@ private slots:
 
     void on_SkypeHandle_textEdited(const QString &aText);
 
-
-    void on_TwitterHandle_textEdited(const QString &aText);
-
     void on_LastFmHandle_textEdited(const QString &aText);
+
+    void on_TwitterHandle_textChanged(const QString &Text);
 
 private:
     Ui::ContactBuilder *ui;
