@@ -145,11 +145,11 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         DisperseUri(rawData);
     }
 
-    if (aEvent->mimeData()->hasFormat("FileGroupDescriptor")) {
+    if (aEvent->mimeData()->hasFormat("msSourceUrl")) {
 
-        qDebug() << "FileGroupDescriptor";
-        QByteArray mimeData = aEvent->mimeData()->data("FileGroupDescriptor");
-        qDebug() << mimeData;
+        qDebug() << "msSourceUrl";
+        QByteArray mimeData = aEvent->mimeData()->data("msSourceUrl");
+        qDebug() << mimeData.toHex();
         QString rawData = Poach(mimeData);
         DisperseUri(rawData);
     }
