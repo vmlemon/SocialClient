@@ -176,12 +176,10 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
 void ContactBuilder::DisperseUri(QString aUri) {
 
-    qDebug() << "Dispersing" << aUri;
+    qDebug() << "Dispersing" << Poach(aUri);
 
     if (aUri.contains("http://twitter.com")) {
-        aUri.chop(aUri.indexOf("http://twitter.com/#/"));
         ui->TwitterHandle->setText(aUri);
-        //qDebug() << "Twitter HashURL" << twitterUrl;
     }
 
     if (aUri.contains("http://www.last.fm/user")) {
@@ -194,18 +192,21 @@ void ContactBuilder::DisperseUri(QString aUri) {
 }
 
 QString ContactBuilder::Poach(QString aUri) {
+
+    QString poached = aUri;
+
+    if (poached.contains("http://twitter.com/#!/")) {
+        qDebug() << "Poached a Twitter HashURL" <<  poached.remove("http://twitter.com/#!/");
+        poached = poached.remove("http://twitter.com/#!/");
+    }
+
     /* Safari hack */
-    if (aUri.contains(" ")) {
-        QString poached;
+    if (poached.contains(" ")) {
+
 
         qDebug() << "This seems to be a URL from Safari";
-        qDebug() << aUri.indexOf("\n\r") << aUri.indexOf(" ");
-        poached.chop(aUri.indexOf(" "));
-
-        //if (poached.contains("http://twitter.com/#/")) {
-        //    qDebug() << "Poached a Twitter HashURL" <<  poached.remove("http://twitter.com/#/");
-        //    return poached.remove("http://twitter.com/#/");
-        //}
+        qDebug() << poached.indexOf("\n\r") << poached.indexOf(" ");
+        poached.chop(poached.indexOf(" "));
 
         //else {
             qDebug() << "Poacher has seen" << poached;
@@ -215,6 +216,6 @@ QString ContactBuilder::Poach(QString aUri) {
 
     else {
         qDebug() << "Poacher has seen" << aUri.simplified();
-        return aUri.simplified();
+        return poached.simplified();
     }
 }
