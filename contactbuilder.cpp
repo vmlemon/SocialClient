@@ -149,6 +149,11 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 //        qDebug() << mimeData.toHex();
 //    }
 
+    /* Pidgin
+Got a dragEnter event. Data formats are:  ("PURPLE_ACCOUNT")
+Got a dragEnter event. Data formats are:  ("PURPLE_BLIST_NODE", "application/x-im-contact", "text/x-vcard")
+*/
+
     if (aEvent->mimeData()->hasUrls() == true) {
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
          qDebug() << "hasUrls()" << firstRawUrl;
