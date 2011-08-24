@@ -104,6 +104,9 @@ void ContactBuilder::on_SelectColour_clicked()
 /* Listen for DragEnter events */
 
 void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
+
+    qDebug() << "Got a dragEnter event. Data formats are: " << aEvent->mimeData()->formats();
+
     if (aEvent->mimeData()->hasText() ||
             aEvent->mimeData()->hasUrls() ||
             aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
@@ -113,6 +116,8 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
 }
 
 void ContactBuilder::dropEvent(QDropEvent *aEvent) {
+
+    qDebug() << "Got a drop event. Data formats are: " << aEvent->mimeData()->formats();
 
     if (aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
 
