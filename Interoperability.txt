@@ -11,6 +11,8 @@ Skype |
  
      SkypeIdentityList | VCard | DragImageBits | DragContext
 
+  * C&P contacts only have SkypeIdentityList
+
 SkypeIdentityList |
 -------------------
 
@@ -32,17 +34,26 @@ VCard |
   * This appears to be a standard, ASCII/UTF-8-encoded vCard 3.0 document,
      containing the following elements:
 
-     * BEGIN      
-     * VERSION
-     * N
-     * X-SKYPE-USERNAME
-     * FN
-     * X-SKYPE-DISPLAYNAME
-     * X-SKYPE-LANGUAGE
-     * URL
-     * NOTE
-     * REV
+     * ADR
+     * BEGIN 
      * END
+     * FN
+     * N
+     * PHOTO
+     * REV
+     * TZ
+     * URL
+     * VERSION
+     * NOTE
+     * X-SKYPE-COUNTRY
+     * X-SKYPE-DISPLAYNAME
+     * X-SKYPE-NUMBER-OF-BUDDIES
+     * X-SKYPE-SEX
+     * X-SKYPE-USERNAME
+     * X-SKYPE-LANGUAGE
+
+
+  * Others have also been observed.
 
 DragContext |
 -------------
