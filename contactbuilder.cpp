@@ -11,8 +11,6 @@
 #include <QDragEnterEvent>
 #include <QUrl>
 #include <QWindowsMime>
-#include <QMacMime>
-
 #include <Parsers/skype.h>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
