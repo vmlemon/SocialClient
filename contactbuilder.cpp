@@ -31,6 +31,8 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     QClipboard *clipboard = QApplication::clipboard();
 
+    qDebug() << "Got clipboard data. Data formats are: " << clipboard->mimeData()->formats();
+
     if (clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList").length() != 0) {
         QByteArray mimeData = clipboard->mimeData(QClipboard::Clipboard)->data("SkypeIdentityList");
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
