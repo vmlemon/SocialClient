@@ -113,7 +113,7 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
             aEvent->mimeData()->hasUrls() ||
             aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
             aEvent->mimeData()->hasFormat("UniformResourceLocator")||
-            aEvent->mimeData()->hasFormat("FileGroupDescriptor")){*/
+            aEvent->mimeData()->hasFormat("FileGroupDescriptor")){
         aEvent->acceptProposedAction();
     }
 }
