@@ -109,13 +109,13 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
 
     qDebug() << "Got a dragEnter event. Data formats are: " << aEvent->mimeData()->formats();
 
-    /*if (aEvent->mimeData()->hasText() ||
+    if (aEvent->mimeData()->hasText() ||
             aEvent->mimeData()->hasUrls() ||
             aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
             aEvent->mimeData()->hasFormat("UniformResourceLocator")||
             aEvent->mimeData()->hasFormat("FileGroupDescriptor")){*/
         aEvent->acceptProposedAction();
-    //}
+    }
 }
 
 /* Internet Explorer 9 drags
@@ -141,15 +141,6 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
         qDebug() << "UniformResourceLocator";
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
-        QString rawData = Poach(mimeData);
-        DisperseUri(rawData);
-    }
-
-    if (aEvent->mimeData()->hasFormat("msSourceUrl")) {
-
-        qDebug() << "msSourceUrl";
-        QByteArray mimeData = aEvent->mimeData()->data("msSourceUrl");
-        qDebug() << mimeData.toHex();
         QString rawData = Poach(mimeData);
         DisperseUri(rawData);
     }
