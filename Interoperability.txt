@@ -1,0 +1,22 @@
+
+ContactBuilder Express |
+------------------------
+
+Skype |
+-------
+
+  * The Windows Skype client supports using both D&D and C&P to export contact list items
+
+  * Contacts exported via D&D have the following MIME types associated with them:
+ 
+     SkypeIdentityList | VCard | DragImageBits | DragContext
+
+Contact List/Accounts Data |
+----------------------------
+
+Pidgin |
+--------
+
+  * The Windows version doesn't seem to support using D&D (or the clipboard) to export contact data elsewhere
+ 
+  * The Linux version supports both D&D and C&P of accounts and contact list 
