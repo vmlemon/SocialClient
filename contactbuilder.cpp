@@ -109,13 +109,13 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
 
     qDebug() << "Got a dragEnter event. Data formats are: " << aEvent->mimeData()->formats();
 
-    if (aEvent->mimeData()->hasText() ||
-            aEvent->mimeData()->hasUrls() ||
-            aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
-            aEvent->mimeData()->hasFormat("UniformResourceLocator")||
-            aEvent->mimeData()->hasFormat("FileGroupDescriptor")){
+//    if (aEvent->mimeData()->hasText() ||
+//            aEvent->mimeData()->hasUrls() ||
+//            aEvent->mimeData()->hasFormat("SkypeIdentityList") ||
+//            aEvent->mimeData()->hasFormat("UniformResourceLocator")||
+//            aEvent->mimeData()->hasFormat("FileGroupDescriptor")){
         aEvent->acceptProposedAction();
-    }
+//    }
 }
 
 /* Internet Explorer 9 drags
@@ -143,11 +143,11 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         DisperseUri(rawData);
     }
 
-//    if (aEvent->mimeData()->hasFormat("application/kopete.metacontacts.list")) {
-//        qDebug() << "application/kopete.metacontacts.list";
-//        QByteArray mimeData = aEvent->mimeData()->data("application/kopete.metacontacts.list");
-//        qDebug() << mimeData.toHex();
-//    }
+    if (aEvent->mimeData()->hasFormat("text/x-vcard")) {
+        qDebug() << "text/x-vcard";
+        QByteArray mimeData = aEvent->mimeData()->data("text/x-vcard");
+        qDebug() << mimeData.toHex();
+    }
 
     /* Pidgin
 Got a dragEnter event. Data formats are:  ("PURPLE_ACCOUNT")
