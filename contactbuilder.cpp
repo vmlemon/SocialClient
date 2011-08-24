@@ -202,16 +202,13 @@ QString ContactBuilder::Poach(QString aUri) {
     /* Safari hack */
     if (poached.contains(" ")) {
 
-
         qDebug() << "This seems to be a URL from Safari";
         qDebug() << poached.indexOf("\n\r") << poached.indexOf(" ");
         poached.chop(poached.indexOf(" "));
 
-        //else {
-            qDebug() << "Poacher has seen" << poached;
-            return poached;
-        //}
+        qDebug() << "Poacher has seen" << poached;
     }
+        return poached;
     }
 
     else {
