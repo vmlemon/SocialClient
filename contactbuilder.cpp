@@ -118,15 +118,6 @@ void ContactBuilder::dragEnterEvent(QDragEnterEvent *aEvent) {
 //    }
 }
 
-/* Internet Explorer 9 drags
-  ("application/x-qt-windows-mime;value="UntrustedDragDrop"",
- "application/x-qt-windows-mime;value="msSourceUrl"",
- "application/x-qt-windows-mime;value="FileGroupDescriptor"",
- "application/x-qt-windows-mime;value="FileGroupDescriptorW"",
- "application/x-qt-windows-mime;value="FileContents"", "text/uri-list")
- */
-
-
 void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     qDebug() << "Got a drop event. Data formats are: " << aEvent->mimeData()->formats();
@@ -148,11 +139,6 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         QByteArray mimeData = aEvent->mimeData()->data("application/x-im-contact");
         qDebug() << mimeData;
     }
-
-    /* Pidgin
-Got a dragEnter event. Data formats are:  ("PURPLE_ACCOUNT")
-Got a dragEnter event. Data formats are:  ("PURPLE_BLIST_NODE", "application/x-im-contact", "text/x-vcard")
-*/
 
     if (aEvent->mimeData()->hasUrls() == true) {
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
