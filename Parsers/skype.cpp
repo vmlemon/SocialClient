@@ -49,7 +49,6 @@ QString Skype::ParseSkypeStatus(QString aStatusData) {
 /* Effectively the same as EUnknown */
         default:
             return "Unknown";
-            break;
     }
 }
 
@@ -118,11 +117,10 @@ QString Skype::GetStatusColour(QString aUsername) {
         break;
 
     default:
-        return GetUnknownColour();
 
         qDebug() << "Unknown";
 
-        break;
+        return GetUnknownColour();
     }
 }
 
