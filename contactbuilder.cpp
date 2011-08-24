@@ -146,6 +146,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     if (aEvent->mimeData()->hasFormat("application/x-im-contact")) {
         qDebug() << "application/x-im-contact";
         QByteArray mimeData = aEvent->mimeData()->data("application/x-im-contact");
+        4d494d452d56657273696f6e3a20312e300d0a436f6e74656e742d547970653a206170706c69636174696f6e2f782d696d2d636f6e746163740d0a582d494d2d50726f746f636f6c3a206d736e0d0a582d494d2d557365726e616d653a20766d6c656d6f6e407961686f6f2e636f6d0d0a582d494d2d416c6961733a204d79205961686f6f210d0a0d0a00
         qDebug() << mimeData.toHex();
     }
 
