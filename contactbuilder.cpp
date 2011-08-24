@@ -116,13 +116,6 @@ void ContactBuilder::on_SkypeHandle_textEdited(const QString &aText)
     }
 }
 
-void ContactBuilder::on_TwitterHandle_textEdited(const QString &aText)
-{
-    if (ui->CopyUserNames->isChecked()) {
-     ui->SkypeHandle->setText(aText);
-     ui->LastFmHandle->setText(aText);
-    }
-}
 
 void ContactBuilder::on_LastFmHandle_textEdited(const QString &aText)
 {
@@ -223,5 +216,13 @@ QString ContactBuilder::Poach(QString aUri) {
     else {
         qDebug() << "Poacher has seen" << aUri.simplified();
         return poached.simplified();
+    }
+}
+
+void ContactBuilder::on_TwitterHandle_textChanged(const QString &Text)
+{
+    if (ui->CopyUserNames->isChecked()) {
+     ui->SkypeHandle->setText(ui->TwitterHandle->text());
+     ui->LastFmHandle->setText(ui->TwitterHandle->text());
     }
 }
