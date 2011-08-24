@@ -2,6 +2,7 @@
 #include "ui_contactbuilder.h"
 
 #include <QColorDialog>
+#include <QDialog>
 #include <QDebug>
 #include <QColor>
 #include <QLineEdit>
@@ -36,6 +37,8 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
     }
 
     ui->SkypeHandle->setAcceptDrops(true);
+    this->setAcceptDrops(true);
+
 }
 
 ContactBuilder::~ContactBuilder()
