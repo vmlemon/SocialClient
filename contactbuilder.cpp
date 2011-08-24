@@ -201,7 +201,6 @@ QString ContactBuilder::Poach(QString aUri) {
 
     /* Safari hack */
 
-        qDebug() << "This seems to be a URL from Safari";
         qDebug() << poached.indexOf("\n\r") << poached.indexOf(" ");
         poached.chop(poached.indexOf(" "));
         poached.chop(poached.indexOf("@"));
@@ -213,6 +212,13 @@ QString ContactBuilder::Poach(QString aUri) {
 
         return poached.simplified();
     }
+
+    if (poached.contains("http://twitter.com/")) {
+        qDebug() << "Poached a legacy Twitter URL" <<  poached.remove("http://twitter.com/");
+        poached = poached.remove("http://twitter.com/");
+
+        return poached.simplified();
+     }
 
     else {
         qDebug() << "Poacher has seen" << aUri.simplified();
