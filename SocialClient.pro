@@ -20,7 +20,7 @@ SOURCES += main.cpp\
     contactbuilder.cpp \
     file.cpp \
     contacteditor.cpp \
-    parsers/pidgin.cpp
+    Parsers/pidgin.cpp
 
 HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/lastfm.h \
@@ -30,7 +30,7 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     contactbuilder.h \
     file.h \
     contacteditor.h \
-    parsers/pidgin.h
+    Parsers/pidgin.h
 
 FORMS    += mainwindow.ui \
     contactbuilder.ui \
