@@ -9,7 +9,10 @@ Skype |
 
   * Contacts exported via D&D have the following MIME types associated with them:
  
-     SkypeIdentityList | VCard | DragImageBits | DragContext
+     * SkypeIdentityList
+     * VCard
+     * DragImageBits
+     * DragContext
 
   * C&P contacts only have SkypeIdentityList
 
@@ -52,7 +55,6 @@ VCard |
      * X-SKYPE-USERNAME
      * X-SKYPE-LANGUAGE
 
-
   * Others have also been observed.
 
 DragContext |
@@ -73,4 +75,4 @@ Pidgin |
   * The Windows version doesn't seem to support using D&D (or the clipboard) to export contact
      data elsewhere.
  
-  * The Linux version supports both D&D and C&P of accounts and contact list items
+  * The Linux version supports both D&D and C&P of accounts and contact list items.
