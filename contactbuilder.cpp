@@ -132,13 +132,11 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     qDebug() << "Got a drop event. Data formats are: " << aEvent->mimeData()->formats();
 
     if (aEvent->mimeData()->hasFormat("SkypeIdentityList")) {
-
         QByteArray mimeData = aEvent->mimeData()->data("SkypeIdentityList");
         ui->SkypeHandle->setText(Skype::ParseClipboardData(mimeData));
     }
 
     if (aEvent->mimeData()->hasFormat("UniformResourceLocator")) {
-
         qDebug() << "UniformResourceLocator";
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
         QString rawData = Poach(mimeData);
@@ -146,8 +144,6 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
-
-
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
          qDebug() << "hasUrls()" << firstRawUrl;
         DisperseUri(firstRawUrl);
