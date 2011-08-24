@@ -148,7 +148,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 //        QByteArray mimeData = aEvent->mimeData()->data("application/kopete.metacontacts.list");
 //        qDebug() << mimeData.toHex();
 //    }
-000000500031002f007b00360039003700300030006400610065002d0061006100330030002d0034003400630031002d0061006600390033002d006100610030006600370064003300630039003600640038007d
+
     if (aEvent->mimeData()->hasUrls() == true) {
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
          qDebug() << "hasUrls()" << firstRawUrl;
