@@ -23,11 +23,11 @@ private slots:
 
     void on_SelectColour_clicked();
 
-    void on_SkypeHandle_textEdited(const QString &aText);
-
     void on_LastFmHandle_textEdited(const QString &aText);
 
     void on_TwitterHandle_textChanged(const QString &Text);
+
+    void on_SkypeHandle_textChanged(const QString &aText);
 
 private:
     Ui::ContactBuilder *ui;
