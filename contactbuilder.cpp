@@ -143,9 +143,9 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         DisperseUri(rawData);
     }
 
-    if (aEvent->mimeData()->hasFormat("text/x-vcard")) {
-        qDebug() << "text/x-vcard";
-        QByteArray mimeData = aEvent->mimeData()->data("text/x-vcard");
+    if (aEvent->mimeData()->hasFormat("application/x-im-contact")) {
+        qDebug() << "application/x-im-contact";
+        QByteArray mimeData = aEvent->mimeData()->data("application/x-im-contact");
         qDebug() << mimeData.toHex();
     }
 
