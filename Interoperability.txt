@@ -2,6 +2,9 @@
 ContactBuilder Express |
 ------------------------
 
+Contact List/Accounts Data |
+----------------------------
+
 Skype |
 -------
 
@@ -65,9 +68,6 @@ DragContext |
    00000008  00 00 00 00  00 00 00 00  ........
 
  
-
-Contact List/Accounts Data |
-----------------------------
 
 Pidgin |
 --------
