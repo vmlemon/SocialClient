@@ -143,6 +143,10 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         if (Pidgin::GetXImContactProtocol(mimeData).contains("msn")) {
             ui->EMail->setText(Pidgin::GetXImContactUsername(mimeData));
         }
+
+        if (Pidgin::GetXImContactUsername(mimeData).contains("@gmail.com")) {
+            ui->EMail->setText(Pidgin::GetXImContactUsername(mimeData));
+        }
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
