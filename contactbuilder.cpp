@@ -205,6 +205,11 @@ void ContactBuilder::DisperseUri(QString aUri) {
     if (aUri.contains("mailto:")) {
         ui->EMail->setText(Poach(aUri.remove("mailto:")));
     }
+
+    if (aUri.contains("skype:")) {
+        ui->SkypeHandle->setText(aUri.remove("skype:"));
+    }
+
 }
 
 QString ContactBuilder::Poach(QString aUri) {
