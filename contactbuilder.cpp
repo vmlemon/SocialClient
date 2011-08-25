@@ -179,15 +179,6 @@ QString ContactBuilder::Poach(QString aUri) {
         qDebug() << "Poached a Twitter HashURL" << Twitter::ReduceUrl(poached);
         poached = Twitter::ReduceUrl(poached);
 
-    /* Safari hack */
-
-        qDebug() << poached.indexOf("\n\r") << poached.indexOf(" ");
-        poached.chop(poached.indexOf(" "));
-        poached.chop(poached.indexOf("@"));
-        poached.chop(poached.indexOf("/"));
-        poached.chop(poached.indexOf(" "));
-        poached.chop(poached.trimmed().indexOf("/ "));
-
         qDebug() << "Poacher has seen" << poached;
 
         return poached.simplified();
