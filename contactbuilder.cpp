@@ -159,15 +159,34 @@ void ContactBuilder::DisperseUri(QString aUri) {
     qDebug() << "Dispersing" << aUri;
 
     if (aUri.contains("http://twitter.com")) {
-        ui->TwitterHandle->setText(Twitter::ReduceUrl(aUri).simplified());
+        ui->TwitterHandle->setText(Poach(aUri));
     }
 
     if (aUri.contains("http://www.last.fm/user")) {
-        ui->LastFmHandle->setText(aUri.remove("http://www.last.fm/user/").simplified());
+        ui->LastFmHandle->setText(Poach(aUri.remove("http://www.last.fm/user/")));
     }
 
     if (aUri.contains("mailto:")) {
-        ui->EMail->setText(aUri.remove("mailto:").simplified());
+        ui->EMail->setText(Poach(aUri.remove("mailto:")));
+    }
+}
+
+QString ContactBuilder::Poach(QString aUri) {
+
+    QString poached = aUri;
+
+    if (poached.contains("http://twitter.com")) {
+        qDebug() << "Poached a Twitter URL" << Twitter::ReduceUrl(poached);
+        poached = Twitter::ReduceUrl(poached);
+
+        qDebug() << "Poacher has seen" << poached;
+
+        return poached.simplified();
+    }
+
+    else {
+        qDebug() << "Poacher has seen" << aUri.simplified();
+        return poached.simplified();
     }
 }
 
