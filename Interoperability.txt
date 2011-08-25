@@ -76,3 +76,10 @@ Pidgin |
      data elsewhere.
  
   * The Linux version supports both D&D and C&P of accounts and contact list items.
+
+/*
+"MIME-Version: 1.0
+Content-Type: application/x-im-contact
+X-IM-Protocol: msn
+X-IM-Username: user@example.com
+  */
