@@ -42,7 +42,6 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     ui->SkypeHandle->setAcceptDrops(true);
     this->setAcceptDrops(true);
-
 }
 
 ContactBuilder::~ContactBuilder()
