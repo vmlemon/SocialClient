@@ -5,7 +5,6 @@
 #include <QWebFrame>
 
 #include <QBuffer>
-#include <QTimer>
 #include <QMap>
 #include <file.h>
 
@@ -29,10 +28,6 @@ MainWindow::MainWindow(QWidget *parent) :
     File::DirectoryProbe(Skype::GetDefaultCacheDir());
 
     on_actionUpdate_Ticker_triggered();
-
-    //QTimer *timer = new QTimer(this);
-    //connect(timer, SIGNAL(timeout()), this, SLOT(on_actionUpdate_Ticker_triggered()));
-    //timer->start(60000);
 }
 
 QString iContentType = "data:text/html,";
