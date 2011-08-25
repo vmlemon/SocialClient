@@ -13,6 +13,7 @@
 #include <QUrl>
 #include <QWindowsMime>
 #include <Parsers/skype.h>
+#include <Parsers/pidgin.h>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
@@ -137,7 +138,7 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     if (aEvent->mimeData()->hasFormat("application/x-im-contact")) {
         qDebug() << "application/x-im-contact";
         QByteArray mimeData = aEvent->mimeData()->data("application/x-im-contact");
-        qDebug() << mimeData;
+        qDebug() << Pidgin::GetXImContactProtocol(mimeData) << Pidgin::GetXImContactUsername(mimeData);
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
