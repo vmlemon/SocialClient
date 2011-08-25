@@ -149,6 +149,15 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         }
     }
 
+    /* Hack for Empathy - needs updating later */
+    if (aEvent->mimeData()->hasFormat("text/individual-id")) {
+        if (QString(aEvent->mimeData()->data("text/individual-id")).contains("telepathy:jabber")) {
+            ui->EMail->setText(QString(aEvent->mimeData()->data("text/individual-id")).remove("telepathy:jabber"));
+        }
+
+        qDebug() << mimeData;
+    }
+
     if (aEvent->mimeData()->hasUrls() == true) {
         QString firstRawUrl = aEvent->mimeData()->urls().first().toString();
          qDebug() << "hasUrls()" << firstRawUrl;
