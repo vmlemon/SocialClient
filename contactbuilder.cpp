@@ -175,21 +175,14 @@ QString ContactBuilder::Poach(QString aUri) {
 
     QString poached = aUri;
 
-    if (poached.contains("http://twitter.com/#!/")) {
-        qDebug() << "Poached a Twitter HashURL" << Twitter::ReduceUrl(poached);
+    if (poached.contains("http://twitter.com")) {
+        qDebug() << "Poached a Twitter URL" << Twitter::ReduceUrl(poached);
         poached = Twitter::ReduceUrl(poached);
 
         qDebug() << "Poacher has seen" << poached;
 
         return poached.simplified();
     }
-
-    if (poached.contains("http://twitter.com/")) {
-        qDebug() << "Poached a legacy Twitter URL" <<  Twitter::ReduceUrl(poached);
-        poached = Twitter::ReduceUrl(poached);
-
-        return poached.simplified();
-     }
 
     else {
         qDebug() << "Poacher has seen" << aUri.simplified();
