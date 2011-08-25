@@ -44,3 +44,8 @@ void ContactEditor::on_buttonBox_accepted()
 
     iTempContact->WriteContactFile();
 }
+
+void ContactEditor::on_buttonBox_rejected()
+{
+    delete this;
+}
