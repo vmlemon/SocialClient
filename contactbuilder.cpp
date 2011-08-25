@@ -139,6 +139,10 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         qDebug() << "application/x-im-contact";
         QByteArray mimeData = aEvent->mimeData()->data("application/x-im-contact");
         qDebug() << Pidgin::GetXImContactProtocol(mimeData) << Pidgin::GetXImContactUsername(mimeData);
+
+        if (Pidgin::GetXImContactProtocol(mimeData).contains("msn")) {
+            ui->EMail->setText(Pidgin::GetXImContactUsername(mimeData));
+        }
     }
 
     if (aEvent->mimeData()->hasUrls() == true) {
