@@ -9,6 +9,7 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QDropEvent>
+#include <QVariant>
 #include <QDragEnterEvent>
 #include <QUrl>
 #include <QWindowsMime>
@@ -143,6 +144,14 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
         QByteArray mimeData = aEvent->mimeData()->data("UniformResourceLocator");
         QString rawData = Poach(mimeData);
         DisperseUri(rawData);
+    }
+
+    if (aEvent->mimeData()->hasColor()) {
+        iTempContact->SetVersion(1);
+        //iTempContact->SetStatusColour(aEvent->mimeData()->text());
+        ui->SelectColour->setStyleSheet("* { background-color:" +  aEvent->mimeData()->text() + "}");
+        qDebug() << aEvent->mimeData()->colorData();
+
     }
 
     if (aEvent->mimeData()->hasFormat("application/x-im-contact")) {
