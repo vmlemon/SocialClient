@@ -34,15 +34,22 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
 
 void ContactEditor::on_buttonBox_accepted()
 {
-    iTempContact->SetForename(ui->ForenameField->text());
-    iTempContact->SetSurname(ui->SurnameField->text());
-    iTempContact->SetEMailAddress(ui->EMailField->text());
-    iTempContact->SetSkypeUserName(ui->SkypeUsernameField->text());
-    iTempContact->SetSkypeStatus(Skype::ReadFromCache(ui->SkypeUsernameField->text()).toInt());
+    if (ui->UidField->text().length() !=0) {
+        iTempContact->SetForename(ui->ForenameField->text());
+        iTempContact->SetSurname(ui->SurnameField->text());
+        iTempContact->SetEMailAddress(ui->EMailField->text());
+        iTempContact->SetSkypeUserName(ui->SkypeUsernameField->text());
+        iTempContact->SetSkypeStatus(Skype::ReadFromCache(ui->SkypeUsernameField->text()).toInt());
 
-    qDebug() << "Going to write: " << iTempContact->Serialise();
+        qDebug() << "Going to write: " << iTempContact->Serialise();
 
-    iTempContact->WriteContactFile();
+        iTempContact->WriteContactFile();
+    }
+
+    else {
+        delete this;
+    }
+
 }
 
 void ContactEditor::on_buttonBox_rejected()
