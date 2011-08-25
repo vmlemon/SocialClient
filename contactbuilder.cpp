@@ -222,3 +222,8 @@ void ContactBuilder::on_LastFmHandle_textChanged(const QString &aText)
      ui->TwitterHandle->setText(aText);
     }
 }
+
+void ContactBuilder::on_buttonBox_rejected()
+{
+    delete this;
+}

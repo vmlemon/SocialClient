@@ -29,6 +29,8 @@ private slots:
 
     void on_LastFmHandle_textChanged(const QString &Text);
 
+    void on_buttonBox_rejected();
+
 private:
     Ui::ContactBuilder *ui;
     QString iColour;
