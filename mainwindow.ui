@@ -69,7 +69,7 @@
     <property name="title">
      <string>Contacts</string>
     </property>
-    <addaction name="actionCreate_Contact"/>
+    <addaction name="actionContactManager"/>
     <addaction name="separator"/>
     <addaction name="actionContact_Viewer"/>
    </widget>
@@ -81,9 +81,9 @@
     <string>Update Ticker</string>
    </property>
   </action>
-  <action name="actionCreate_Contact">
+  <action name="actionContactManager">
    <property name="text">
-    <string>Create Contact...</string>
+    <string>Contact Manager...</string>
    </property>
   </action>
   <action name="actionContact_Viewer">

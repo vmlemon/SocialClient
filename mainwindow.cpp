@@ -149,12 +149,6 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     qDebug() << ui->webView->url().toString();
 }
 
-void MainWindow::on_actionCreate_Contact_triggered()
-{
-    ContactBuilder *cb = new ContactBuilder();
-    cb->show();
-}
-
 void MainWindow::PopulateRamCache() {
     iStatusToRender.clear();
 
@@ -219,4 +213,10 @@ void MainWindow::on_actionContact_Viewer_triggered()
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
+}
+
+void MainWindow::on_actionContactManager_triggered()
+{
+    ContactBuilder *cb = new ContactBuilder();
+    cb->show();
 }

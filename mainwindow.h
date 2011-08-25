@@ -32,11 +32,11 @@ private slots:
 
     void on_actionUpdate_Ticker_triggered();
 
-    void on_actionCreate_Contact_triggered();
-
     void on_actionContact_Viewer_triggered();
 
     void on_actionExit_triggered();
+
+    void on_actionContactManager_triggered();
 
 private:
     Ui::MainWindow *ui;
