@@ -91,8 +91,6 @@ QString Skype::ReadFromCache(QString aUsername) {
     return QString::number(dataMap["Data"].toInt());
 }
 
-
-
 QString Skype::GetStatusColour(QString aUsername) {
 
     QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
