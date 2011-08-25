@@ -31,6 +31,10 @@ private slots:
 
     void on_buttonBox_rejected();
 
+    void on_EditExistingButton_toggled(bool aChecked);
+
+    void on_CreateNewButton_toggled(bool aChecked);
+
 private:
     Ui::ContactBuilder *ui;
     QString iColour;

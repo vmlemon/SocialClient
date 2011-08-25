@@ -227,3 +227,19 @@ void ContactBuilder::on_buttonBox_rejected()
 {
     delete this;
 }
+
+void ContactBuilder::on_EditExistingButton_toggled(bool aChecked)
+{
+    if (aChecked) {
+        ui->CopyUserNames->setCheckState(Qt::Unchecked);
+        ui->CopyUserNames->setEnabled(false);
+    }
+}
+
+void ContactBuilder::on_CreateNewButton_toggled(bool aChecked)
+{
+    if (aChecked) {
+        ui->CopyUserNames->setCheckState(Qt::Unchecked);
+        ui->CopyUserNames->setEnabled(true);
+    }
+}
