@@ -1,5 +1,6 @@
 #include "pidgin.h"
 #include <QDebug>
+#include <QStringList>
 
 Pidgin::Pidgin()
 {
@@ -13,13 +14,11 @@ X-IM-Username: user@example.com
   */
 QString Pidgin::GetXImContactProtocol(QByteArray aData) {
     QString contactProtocol = QString(aData);
-    int index = contactProtocol.indexOf("X-IM-Protocol");
+    QStringList atoms = contactProtocol.split("\n");
 
-    qDebug() << "Got X-IM-Protocol" << index;
-    contactProtocol.truncate(index);
-    qDebug() << "Truncated to" << contactProtocol;
+    qDebug() << "Got X-IM-Protocol" << atoms;
 
-    return contactProtocol;
+    return atoms.at(2).remove("X-IM-Protocol: ");
 
 }
 
