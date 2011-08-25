@@ -147,9 +147,8 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
     }
 
     if (aEvent->mimeData()->hasColor()) {
-        iTempContact->SetVersion(1);
-        //iTempContact->SetStatusColour(aEvent->mimeData()->text());
-        ui->SelectColour->setStyleSheet("* { background-color:" +  aEvent->mimeData()->text() + "}");
+        iColour = aEvent->mimeData()->text();
+        ui->SelectColour->setStyleSheet("* { background-color:" + iColour + "}");
         qDebug() << aEvent->mimeData()->colorData();
 
     }
