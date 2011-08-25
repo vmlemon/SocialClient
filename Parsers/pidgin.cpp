@@ -6,19 +6,9 @@ Pidgin::Pidgin()
 }
 
 QString Pidgin::GetXImContactProtocol(QByteArray aData) {
-    QString contactProtocol = QString(aData);
-    QStringList atoms = contactProtocol.split("\n");
-    QString magic = "X-IM-Protocol: ";
-
-    return atoms.filter(magic).first().remove(magic).simplified();
-
+    return QString(aData).split("\n").filter("X-IM-Protocol: ").first().remove("X-IM-Protocol: ").simplified();
 }
 
 QString Pidgin::GetXImContactUsername(QByteArray aData) {
-    QString contactUsername = QString(aData);
-    QStringList atoms = contactUsername.split("\n");
-    QString magic = "X-IM-Username: ";
-
-    return atoms.filter(magic).first().remove(magic).simplified();
-
+    return QString(aData).split("\n").filter("X-IM-Username: ").first().remove("X-IM-Username: ").simplified();
 }
