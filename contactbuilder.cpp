@@ -151,8 +151,9 @@ void ContactBuilder::dropEvent(QDropEvent *aEvent) {
 
     /* Hack for Empathy - needs updating later */
     if (aEvent->mimeData()->hasFormat("text/individual-id")) {
-        if (QString(aEvent->mimeData()->data("text/individual-id")).contains("telepathy:jabber")) {
-            ui->EMail->setText(QString(aEvent->mimeData()->data("text/individual-id")).remove("telepathy:jabber"));
+        QByteArray mimeData = aEvent->mimeData()->data("text/individual-id");
+        if (QString(mimeData).contains("telepathy:jabber:")) {
+            ui->EMail->setText(QString(mimeData).remove("telepathy:jabber:"));
         }
 
         qDebug() << mimeData;
