@@ -130,7 +130,6 @@ QString Skype::GetDefaultCacheDir() {
 }
 
 QString Skype::ParseClipboardData(QByteArray aRawData) {
-    QByteArray workingData = aRawData;
     int stringSize = aRawData.at(0);
     int pos = 0;
 
@@ -143,7 +142,7 @@ QString Skype::ParseClipboardData(QByteArray aRawData) {
     qDebug() << "Size of array after filling is" << aRawData.size();
 
     for (pos = 0; pos < aRawData.length() - 5; pos++) {
-        tempChar = workingData.at(pos + 2 + 2);
+        tempChar = aRawData.at(pos + 2 + 2);
         qDebug() << pos << tempChar;
         round1Data = round1Data + tempChar;
     }
