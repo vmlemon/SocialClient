@@ -122,7 +122,6 @@ QString Skype::GetStatusColour(QString aUsername) {
     }
 }
 
-
 QString Skype::GetDefaultCacheDir() {
     return QDir::homePath() + "/.SocialClient/Cache/Skype";
 }
