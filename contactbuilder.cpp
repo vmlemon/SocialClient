@@ -14,6 +14,7 @@
 #include <QWindowsMime>
 #include <Parsers/skype.h>
 #include <Parsers/pidgin.h>
+#include <Parsers/twitter.h>
 
 ContactBuilder::ContactBuilder(QWidget *parent) :
     QDialog(parent),
@@ -176,8 +177,8 @@ QString ContactBuilder::Poach(QString aUri) {
     QString poached = aUri;
 
     if (poached.contains("http://twitter.com/#!/")) {
-        qDebug() << "Poached a Twitter HashURL" <<  poached.remove("http://twitter.com/#!/");
-        poached = poached.remove("http://twitter.com/#!/");
+        qDebug() << "Poached a Twitter HashURL" << Twitter::ReduceUrl(poached);
+        poached = Twitter::ReduceUrl(poached);
 
     /* Safari hack */
 
@@ -194,8 +195,8 @@ QString ContactBuilder::Poach(QString aUri) {
     }
 
     if (poached.contains("http://twitter.com/")) {
-        qDebug() << "Poached a legacy Twitter URL" <<  poached.remove("http://twitter.com/");
-        poached = poached.remove("http://twitter.com/");
+        qDebug() << "Poached a legacy Twitter URL" <<  Twitter::ReduceUrl(poached);
+        poached = Twitter::ReduceUrl(poached);
 
         return poached.simplified();
      }
