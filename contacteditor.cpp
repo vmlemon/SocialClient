@@ -33,7 +33,7 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
     ui->SkypeStatusLabel->setText(Skype::ParseSkypeStatus(Skype::ReadFromCache(ui->SkypeUsernameField->text())));
     qDebug() << iTempContact->GetSkypeStatus();
 
-    if (aText == "0" || aText == "-") {
+    if (aText == "0" || aText.contains("-")) {
         ui->PreviousButton->setEnabled(false);
         ui->UidField->setText("0");
     }
@@ -82,7 +82,7 @@ void ContactEditor::on_PreviousButton_clicked()
             ui->UidField->setText("0");
         }
 
-        if (ui->UidField->text() == "0" || ui->UidField->text() == "-") {
+        if (ui->UidField->text() == "0" || ui->UidField->text().contains("-")) {
             ui->PreviousButton->setEnabled(false);
             ui->UidField->setText("0");
         }
