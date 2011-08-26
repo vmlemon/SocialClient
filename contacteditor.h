@@ -26,6 +26,8 @@ private slots:
 
     void on_PreviousButton_clicked();
 
+    void on_NextButton_clicked();
+
 private:
     Ui::ContactEditor *ui;
     Contact *iTempContact;
