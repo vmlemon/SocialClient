@@ -62,17 +62,23 @@ void ContactEditor::on_buttonBox_rejected()
 void ContactEditor::on_PreviousButton_clicked()
 {
     if (iTempContact->CountStoredContacts() == 0) {
-        ui->PreviousButton->setEnabled("false");
+        ui->PreviousButton->setEnabled(false);
     }
 
     else {
 
-        if (iTempContact->GetUid() == 1) {
+        if (ui->UidField->text() == "1") {
             ui->UidField->setText("0");
         }
 
-        else {
-           ui->UidField->setText(QString::number(iTempContact->GetUid() - 1));
+        if (ui->UidField->text() == "0" || ui->UidField->text() == "-") {
+            ui->PreviousButton->setEnabled(false);
+            ui->UidField->setText("0");
+        }
+
+        if (ui->UidField->text() != "0" || ui->UidField->text() != "1") {
+            ui->PreviousButton->setEnabled(true);
+            ui->UidField->setText(QString::number(iTempContact->GetUid() - 1));
         }
 
 
