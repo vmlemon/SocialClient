@@ -11,6 +11,7 @@ ContactEditor::ContactEditor(QWidget *parent) :
     qint64 count = iTempContact->CountStoredContacts() + 1 - 1;
     ui->UidCount->setText("/" + QString::number(count));
     ui->UidField->setMaxLength(QString::number(count).length());
+    ui->UidField->setText("0");
 }
 
 ContactEditor::~ContactEditor()
@@ -55,4 +56,9 @@ void ContactEditor::on_buttonBox_accepted()
 void ContactEditor::on_buttonBox_rejected()
 {
     delete this;
+}
+
+void ContactEditor::on_PreviousButton_clicked()
+{
+
 }
