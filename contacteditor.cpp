@@ -13,6 +13,7 @@ ContactEditor::ContactEditor(QWidget *parent) :
     ui->UidField->setMaxLength(QString::number(count).length());
     ui->UidField->setText("0");
     ui->PreviousButton->setEnabled(false);
+    ui->UidField->setVisible(false);
 }
 
 ContactEditor::~ContactEditor()
@@ -41,6 +42,7 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
         ui->NextButton->setEnabled(false);
     }
 
+    ui->UidCount->setText(aText + "/" + QString::number(iTempContact->CountStoredContacts()));
 }
 
 void ContactEditor::on_buttonBox_accepted()
