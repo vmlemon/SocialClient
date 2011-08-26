@@ -140,7 +140,7 @@
     <bool>false</bool>
    </property>
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(240, 240, 240);</string>
+    <string notr="true">background-color: rgb(170, 85, 127);</string>
    </property>
    <property name="frame">
     <bool>false</bool>
