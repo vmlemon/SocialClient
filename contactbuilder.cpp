@@ -25,15 +25,6 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     ui->setupUi(this);
 
-#ifdef Q_OS_LINUX
-        this->setMaximumWidth(this->width() + 60);
-        this->setMinimumWidth(this->width() + 60);
-        this->setGeometry(0, 0, this->width() + 60 /* 370 on Linux */, this->height());
-        ui->gridLayout->setGeometry(this->geometry());
-        ui->gridLayout->update();
-        ui->CopyUserNames->resize(229, ui->CopyUserNames->height());
-#endif
-
     QString windowTitle = "Create New Contact (" +
             QString::number(iTempContact->CountStoredContacts() + 1 - 1) +
             ")";
