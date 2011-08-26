@@ -36,14 +36,18 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
     if (aText == "0" || aText.contains("-")) {
         ui->PreviousButton->setEnabled(false);
         ui->UidField->setText("0");
+        ui->UidCount->setText(0 + "/" + QString::number(iTempContact->CountStoredContacts()));
+    }
+
+    else {
+        ui->UidCount->setText(aText + "/" + QString::number(iTempContact->CountStoredContacts()));
     }
 
     if (aText == QString::number(iTempContact->CountStoredContacts())) {
         ui->NextButton->setEnabled(false);
     }
 
-    ui->UidCount->setText(aText + "/" + QString::number(iTempContact->CountStoredContacts()));
-}
+   }
 
 void ContactEditor::on_buttonBox_accepted()
 {
