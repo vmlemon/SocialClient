@@ -7,7 +7,7 @@ class GoogleBuzz
 {
 public:
     GoogleBuzz();
-    QString GetFeedKind(QString aJsonData);
+    static QString GetFeedKind(QString aJsonData);
 };
 
 #endif // GOOGLEBUZZ_H
