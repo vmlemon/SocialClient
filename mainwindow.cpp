@@ -11,6 +11,7 @@
 #include <Parsers/lastfm.h>
 #include <Parsers/skype.h>
 #include <Parsers/twitter.h>
+#include <Parsers/googlebuzz.h>
 
 #include <contactbuilder.h>
 #include <contacteditor.h>
