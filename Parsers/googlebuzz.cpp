@@ -13,8 +13,10 @@ QString GoogleBuzz::GetFeedKind(QString aJsonData) {
     bool status;
 
     QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
-    qDebug() << dataMap["data"].toString();
+    //qDebug() << dataMap["data"].toString();
+    //dataMap
 
-    return dataMap["kind"].toString();
+    return "Unimplemented";
+    //return dataMap["kind"].toString();
 
 }
