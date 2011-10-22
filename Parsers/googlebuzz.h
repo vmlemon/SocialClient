@@ -1,6 +1,8 @@
 #ifndef GOOGLEBUZZ_H
 #define GOOGLEBUZZ_H
 
+#include <QString>
+
 class GoogleBuzz
 {
 public:

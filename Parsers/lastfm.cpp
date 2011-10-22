@@ -14,6 +14,7 @@ QString LastFm::GetLastFmLatestTrack(QString aXmlData) {
     QString artistHyphenTitle;
 
     int artistOffset = aXmlData.indexOf("<artist");
+    int nameOffset = 0;
 
     if (aXmlData.length() !=0) {
 

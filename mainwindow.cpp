@@ -29,6 +29,10 @@ MainWindow::MainWindow(QWidget *parent) :
     File::DirectoryProbe(Skype::GetDefaultCacheDir());
 
     on_actionUpdate_Ticker_triggered();
+
+    qDebug() << GoogleBuzz::GetFeedKind(File::LoadDiskFile("C:\Users\\Tyson Key\\socialclient\\buzz-activities.json"));
+
+
 }
 
 QString iContentType = "data:text/html,";
