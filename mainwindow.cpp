@@ -55,13 +55,35 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+/* API that only supports Text, Icons and Status Colour */
 QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour) {
 
     QString text = aText;
     QString iconUri = aIconUri;
     QString statusColour = aStatusColour;
 
-    QString icon = "<img src=\"" + iconUri + "\" height=\"24\"" + " title=\"" + iconUri + "\" " + "width=\"24\"/>";
+    QString icon = "<img src=\"" + iconUri + "\" height=\"24\"" + "width=\"24\"/>";
+    QString statusStart = QString().append("<span style=\"")
+            .append("background-color:")
+            .append(statusColour)
+            .append("; color:6E5E5E;\">");
+    QString statusFont("<font face=\"S60 Sans\">");
+    QString statusEnd("</font></span>");
+
+    QString result;
+
+    result.append(icon).append(statusStart).append(statusFont).append(text).append(statusEnd).append("&nbsp;");
+    return result;
+}
+
+/* API that supports Text, Icons, Status Colour, and Alternate Text (Titles) */
+QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour, QString aIconText) {
+
+    QString text = aText;
+    QString iconUri = aIconUri;
+    QString statusColour = aStatusColour;
+
+    QString icon = "<img src=\"" + iconUri + "\" height=\"24\"" + " title=\"" + aIconText + "\" " + "width=\"24\"/>";
     QString statusStart = QString().append("<span style=\"")
             .append("background-color:")
             .append(statusColour)
@@ -163,6 +185,7 @@ void MainWindow::PopulateRamCache() {
     QString avatarUrl;
     QString latestTweet;
     QString colour;
+    QString screenName;
 
     int pos = 0;
 
@@ -180,8 +203,9 @@ void MainWindow::PopulateRamCache() {
         avatarUrl = Twitter::GetTwitterAvatarUrl(iTwitterDataCache.value(Contact::GetTwitterUrl(pos)));
         latestTweet = Twitter::GetTwitterLatestTweet(tweetMap.value(pos));
         colour = Contact::GetStatusColour(pos);
+        screenName = Twitter::GetTwitterScreenName(tweetMap.value(pos));
 
-        iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour));
+        iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour,screenName));
 
         /* Attempt to set Skype statuses for UIDs */
         if (iSkypeUidCache.value(pos).length() != 0) {

@@ -7,6 +7,17 @@ Twitter::Twitter()
 {
 }
 
+
+QString Twitter::GetTwitterScreenName(QString aJsonData) {
+
+    bool status;
+
+    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
+    qDebug() << "Screen name: " << dataMap["screen_name"].toString();
+    return dataMap["screen_name"].toString();
+}
+
+
 QString Twitter::GetTwitterAvatarUrl(QString aJsonData) {
 
     bool status;
