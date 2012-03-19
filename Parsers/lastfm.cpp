@@ -2,7 +2,7 @@
 #include <QDebug>
 #include <QVariantMap>
 #include <QDir>
-#include <QtJSON/json.h>
+
 #include <file.h>
 
 LastFm::LastFm()
@@ -15,30 +15,11 @@ QString LastFm::GetDefaultCacheDir() {
 
 
 void LastFm::WriteToCache(QString aUsername, QString aData) {
-
-    QVariantMap lfmMap;
-
-    /* Username, Data */
-    lfmMap["Username"] = aUsername;
-    lfmMap["Data"] = aData;
-
-    qDebug() << "Last.FM cache:" << lfmMap.keys() << lfmMap.values();
-
-    QByteArray lfmArray = Json::serialize(lfmMap);
-
-    File::SaveDiskFile(GetDefaultCacheDir() + "/" + aUsername, QString::fromUtf8(lfmArray));
-
+   File::SaveDiskFile(GetDefaultCacheDir() + "/" + aUsername, aData);
 }
 
 QString LastFm::ReadFromCache(QString aUsername) {
-
-    QString jsonData = File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
-    bool status;
-
-    QVariantMap dataMap = Json::parse(jsonData, status).toMap();
-    qDebug() << "[lfm] lfm cache contains:" << dataMap["Data"];
-
-    return dataMap["Data"].toString();
+   return File::LoadDiskFile(GetDefaultCacheDir() + "/" + aUsername);
 }
 
 
