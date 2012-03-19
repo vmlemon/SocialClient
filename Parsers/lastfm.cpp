@@ -38,8 +38,6 @@ QString LastFm::ReadFromCache(QString aUsername) {
     QVariantMap dataMap = Json::parse(jsonData, status).toMap();
     qDebug() << "[lfm] lfm cache contains:" << dataMap["Data"];
 
-//#include <QVariant>
-//#include <QMap>
     return dataMap["Data"].toString();
 }
 
