@@ -42,6 +42,7 @@ public:
 
     QString GetLastFmUserName();
     void SetLastFmUserName(QString aLastFmUserName);
+    static QString GetLastFmUserName(int aUid);
 
     /* Version 1 attributes */
     QString GetStatusColour();
