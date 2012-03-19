@@ -37,7 +37,7 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
 
     ui->LastFmLastTrackLabel->setText(
                 LastFm::GetLastFmLatestTrack(
-                    LastFm::ReadFromCache(ui->LastFmUserNameField)));
+                    LastFm::ReadFromCache(ui->LastFmUserNameField->text())));
 
     if (aText == "0" || aText.contains("-")) {
         ui->PreviousButton->setEnabled(false);
