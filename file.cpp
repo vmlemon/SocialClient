@@ -56,6 +56,10 @@ void File::DirectoryProbe(QString aDirectoryPath) {
         dirNameOrType = "Contacts";
     }
 
+    if (aDirectoryPath.contains("LastFM")) {
+        dirNameOrType = "Last.FM cache";
+    }
+
     else {
         dirNameOrType = aDirectoryPath;
     }
@@ -70,6 +74,10 @@ void File::DirectoryProbe(QString aDirectoryPath) {
         /* Familiar formatting */
         if (aDirectoryPath.contains("Skype")) {
             qDebug() << "Will look inside" << aDirectoryPath << "for cached Skype status data";
+        }
+
+        if (aDirectoryPath.contains("LastFM")) {
+            qDebug() << "Will look inside" << aDirectoryPath << "for cached Last.FM data";
         }
 
         if (aDirectoryPath.contains("Contacts")) {
