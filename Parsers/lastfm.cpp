@@ -42,6 +42,8 @@ QString LastFm::GetLastFmLatestTrack(QString aXmlData, QString aFormat) {
 
         artistHyphenTitle.append(artistElement).append(aFormat).append(nameElement);
 
+        qDebug() << "Artist and title: " << artistHyphenTitle.toUtf8();
+
         return artistHyphenTitle.toUtf8();
     }
 
