@@ -8,6 +8,7 @@ class LastFm
 public:
     LastFm();
     static QString GetLastFmLatestTrack(QString aXmlData);
+    static QString GetLastFmLatestTrack(QString aXmlData, QString aFormat);
 };
 
 #endif // LASTFM_H
