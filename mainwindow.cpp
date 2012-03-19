@@ -147,9 +147,11 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
         QString processedUri(aReply->url().toString().remove("http://ws.audioscrobbler.com/1.0/user/")
                              .remove("/recenttracks.xml").remove("?limit=1"));
         qDebug() << "Got a Last.FM Recent Tracks (API v1.0) URL" << (processedUri);
-        iLastFmCache.insert(processedUri, iNetworkData);
+        //iLastFmCache.insert(processedUri, iNetworkData);
 
-        qDebug() << LastFm::GetLastFmLatestTrack(iLastFmCache.value(processedUri));
+        LastFm::WriteToCache(processedUri, iNetworkData);
+    qDebug() << LastFm::GetLastFmLatestTrack(LastFm::ReadFromCache(processedUri));
+        //qDebug() << LastFm::GetLastFmLatestTrack(iLastFmCache.value(processedUri));
     }
 
     aReply->close();
