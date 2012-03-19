@@ -158,8 +158,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 void MainWindow::on_actionUpdate_Ticker_triggered()
 {
     /* Not a Twitter feed, but here for testing */
-    //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
-
+    //
     /* A test of Identi.ca's "Twitter-compatible feeds" */
     //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
     PopulateRamCache();
@@ -194,6 +193,8 @@ void MainWindow::PopulateRamCache() {
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
         LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" +
                      Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
+
+        //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
 
         tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
 
