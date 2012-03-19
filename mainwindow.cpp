@@ -194,7 +194,10 @@ void MainWindow::PopulateRamCache() {
         LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" +
                      Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
 
-        //LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" + test->GetLastFmUserName() + "/recenttracks.xml?limit=1");
+        if (Contact::GetLastFmUserName(pos).length() != 0) {
+            LoadHttpFeed("http://ws.audioscrobbler.com/1.0/user/" +
+                         Contact::GetLastFmUserName(pos) + "/recenttracks.xml?limit=1");
+        }
 
         tweetMap.insert(pos, iTwitterDataCache.value(iTwitterUidCache.value(pos)));
 
