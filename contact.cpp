@@ -44,8 +44,8 @@ Contact::Contact(QString aJsonData){
 
     iVersion = dataMap["Version"].toInt();
     iUid = dataMap["Uid"].toULongLong();
-    iForename = dataMap["Forename"].toString();
-    iSurname = dataMap["Surname"].toString();
+    iForename = dataMap["Forename"].toString().toUtf8();
+    iSurname = dataMap["Surname"].toString().toUtf8();
     iEMailAddress = dataMap["EmailAddress"].toString();
     iTwitterUrl = dataMap["TwitterUrl"].toString();
     iSkypeUserName = dataMap["SkypeUserName"].toString();
