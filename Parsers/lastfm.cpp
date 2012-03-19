@@ -15,7 +15,10 @@ QString LastFm::GetDefaultCacheDir() {
 
 
 void LastFm::WriteToCache(QString aUsername, QString aData) {
-   File::SaveDiskFile(GetDefaultCacheDir() + "/" + aUsername, aData);
+
+    qDebug() << aData;
+
+   File::SaveDiskFile(GetDefaultCacheDir() + "/" + aUsername, aData.toUtf8());
 }
 
 QString LastFm::ReadFromCache(QString aUsername) {
