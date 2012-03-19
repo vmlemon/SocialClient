@@ -1,6 +1,7 @@
 #include "contacteditor.h"
 #include "ui_contacteditor.h"
 #include <Parsers/skype.h>
+#include <Parsers/lastfm.h>
 #include <QDebug>
 
 ContactEditor::ContactEditor(QWidget *parent) :
@@ -33,6 +34,10 @@ void ContactEditor::on_UidField_textChanged(const QString &aText)
 
     ui->SkypeStatusLabel->setText(Skype::ParseSkypeStatus(Skype::ReadFromCache(ui->SkypeUsernameField->text())));
     qDebug() << iTempContact->GetSkypeStatus();
+
+    ui->LastFmLastTrackLabel->setText(
+                LastFm::GetLastFmLatestTrack(
+                    LastFm::ReadFromCache(ui->LastFmUserNameField)));
 
     if (aText == "0" || aText.contains("-")) {
         ui->PreviousButton->setEnabled(false);
