@@ -205,6 +205,17 @@ QString Contact::GetLastFmUserName() {
     return iLastFmUserName;
 }
 
+/* Return the last.fm username for a given UID */
+QString Contact::GetLastFmUserName(int aUid) {
+    Contact *ptc = new Contact();
+
+    ptc->ReadContactFile(aUid);
+
+    return ptc->GetLastFmUserName();
+
+    delete ptc;
+}
+
 void Contact::SetLastFmUserName(QString aLastFmUserName) {
     iLastFmUserName = aLastFmUserName;
 }
