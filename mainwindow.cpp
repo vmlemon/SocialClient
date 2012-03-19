@@ -61,7 +61,7 @@ QString MainWindow::BuildStatusItem(QString aText, QString aIconUri, QString aSt
     QString iconUri = aIconUri;
     QString statusColour = aStatusColour;
 
-    QString icon = "<img src=\"" + iconUri + "\" height=\"24\" width=\"24\"/>";
+    QString icon = "<img src=\"" + iconUri + "\" height=\"24\"" + " title=\"" + iconUri + "\" " + "width=\"24\"/>";
     QString statusStart = QString().append("<span style=\"")
             .append("background-color:")
             .append(statusColour)
