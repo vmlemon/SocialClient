@@ -149,7 +149,7 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
         qDebug() << "Got a Last.FM Recent Tracks (API v1.0) URL" << (processedUri);
         //iLastFmCache.insert(processedUri, iNetworkData);
 
-        LastFm::WriteToCache(processedUri, iNetworkData);
+        LastFm::WriteToCache(processedUri, iNetworkData.toUtf8());
     qDebug() << LastFm::GetLastFmLatestTrack(LastFm::ReadFromCache(processedUri));
         //qDebug() << LastFm::GetLastFmLatestTrack(iLastFmCache.value(processedUri));
     }
