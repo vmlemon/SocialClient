@@ -42,7 +42,7 @@ QString LastFm::GetLastFmLatestTrack(QString aXmlData, QString aFormat) {
 
         artistHyphenTitle.append(artistElement).append(aFormat).append(nameElement);
 
-        return artistHyphenTitle;
+        return artistHyphenTitle.toUtf8();
     }
 
     else {
