@@ -31,6 +31,10 @@ bool File::SaveDiskFile(QString aFilePath, QString aFileData) {
 
     QTextStream stream(&workingFile);
 
+    //Try to create correct UTF-8 output
+    stream.setCodec("UTF-8");
+    stream.setGenerateByteOrderMark(true);
+
     stream << aFileData;
     workingFile.close();
 
