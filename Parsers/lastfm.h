@@ -9,6 +9,9 @@ public:
     LastFm();
     static QString GetLastFmLatestTrack(QString aXmlData);
     static QString GetLastFmLatestTrack(QString aXmlData, QString aFormat);
+    static QString GetDefaultCacheDir();
+    static void WriteToCache(QString aUsername, QString aData);
+    static QString ReadFromCache(QString aUsername);
 };
 
 #endif // LASTFM_H
