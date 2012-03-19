@@ -23,6 +23,7 @@ public:
     explicit MainWindow(QWidget *parent = 0);
     ~MainWindow();
     QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour);
+    QString BuildStatusItem(QString aText, QString aIconUri, QString aStatusColour, QString aIconText);
     QString LoadHttpFeed(QString aHttpUri);
 
 private slots:
