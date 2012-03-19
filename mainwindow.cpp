@@ -148,6 +148,8 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
                              .remove("/recenttracks.xml").remove("?limit=1"));
         qDebug() << "Got a Last.FM Recent Tracks (API v1.0) URL" << (processedUri);
         iLastFmCache.insert(processedUri, iNetworkData);
+
+        qDebug() << LastFm::GetLastFmLatestTrack(iLastFmCache.value(processedUri));
     }
 
     aReply->close();
