@@ -40,7 +40,13 @@ QString Twitter::GetTwitterLatestTweet(QString aJsonData) {
 }
 
 QStringList Twitter::GetAllTweetsForUser(QString aJsonData) {
-    return ("ZENZEN...");
+    QStringList data;
+
+    qDebug() << aJsonData;
+
+    data.append("Nothing yet");
+
+    return data;
 }
 
 QString Twitter::ReduceUrl(QString aUrl) {
