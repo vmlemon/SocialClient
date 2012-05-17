@@ -21,7 +21,8 @@ SOURCES += main.cpp\
     file.cpp \
     contacteditor.cpp \
     Parsers/pidgin.cpp \
-    Parsers/googlebuzz.cpp
+    Parsers/googlebuzz.cpp \
+    tweetbrowser.cpp
 
 HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/lastfm.h \
@@ -32,8 +33,10 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     file.h \
     contacteditor.h \
     Parsers/pidgin.h \
-    Parsers/googlebuzz.h
+    Parsers/googlebuzz.h \
+    tweetbrowser.h
 
 FORMS    += mainwindow.ui \
     contactbuilder.ui \
-    contacteditor.ui
+    contacteditor.ui \
+    tweetbrowser.ui
