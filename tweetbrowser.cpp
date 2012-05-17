@@ -6,6 +6,8 @@ TweetBrowser::TweetBrowser(QWidget *parent) :
     ui(new Ui::TweetBrowser)
 {
     ui->setupUi(this);
+
+    ui->TweetList->setAlternatingRowColors(true);
 }
 
 TweetBrowser::~TweetBrowser()
