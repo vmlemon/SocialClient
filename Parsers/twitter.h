@@ -2,6 +2,7 @@
 #define TWITTER_H
 
 #include <QString>
+#include <QStringList>
 
 class Twitter
 {
