@@ -39,6 +39,10 @@ QString Twitter::GetTwitterLatestTweet(QString aJsonData) {
     return statusMap["text"].toString();
 }
 
+QStringList Twitter::GetAllTweetsForUser(QString aJsonData) {
+    return ("ZENZEN...");
+}
+
 QString Twitter::ReduceUrl(QString aUrl) {
     return aUrl.remove("http://api.twitter.com/1/users/show.json?id=")
                          .remove("http://api.twitter.com/1/users/show.json?screen_name=")

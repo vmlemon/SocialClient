@@ -11,6 +11,7 @@ public:
     static QString GetTwitterLatestTweet(QString aJsonData);
     static QString ReduceUrl(QString aUrl);
     static QString GetTwitterScreenName(QString aJsonData);
+    static QStringList GetAllTweetsForUser(QString aJsonData);
 };
 
 #endif // TWITTER_H
