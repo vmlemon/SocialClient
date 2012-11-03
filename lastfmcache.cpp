@@ -2,6 +2,7 @@
 
 #include <QtJSON/json.h>
 #include <file.h>
+#include <QDebug>
 
 LastFmCache::LastFmCache()
 {
