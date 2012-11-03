@@ -9,11 +9,9 @@ QT       += core gui webkit network xml
 TARGET = CodeTests
 TEMPLATE = app
 
-
 SOURCES += main.cpp\
         mainwindow.cpp \
         QtJSON/json.cpp \
-    Parsers/lastfm.cpp \
     Parsers/skype.cpp \
     Parsers/twitter.cpp \
     contact.cpp \
@@ -22,10 +20,10 @@ SOURCES += main.cpp\
     contacteditor.cpp \
     Parsers/pidgin.cpp \
     Parsers/googlebuzz.cpp \
-    tweetbrowser.cpp
+    tweetbrowser.cpp \
+    lastfmcache.cpp
 
 HEADERS  += mainwindow.h QtJSON/json.h \
-    Parsers/lastfm.h \
     Parsers/skype.h \
     Parsers/twitter.h \
     contact.h \
@@ -34,7 +32,8 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     contacteditor.h \
     Parsers/pidgin.h \
     Parsers/googlebuzz.h \
-    tweetbrowser.h
+    tweetbrowser.h \
+    lastfmcache.h
 
 FORMS    += mainwindow.ui \
     contactbuilder.ui \
