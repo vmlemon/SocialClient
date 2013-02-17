@@ -179,8 +179,14 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
     ui->webView->setUrl(workUrl);
 
+    QString data;
+    data = iStatusToRender + iEndRender;
+
+    const char * raw = data.data();
+
     ui->webView->reload();
     ui->webView->show();
+    ui->webView->setContent("DAYTAH");
 
     qDebug() << "Built URL: " << workUrl;
     qDebug() << "Really using URL: " << ui->webView->url().toString();
