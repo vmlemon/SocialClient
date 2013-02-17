@@ -61,5 +61,6 @@ QString Twitter::ReduceUrl(QString aUrl) {
     return aUrl.remove("http://api.twitter.com/1/users/show.json?id=")
                          .remove("http://api.twitter.com/1/users/show.json?screen_name=")
                          .remove("http://identi.ca/api/users/show.json?screen_name=")
-                         .remove("http://twitter.com/").remove("#!/");
+                         .remove("http://twitter.com/").remove("#!/")
+                         .remove("https://twitter.com/");
 }

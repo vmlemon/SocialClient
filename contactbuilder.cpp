@@ -185,7 +185,7 @@ void ContactBuilder::DisperseUri(QString aUri) {
 
     qDebug() << "Dispersing" << aUri;
 
-    if (aUri.contains("http://twitter.com")) {
+    if (aUri.contains("http://twitter.com") || aUri.contains("https://twitter.com")) {
         ui->TwitterHandle->setText(Poach(aUri));
     }
 
@@ -207,7 +207,7 @@ QString ContactBuilder::Poach(QString aUri) {
 
     QString poached = aUri;
 
-    if (poached.contains("http://twitter.com")) {
+    if (poached.contains("http://twitter.com") || poached.contains("https://twitter.com")) {
         qDebug() << "Poached a Twitter URL" << Twitter::ReduceUrl(poached);
         poached = Twitter::ReduceUrl(poached);
 
