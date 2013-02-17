@@ -27,6 +27,14 @@ QString Twitter::GetTwitterAvatarUrl(QString aJsonData) {
     return dataMap["profile_image_url"].toString();
 }
 
+bool Twitter::GetTwitterPrivacyState(QString aJsonData) {
+    bool status;
+
+    QVariantMap dataMap = Json::parse(aJsonData, status).toMap();
+    qDebug() << "Locked feed: " << dataMap["protected"].toBool();
+    return dataMap["protected"].toBool();
+}
+
 QString Twitter::GetTwitterLatestTweet(QString aJsonData) {
 
     bool status;

@@ -11,7 +11,6 @@
 #include <Parsers/lastfm.h>
 #include <Parsers/skype.h>
 #include <Parsers/twitter.h>
-#include <Parsers/googlebuzz.h>
 
 #include <contactbuilder.h>
 #include <contacteditor.h>
@@ -30,7 +29,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     on_actionUpdate_Ticker_triggered();
 
-    qDebug() << "Buzz:" << GoogleBuzz::GetFeedKind(File::LoadDiskFile("C:\\Users\\Tyson Key\\socialclient\\buzz-activities.json"));
+    //qDebug() << "Buzz:" << GoogleBuzz::GetFeedKind(File::LoadDiskFile("C:\\Users\\Tyson Key\\socialclient\\buzz-activities.json"));
 
 
 }
