@@ -166,17 +166,21 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     /* A test of Identi.ca's "Twitter-compatible feeds" */
     //LoadHttpFeed("http://identi.ca/api/users/show.json?screen_name=identica");
     PopulateRamCache();
-    ui->webView->setUrl(QUrl(iContentType +
-                             iStartRender +
-                             iStatusToRender +
-                             iEndRender));
+
+    QUrl workUrl = QUrl(iContentType +
+                        iStartRender +
+                        iStatusToRender +
+                        iEndRender);
+
+    ui->webView->setUrl(workUrl);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
 
     ui->webView->reload();
     ui->webView->show();
 
-    qDebug() << "Going to use URL: " << ui->webView->url().toString();
+    qDebug() << "Built URL: " << workUrl;
+    qDebug() << "Really using URL: " << ui->webView->url().toString();
 }
 
 void MainWindow::PopulateRamCache() {
