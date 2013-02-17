@@ -176,7 +176,7 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->reload();
     ui->webView->show();
 
-    qDebug() << ui->webView->url().toString();
+    qDebug() << "Going to use URL: " << ui->webView->url().toString();
 }
 
 void MainWindow::PopulateRamCache() {
