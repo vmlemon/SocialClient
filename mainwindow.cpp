@@ -172,9 +172,12 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
                         iStatusToRender +
                         iEndRender);
 
+
     ui->webView->setUrl(workUrl);
+    ui->webView->load(workUrl);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
+    ui->webView->setUrl(workUrl);
 
     ui->webView->reload();
     ui->webView->show();
