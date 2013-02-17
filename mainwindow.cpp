@@ -220,6 +220,8 @@ void MainWindow::PopulateRamCache() {
         colour = Contact::GetStatusColour(pos);
         screenName = Twitter::GetTwitterScreenName(tweetMap.value(pos));
 
+        qDebug() << Twitter::GetTwitterPrivacyState(iTwitterDataCache.value(Contact::GetTwitterUrl(pos)));
+
         iStatusToRender.append(BuildStatusItem(latestTweet,avatarUrl,colour,screenName));
 
         /* Attempt to set Skype statuses for UIDs */
