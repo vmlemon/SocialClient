@@ -178,16 +178,10 @@ void MainWindow::on_actionUpdate_Ticker_triggered()
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Vertical, Qt::ScrollBarAlwaysOff);
     ui->webView->page()->mainFrame()->setScrollBarPolicy(Qt::Horizontal,Qt::ScrollBarAlwaysOff);
 
-
-    QString data;
-    data = iStatusToRender + iEndRender;
-
-    //const char * raw = data.data();
-
     ui->webView->reload();
     ui->webView->show();
     ui->webView->setUrl(workUrl);
-     ui->webView->load(workUrl);
+    ui->webView->load(workUrl);
 
     qDebug() << "Built URL: " << workUrl;
     qDebug() << "Really using URL: " << ui->webView->url().toString();
