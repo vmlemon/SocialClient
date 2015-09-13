@@ -22,7 +22,10 @@ SOURCES += main.cpp\
     file.cpp \
     contacteditor.cpp \
     Parsers/pidgin.cpp \
-    tweetbrowser.cpp
+    tweetbrowser.cpp \
+     o2-master\o2-master\src\o2replyserver.cpp
+     o2-master\o2-master\src\o1.cpp
+
 
 HEADERS  += mainwindow.h QtJSON/json.h \
     Parsers/lastfm.h \
@@ -33,7 +36,9 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     file.h \
     contacteditor.h \
     Parsers/pidgin.h \
-    tweetbrowser.h
+    tweetbrowser.h \
+     o2-master\o2-master\src\o2replyserver.h
+     o2-master\o2-master\src\o1.h\
 
 FORMS    += mainwindow.ui \
     contactbuilder.ui \
