@@ -12,7 +12,7 @@
 #include <QVariant>
 #include <QDragEnterEvent>
 #include <QUrl>
-#include <QWindowsMime>
+//#include <QWindowsMime>
 #include <Parsers/skype.h>
 #include <Parsers/pidgin.h>
 #include <Parsers/twitter.h>
