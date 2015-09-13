@@ -23,8 +23,11 @@ SOURCES += main.cpp\
     contacteditor.cpp \
     Parsers/pidgin.cpp \
     tweetbrowser.cpp \
-     o2-master\o2-master\src\o2replyserver.cpp
-     o2-master\o2-master\src\o1.cpp
+     o2-master\o2-master\src\o2replyserver.cpp \
+     o2-master\o2-master\src\o1.cpp \
+     o2-master\o2-master\src\simplecrypt.cpp \
+     o2-master\o2-master\src\o2settingsstore.cpp \
+     o2-master\o2-master\src\oxtwitter.cpp
 
 
 HEADERS  += mainwindow.h QtJSON/json.h \
@@ -37,8 +40,13 @@ HEADERS  += mainwindow.h QtJSON/json.h \
     contacteditor.h \
     Parsers/pidgin.h \
     tweetbrowser.h \
-     o2-master\o2-master\src\o2replyserver.h
-     o2-master\o2-master\src\o1.h\
+    o2-master\o2-master\src\o2replyserver.h \
+    o2-master\o2-master\src\o1.h \
+    o2-master\o2-master\src\o1twitter.h \
+    o2-master\o2-master\src\o2abstractstore.h \
+    o2-master\o2-master\src\o2settingsstore.h \
+     o2-master\o2-master\src\simplecrypt.h \
+    o2-master\o2-master\src\oxtwitter.h
 
 FORMS    += mainwindow.ui \
     contactbuilder.ui \
