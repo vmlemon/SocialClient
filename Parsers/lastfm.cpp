@@ -55,12 +55,13 @@ QString LastFm::ReadFromCache(QString aUsername) {
     return dataMap["Data"].toString();
 }
 
-
+/* Returns an Artist - Title pair */
 QString LastFm::GetLastFmLatestTrack(QString aXmlData) {
 
     return GetLastFmLatestTrack(aXmlData, " - ");
 }
 
+/* aFormat is the formatting character to use, when getting the track details */
 QString LastFm::GetLastFmLatestTrack(QString aXmlData, QString aFormat) {
 
     QString workingPayload = aXmlData.remove("</track>").remove("</recenttracks>").simplified();
