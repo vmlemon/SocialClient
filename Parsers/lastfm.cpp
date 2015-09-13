@@ -1,3 +1,15 @@
+/*
+ The API endpoint was recently changed:
+
+http://ws.audioscrobbler.com/2.0/?method=user.getRecentTracks&
+  user=defsamm&api_key=<PutKeyHere>&limit=1&format=json&callback=?
+
+  is the new way of doing things...
+
+  http://www.samkitson.co.uk/using-json-to-access-last-fm-recently-played-tracks/
+
+*/
+
 #include "lastfm.h"
 #include <QDebug>
 #include <QVariantMap>
