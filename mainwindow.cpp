@@ -120,8 +120,16 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
 
     qDebug() << "Inside finishedSlot()" /* iNetworkData */;
 
-    if (aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?id=") ||
-            aReply->url().toString().startsWith("http://api.twitter.com/1/users/show.json?screen_name=") ||
+    /*
+    QSslSocket: cannot call unresolved function SSLv23_client_method
+    QSslSocket: cannot call unresolved function SSL_CTX_new
+    QSslSocket: cannot call unresolved function SSL_library_init
+    QSslSocket: cannot call unresolved function ERR_get_error
+    QSslSocket: cannot call unresolved function ERR_get_error
+    */
+
+    if (aReply->url().toString().startsWith("https://api.twitter.com/1/users/show.json?id=") ||
+            aReply->url().toString().startsWith("https://api.twitter.com/1/users/show.json?screen_name=") ||
             aReply->url().toString().startsWith("http://identi.ca/api/users/show.json?screen_name=")) {
         QString processedUri(Twitter::ReduceUrl(aReply->url().toString()));
         qDebug() << "Got a Twitter user URL" << processedUri;
@@ -199,7 +207,7 @@ void MainWindow::PopulateRamCache() {
     for (pos = 0; pos < Contact::CountStoredContacts(); pos++) {
         iSkypeUidCache.insert(pos, Contact::GetSkypeUserName(pos));
         iTwitterUidCache.insert(pos, Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
-        LoadHttpFeed("http://api.twitter.com/1/users/show.json?screen_name=" +
+        LoadHttpFeed("https://api.twitter.com/1/users/show.json?screen_name=" +
                      Twitter::ReduceUrl(Contact::GetTwitterUrl(pos)));
 
         if (Contact::GetLastFmUserName(pos).length() != 0) {
