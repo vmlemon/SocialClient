@@ -103,3 +103,7 @@ QString LastFm::GetLastFmLatestTrack(QString aXmlData, QString aFormat) {
         return "No data";
     }
 }
+
+QString LastFm::GetApiKey() {
+    return "NOKEY";
+}
