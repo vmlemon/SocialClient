@@ -5,6 +5,7 @@
 #-------------------------------------------------
 
 QT       += core gui webkit network xml
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 TARGET = CodeTests
 TEMPLATE = app
