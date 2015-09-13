@@ -126,6 +126,10 @@ void MainWindow::finishedSlot(QNetworkReply* aReply) {
     QSslSocket: cannot call unresolved function SSL_library_init
     QSslSocket: cannot call unresolved function ERR_get_error
     QSslSocket: cannot call unresolved function ERR_get_error
+
+("https://api.twitter.com/1/users/show.json?screen_name=vmlemon")
+("{"errors":[{"message":"The Twitter REST API v1 is no longer active. Please migrate to API v1.1. https://dev.twitter.com/docs/api/1.1/overview.","code":64}]}")
+https://slproweb.com/products/Win32OpenSSL.html
     */
 
     if (aReply->url().toString().startsWith("https://api.twitter.com/1/users/show.json?id=") ||
