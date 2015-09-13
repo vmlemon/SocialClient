@@ -29,9 +29,6 @@ MainWindow::MainWindow(QWidget *parent) :
 
     on_actionUpdate_Ticker_triggered();
 
-    //qDebug() << "Buzz:" << GoogleBuzz::GetFeedKind(File::LoadDiskFile("C:\\Users\\Tyson Key\\socialclient\\buzz-activities.json"));
-
-
 }
 
 QString iContentType = "data:text/html,";
