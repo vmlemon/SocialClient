@@ -272,6 +272,6 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionContactManager_triggered()
 {
-    ContactBuilder *cb = new ContactBuilder();
+    ContactBuilder *cb = new ContactBuilder(0, 0);
     cb->show();
 }
