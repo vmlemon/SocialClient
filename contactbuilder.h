@@ -16,7 +16,7 @@ class ContactBuilder : public QDialog
 
 public:
     explicit ContactBuilder(QWidget *parent = 0); //Creation Mode
-    explicit ContactBuilder(QWidget *parent = 0, int aContactId); //Edit mode
+    ContactBuilder(QWidget *aWidgetId, int aContactId); //Edit mode
     ~ContactBuilder();
 
 private slots:
