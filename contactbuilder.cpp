@@ -17,22 +17,17 @@
 #include <Parsers/pidgin.h>
 #include <Parsers/twitter.h>
 
-ContactBuilder::ContactBuilder(QWidget *parent) :
+/* Hack to enable loading in a contact... */
+ContactBuilder::ContactBuilder(QWidget *parent, int aContactId):
     QDialog(parent),
     ui(new Ui::ContactBuilder),
     iColour("")
 {
+    qDebug() << "Working with contact ID: " << aContactId;
 
-    ui->setupUi(this);
+}
 
-    QString windowTitle = "Create New Contact (" +
-            QString::number(iTempContact->CountStoredContacts() + 1 - 1) +
-            ")";
-
-    this->setWindowTitle(windowTitle);
-
-    qDebug() << iColour.length();
-
+void ContactBuilder::PrepareCbData() {
     QClipboard *clipboard = QApplication::clipboard();
 
     qDebug() << "Got clipboard data. Data formats are: " << clipboard->mimeData()->formats();
@@ -44,6 +39,29 @@ ContactBuilder::ContactBuilder(QWidget *parent) :
 
     ui->SkypeHandle->setAcceptDrops(true);
     this->setAcceptDrops(true);
+}
+
+void ContactBuilder::UpdateWinTitle(QString aTitle) {
+    this->setWindowTitle(aTitle);
+}
+
+
+
+/* Default case constructor (Create) */
+ContactBuilder::ContactBuilder(QWidget *parent) :
+    QDialog(parent),
+    ui(new Ui::ContactBuilder),
+    iColour("")
+{
+
+    ui->setupUi(this);
+    UpdateWinTitle("Create New Contact (" +
+                   QString::number(iTempContact->CountStoredContacts() + 1 - 1) +
+                   ")");
+
+    qDebug() << iColour.length();
+
+    PrepareCbData();
 }
 
 ContactBuilder::~ContactBuilder()

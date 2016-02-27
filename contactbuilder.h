@@ -15,7 +15,8 @@ class ContactBuilder : public QDialog
     Q_OBJECT
 
 public:
-    explicit ContactBuilder(QWidget *parent = 0);
+    explicit ContactBuilder(QWidget *parent = 0); //Creation Mode
+    explicit ContactBuilder(QWidget *parent = 0, int aContactId); //Edit mode
     ~ContactBuilder();
 
 private slots:
@@ -41,6 +42,8 @@ private:
     Contact *iTempContact;
     void DisperseUri(QString aUri);
     QString Poach(QString aUri);
+    void UpdateWinTitle(QString aTitle);
+    void PrepareCbData();
 
 protected:
     void dropEvent(QDropEvent *aEvent);
